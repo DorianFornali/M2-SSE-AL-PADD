@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: SensorSimulator
+  banner:
+    location: classpath:other/banner.txt
