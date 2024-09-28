@@ -1,0 +1,9 @@
+{
+  "home": {
+    "title": "Hello, World!"
+  },
+  "404": {
+    "title": "404 - Page not found",
+    "back": "Back to home"
+  }
+}
