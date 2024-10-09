@@ -1,28 +1,38 @@
-# Use a base image with C++ and required tools
+# Use an official Ubuntu image as a parent image
 FROM ubuntu:20.04
 
-# Install build tools and dependencies
+# Set DEBIAN_FRONTEND to noninteractive to avoid tzdata prompts
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install necessary dependencies
 RUN apt-get update && apt-get install -y \
-    build-essential \
+    g++ \
     cmake \
+    libssl-dev \
+    protobuf-c-compiler \
+    protobuf-compiler \
     git \
-    libssl-dev
+    curl \
+    wget \
+    tzdata
 
-# Clone and build NATS C++ client
-RUN git clone https://github.com/nats-io/nats.c.git /nats.c && \
-    cd /nats.c && \
-    mkdir build && \
-    cd build && \
-    cmake .. && \
-    make && \
-    make install
+# Install Protobuf-C library
+RUN apt-get install -y libprotobuf-c-dev
 
-# Copy the microservice code
-COPY . /my-microservice
-WORKDIR /my-microservice
+# Set the working directory
+WORKDIR /app
 
-# Build the microservice
-RUN mkdir build && cd build && cmake .. && make
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-# Set the entry point to run the microservice
-CMD ["./build/notification_service"]
+# Ensure NATS library is built and linked
+RUN rm -rf external/nats.c/build && mkdir -p external/nats.c/build && cd external/nats.c/build && cmake .. && make
+
+# Build the notification service
+RUN rm -rf build && mkdir build && cd build && cmake .. && make
+
+# Expose the port for NATS
+EXPOSE 4222
+
+# Run the notification service
+CMD ["./bin/notification_service"]

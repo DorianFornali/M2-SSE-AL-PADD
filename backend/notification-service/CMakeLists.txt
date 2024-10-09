@@ -16,7 +16,13 @@ set(SOURCE_FILES
         src/notification_service.cpp
 )
 add_executable(notification_service ${SOURCE_FILES})
-target_link_libraries(notification_service PRIVATE protobuf-c ${CMAKE_SOURCE_DIR}/external/nats.c/build/lib/libnats_static.a OpenSSL::SSL OpenSSL::Crypto)
+target_link_libraries(notification_service PRIVATE
+        ${CMAKE_SOURCE_DIR}/external/nats.c/build/lib/libnats_static.a
+        OpenSSL::SSL
+        OpenSSL::Crypto
+        protobuf-c
+        pthread  # Explicitly link the pthread library
+)
 set_target_properties(notification_service PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin
 )
