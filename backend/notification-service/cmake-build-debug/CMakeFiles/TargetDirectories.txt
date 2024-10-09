@@ -1,0 +1,3 @@
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/CMakeFiles/notification_service.dir
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/CMakeFiles/rebuild_cache.dir
