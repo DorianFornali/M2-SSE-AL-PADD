@@ -60,5 +60,5 @@ router.get('/swagger', async () => {
 })
 
 router.get('/docs', async () => {
-  return AutoSwagger.default.ui('/swagger', swagger)
+  return AutoSwagger.default.ui('/users/swagger', swagger)
 })

@@ -4,6 +4,13 @@ import User from '#models/user'
 import { registerValidator, loginValidator } from '#validators/auth_validator'
 
 export default class AuthController {
+  /**
+   * @register
+   * @operationId register
+   * @description Register a new user
+   * @requestBody <registerValidator>
+   * @responseBody 200 - <User>
+   **/
   async register({ request, response }: HttpContext) {
     const payload = await request.validateUsing(registerValidator)
 
