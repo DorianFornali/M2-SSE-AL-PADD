@@ -1,19 +1,26 @@
 #!/bin/sh
 
-# ---
-cd /app/build
+if [ "$NODE_ENV" = "development" ]; then
+  node ace serve --hmr
+fi
 
-# ---
-echo "Running the migrations..."
-node ace migration:run --force
-echo "Migrations ran"
+if [ "$NODE_ENV" = "production" ]; then
+  # ---
+  cd /app/build
 
-# ---
-echo "Running the seeders..."
-node ace db:seed
-echo "Seeders ran"
+  # ---
+  echo "Running the migrations..."
+  node ace migration:run --force
+  echo "Migrations ran"
 
-# ---
-echo "Starting the app..."
-node ./bin/server.js
+  # ---
+  echo "Running the seeders..."
+  node ace db:seed
+  echo "Seeders ran"
+
+  # ---
+  echo "Starting the app..."
+  node ./bin/server.js
+fi
+
 
