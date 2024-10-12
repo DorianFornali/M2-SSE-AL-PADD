@@ -48,3 +48,6 @@ build/
 
 ### Mono build ###
 **/*.exe
+
+### Venv ###
+.env
