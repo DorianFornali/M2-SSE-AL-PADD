@@ -1,5 +1,12 @@
 # M2-SSE-AL-PADDY
 
+## Running the project
+
+- Copy the `.env.example` file to `.env` and fill in the environment variables
+- For each service that needs it, copy the `.env.example` file to `.env` and fill in the environment variables
+- Run `docker compose build` to build the project
+- Run `docker compose up` to start the project
+
 ## Micro services
 
 ### How to add a new micro service
