@@ -1,0 +1,13 @@
+export enum ROLES {
+  PATIENT = 'PATIENT',
+  RELATIVE = 'RELATIVE',
+  DOCTOR = 'DOCTOR',
+  NURSE = 'NURSE',
+  ADMIN = 'ADMIN',
+}
+
+export enum RESPONSIBLE {
+  DOCTOR = 'DOCTOR',
+  NURSE = 'NURSE',
+  RELATIVE = 'RELATIVE',
+}

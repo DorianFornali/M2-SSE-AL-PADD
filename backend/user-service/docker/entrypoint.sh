@@ -1,14 +1,19 @@
 #!/bin/sh
 
-# Go into build
-cd /usr/src/app/build
+# ---
+cd /app/build
 
-# Run the migrations
+# ---
 echo "Running the migrations..."
 node ace migration:run --force
 echo "Migrations ran"
 
-# Start the app
+# ---
+echo "Running the seeders..."
+node ace db:seed
+echo "Seeders ran"
+
+# ---
 echo "Starting the app..."
 node ./bin/server.js
 

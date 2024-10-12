@@ -37,6 +37,7 @@ services:
     volumes:
       - ./backend/user-service:/app
       - /app/node_modules
+      - /app/build
     depends_on:
       pgsql:
         condition: service_healthy
