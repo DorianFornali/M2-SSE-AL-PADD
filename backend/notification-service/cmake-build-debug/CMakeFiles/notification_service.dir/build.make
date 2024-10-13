@@ -97,36 +97,22 @@ CMakeFiles/notification_service.dir/src/notification_service.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/notification_service.dir/src/notification_service.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/src/notification_service.cpp -o CMakeFiles/notification_service.dir/src/notification_service.cpp.s
 
-CMakeFiles/notification_service.dir/src/test_notification.cpp.o: CMakeFiles/notification_service.dir/flags.make
-CMakeFiles/notification_service.dir/src/test_notification.cpp.o: /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/src/test_notification.cpp
-CMakeFiles/notification_service.dir/src/test_notification.cpp.o: CMakeFiles/notification_service.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/notification_service.dir/src/test_notification.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/notification_service.dir/src/test_notification.cpp.o -MF CMakeFiles/notification_service.dir/src/test_notification.cpp.o.d -o CMakeFiles/notification_service.dir/src/test_notification.cpp.o -c /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/src/test_notification.cpp
-
-CMakeFiles/notification_service.dir/src/test_notification.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/notification_service.dir/src/test_notification.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/src/test_notification.cpp > CMakeFiles/notification_service.dir/src/test_notification.cpp.i
-
-CMakeFiles/notification_service.dir/src/test_notification.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/notification_service.dir/src/test_notification.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/src/test_notification.cpp -o CMakeFiles/notification_service.dir/src/test_notification.cpp.s
-
 # Object files for target notification_service
 notification_service_OBJECTS = \
 "CMakeFiles/notification_service.dir/src/main.cpp.o" \
-"CMakeFiles/notification_service.dir/src/notification_service.cpp.o" \
-"CMakeFiles/notification_service.dir/src/test_notification.cpp.o"
+"CMakeFiles/notification_service.dir/src/notification_service.cpp.o"
 
 # External object files for target notification_service
 notification_service_EXTERNAL_OBJECTS =
 
 /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service: CMakeFiles/notification_service.dir/src/main.cpp.o
 /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service: CMakeFiles/notification_service.dir/src/notification_service.cpp.o
-/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service: CMakeFiles/notification_service.dir/src/test_notification.cpp.o
 /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service: CMakeFiles/notification_service.dir/build.make
 /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service: /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/external/nats.c/build/lib/libnats_static.a
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service: /opt/homebrew/Cellar/openssl@3/3.3.2/lib/libssl.dylib
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service: /opt/homebrew/Cellar/openssl@3/3.3.2/lib/libcrypto.dylib
 /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service: CMakeFiles/notification_service.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/notification_service.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

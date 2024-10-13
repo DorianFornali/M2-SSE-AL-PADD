@@ -5,8 +5,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/notification_service.dir/src/main.cpp.o.d"
   "CMakeFiles/notification_service.dir/src/notification_service.cpp.o"
   "CMakeFiles/notification_service.dir/src/notification_service.cpp.o.d"
-  "CMakeFiles/notification_service.dir/src/test_notification.cpp.o"
-  "CMakeFiles/notification_service.dir/src/test_notification.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -10,7 +10,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/src/main.cpp" "CMakeFiles/notification_service.dir/src/main.cpp.o" "gcc" "CMakeFiles/notification_service.dir/src/main.cpp.o.d"
   "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/src/notification_service.cpp" "CMakeFiles/notification_service.dir/src/notification_service.cpp.o" "gcc" "CMakeFiles/notification_service.dir/src/notification_service.cpp.o.d"
-  "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/src/test_notification.cpp" "CMakeFiles/notification_service.dir/src/test_notification.cpp.o" "gcc" "CMakeFiles/notification_service.dir/src/test_notification.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

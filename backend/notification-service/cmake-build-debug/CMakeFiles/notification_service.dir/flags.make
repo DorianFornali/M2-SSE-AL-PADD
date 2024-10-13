@@ -4,7 +4,7 @@
 # compile CXX with /Library/Developer/CommandLineTools/usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/external/nats.c/src -I/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/include
+CXX_INCLUDES = -I/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/external/nats.c/src -I/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/include -I/opt/homebrew/opt/protobuf-c/include -isystem /opt/homebrew/Cellar/openssl@3/3.3.2/include
 
 CXX_FLAGSarm64 = -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.5 -fcolor-diagnostics
 

@@ -177,30 +177,6 @@ src/notification_service.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/notification_service.dir/build.make CMakeFiles/notification_service.dir/src/notification_service.cpp.s
 .PHONY : src/notification_service.cpp.s
 
-src/test_notification.o: src/test_notification.cpp.o
-.PHONY : src/test_notification.o
-
-# target to build an object file
-src/test_notification.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/notification_service.dir/build.make CMakeFiles/notification_service.dir/src/test_notification.cpp.o
-.PHONY : src/test_notification.cpp.o
-
-src/test_notification.i: src/test_notification.cpp.i
-.PHONY : src/test_notification.i
-
-# target to preprocess a source file
-src/test_notification.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/notification_service.dir/build.make CMakeFiles/notification_service.dir/src/test_notification.cpp.i
-.PHONY : src/test_notification.cpp.i
-
-src/test_notification.s: src/test_notification.cpp.s
-.PHONY : src/test_notification.s
-
-# target to generate assembly for a file
-src/test_notification.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/notification_service.dir/build.make CMakeFiles/notification_service.dir/src/test_notification.cpp.s
-.PHONY : src/test_notification.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -216,9 +192,6 @@ help:
 	@echo "... src/notification_service.o"
 	@echo "... src/notification_service.i"
 	@echo "... src/notification_service.s"
-	@echo "... src/test_notification.o"
-	@echo "... src/test_notification.i"
-	@echo "... src/test_notification.s"
 .PHONY : help
 
 
