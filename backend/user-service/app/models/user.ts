@@ -5,7 +5,6 @@ import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
 import { DbAccessTokensProvider } from '@adonisjs/auth/access_tokens'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
-import { ROLES } from '../enums/roles.js'
 import UserRelation from './user_relation.js'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
@@ -39,33 +38,34 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare birthDate: string | null
 
   @column()
-  declare role: ROLES
+  // @enum('PATIENT', 'RELATIVE', 'DOCTOR', 'NURSE', 'ADMIN')
+  declare role: string
 
   @hasMany(() => UserRelation, {
     foreignKey: 'relatedUserId',
     onQuery: (query) =>
       query
-        .where('relation_type', ROLES.DOCTOR)
-        .orWhere('relation_type', ROLES.NURSE)
-        .orWhere('relation_type', ROLES.RELATIVE),
+        .where('relation_type', 'DOCTOR')
+        .orWhere('relation_type', 'NURSE')
+        .orWhere('relation_type', 'RELATIVE'),
   })
   declare patients: HasMany<typeof UserRelation>
 
   @hasMany(() => UserRelation, {
     foreignKey: 'userId',
-    onQuery: (query) => query.where('relation_type', ROLES.DOCTOR),
+    onQuery: (query) => query.where('relation_type', 'DOCTOR'),
   })
   declare doctor: HasMany<typeof UserRelation>
 
   @hasMany(() => UserRelation, {
     foreignKey: 'userId',
-    onQuery: (query) => query.where('relation_type', ROLES.NURSE),
+    onQuery: (query) => query.where('relation_type', 'NURSE'),
   })
   declare nurse: HasMany<typeof UserRelation>
 
   @hasMany(() => UserRelation, {
     foreignKey: 'userId',
-    onQuery: (query) => query.where('relation_type', ROLES.RELATIVE),
+    onQuery: (query) => query.where('relation_type', 'RELATIVE'),
   })
   declare relatives: HasMany<typeof UserRelation>
 

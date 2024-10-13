@@ -1,5 +1,4 @@
 import vine from '@vinejs/vine'
-import { ROLES } from '../enums/roles.js'
 
 export const registerValidator = vine.compile(
   vine.object({
@@ -16,7 +15,8 @@ export const registerValidator = vine.compile(
     phone_number: vine.string(),
     address: vine.string(),
     birth_date: vine.string(),
-    role: vine.enum(ROLES),
+    // @enum('PATIENT', 'RELATIVE', 'DOCTOR', 'NURSE', 'ADMIN')
+    role: vine.enum(['PATIENT', 'RELATIVE', 'DOCTOR', 'NURSE', 'ADMIN']),
   })
 )
 

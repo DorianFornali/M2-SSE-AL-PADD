@@ -6,6 +6,7 @@ import { registerValidator, loginValidator } from '#validators/auth_validator'
 export default class AuthController {
   /**
    * @register
+   * @tag Auth
    * @operationId register
    * @description Register a new user
    * @requestBody <registerValidator>
@@ -21,6 +22,14 @@ export default class AuthController {
     return response.created(user)
   }
 
+  /**
+   * @login
+   * @tag Auth
+   * @operationId login
+   * @description Log in a user
+   * @requestBody <loginValidator>
+   * @responseBody 200 - <LoginResponseInterface>
+   **/
   async login({ request, response }: HttpContext) {
     const payload = await request.validateUsing(loginValidator)
 
@@ -37,10 +46,23 @@ export default class AuthController {
     }
   }
 
+  /**
+   * @me
+   * @tag Auth
+   * @operationId me
+   * @description Get the current user using the access token in the Authorization header (Bearer ${token})
+   * @responseBody 200 - <User>
+   **/
   async me({ auth, response }: HttpContext) {
     return response.ok(auth.user)
   }
 
+  /**
+   * @logout
+   * @tag Auth
+   * @operationId logout
+   * @description Log out the current user using the access token in the Authorization header (Bearer ${token})
+   **/
   async logout({ auth, response }: HttpContext) {
     const user = auth.user
 

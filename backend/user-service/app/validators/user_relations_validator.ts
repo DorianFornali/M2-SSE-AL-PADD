@@ -1,11 +1,11 @@
 import vine from '@vinejs/vine'
-import { RESPONSIBLE } from '../enums/roles.js'
 
 export const linkValidator = vine.compile(
   vine.object({
     patientId: vine.number(),
     relatedUserId: vine.number(),
-    relationType: vine.enum(RESPONSIBLE),
+    // @enum('DOCTOR', 'NURSE', 'RELATIVE')
+    relationType: vine.enum(['DOCTOR', 'NURSE', 'RELATIVE']),
   })
 )
 
@@ -13,7 +13,8 @@ export const unlinkValidator = vine.compile(
   vine.object({
     patientId: vine.number(),
     relatedUserId: vine.number(),
-    relationType: vine.enum(RESPONSIBLE),
+    // @enum('DOCTOR', 'NURSE', 'RELATIVE')
+    relationType: vine.enum(['DOCTOR', 'NURSE', 'RELATIVE']),
   })
 )
 

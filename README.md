@@ -16,3 +16,15 @@
 - Define the environment variables in the `.env.example` and `.env` files
 - Add the service to the gateway in the `backend/gateway/nginx.conf` file (to proxy the requests)
 
+
+## User service
+
+- The user service is available at `http://localhost/users/*`
+  - You can check the health of the service at `http://localhost/users/health`
+- You can find a documentation at `http://localhost/users/docs`
+
+## Frontend
+
+- The frontend is available at `http://localhost:3000`
+- You can find some example users in the `backend/user-service/database/seeders/user_seeder.ts` file.
+

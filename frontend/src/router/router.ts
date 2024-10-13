@@ -9,10 +9,28 @@ import NotFoundPage from '../pages/404'
 import HomePage from '../pages/Home'
 
 import { routes } from './definitions'
+import LoginPage from '../pages/auth/Login'
+import { redirectIfAuthenticated, redirectIfUnauthenticated } from './utils'
+import DashboardPage from '../pages/Dashboard'
+import RegisterPage from '../pages/auth/Register'
 
 export const rootRoute = createRootRoute({
   component: RootLayout,
   // beforeLoad: init,
+})
+
+const loginRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: routes.login.path,
+  component: LoginPage,
+  beforeLoad: () => redirectIfAuthenticated(routes.dashboard.path),
+})
+
+const registerRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: routes.register.path,
+  component: RegisterPage,
+  beforeLoad: () => redirectIfAuthenticated(routes.dashboard.path),
 })
 
 export const notFoundRoute = createRoute({
@@ -28,7 +46,19 @@ const indexRoute = createRoute({
   // beforeLoad: redirectIfUnauthenticated,
 })
 
-const routeTree = rootRoute.addChildren([indexRoute])
+const dashboardRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: routes.dashboard.path,
+  component: DashboardPage,
+  beforeLoad: redirectIfUnauthenticated,
+})
+
+const routeTree = rootRoute.addChildren([
+  indexRoute,
+  loginRoute,
+  registerRoute,
+  dashboardRoute,
+])
 
 export const router = createRouter({ routeTree, notFoundRoute })
 

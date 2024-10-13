@@ -2,7 +2,6 @@ import { DateTime } from 'luxon'
 import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import User from './user.js'
-import { RESPONSIBLE } from '../enums/roles.js'
 
 export default class UserRelation extends BaseModel {
   @column({ isPrimary: true })
@@ -15,7 +14,8 @@ export default class UserRelation extends BaseModel {
   declare relatedUserId: number
 
   @column()
-  declare relationType: RESPONSIBLE
+  // @enum('DOCTOR', 'NURSE', 'RELATIVE')
+  declare relationType: string
 
   @belongsTo(() => User, {
     foreignKey: 'userId',

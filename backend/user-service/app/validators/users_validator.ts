@@ -1,11 +1,11 @@
 import vine from '@vinejs/vine'
-import { ROLES } from '../enums/roles.js'
 
 export const listingValidator = vine.compile(
   vine.object({
     page: vine.number().optional(),
     limit: vine.number().optional(),
-    role: vine.enum(ROLES).optional(),
+    // @enum('PATIENT', 'RELATIVE', 'DOCTOR', 'NURSE', 'ADMIN')
+    role: vine.enum(['PATIENT', 'RELATIVE', 'DOCTOR', 'NURSE', 'ADMIN']).optional(),
   })
 )
 
@@ -29,7 +29,8 @@ export const updateValidatorBody = vine.compile(
     phoneNumber: vine.string().optional(),
     address: vine.string().optional(),
     birthDate: vine.string().optional(),
-    role: vine.enum(ROLES).optional(),
+    // @enum('PATIENT', 'RELATIVE', 'DOCTOR', 'NURSE', 'ADMIN')
+    role: vine.enum(['PATIENT', 'RELATIVE', 'DOCTOR', 'NURSE', 'ADMIN']).optional(),
   })
 )
 

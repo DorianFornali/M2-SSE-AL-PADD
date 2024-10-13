@@ -13,16 +13,12 @@ import swagger from '#config/swagger'
 
 import { middleware } from '#start/kernel'
 
+const HealthController = () => import('#controllers/health_controller')
 const AuthController = () => import('#controllers/auth_controller')
 const UsersController = () => import('#controllers/users_controller')
 const UserRelationsController = () => import('#controllers/user_relations_controller')
 
-router.get('/health', async () => {
-  return {
-    status: 'ok',
-    message: 'Server is running',
-  }
-})
+router.get('/health', [HealthController, 'checkHealth'])
 
 router
   .group(() => {

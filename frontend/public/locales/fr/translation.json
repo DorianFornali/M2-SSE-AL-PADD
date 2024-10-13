@@ -1,4 +1,12 @@
 {
+  "app": {
+    "name": "Health"
+  },
+  "header": {
+    "account": "Dashboard",
+    "login": "Login",
+    "logout": "Logout"
+  },
   "home": {
     "title": "Hello, World!"
   },

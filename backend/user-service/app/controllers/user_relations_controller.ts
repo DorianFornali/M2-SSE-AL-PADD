@@ -10,10 +10,18 @@ import {
 } from '../validators/user_relations_validator.js'
 
 export default class UserRelationController {
+  /**
+   * @linkPatient
+   * @tag UserRelations
+   * @operationId linkPatient
+   * @description Link a patient to a doctor, nurse, or relative
+   * @requestBody <linkValidator>
+   * @responseBody 200 - <UserRelation>
+   **/
   async linkPatient({ request, response }: HttpContext) {
     const { patientId, relatedUserId, relationType } = await request.validateUsing(linkValidator)
 
-    if (!Object.values(RESPONSIBLE).includes(relationType)) {
+    if (!Object.values(RESPONSIBLE).includes(relationType as unknown as RESPONSIBLE)) {
       return response.badRequest({ message: 'Invalid relation type', success: false })
     }
 
@@ -45,6 +53,14 @@ export default class UserRelationController {
     return response.created({ message: 'Patient linked successfully', userRelation, success: true })
   }
 
+  /**
+   * @unlinkPatient
+   * @tag UserRelations
+   * @operationId unlinkPatient
+   * @description Unlink a patient from a doctor, nurse, or relative
+   * @requestBody <unlinkValidator>
+   * @responseBody 200 - <UserRelation>
+   **/
   async unlinkPatient({ request, response }: HttpContext) {
     const { patientId, relatedUserId, relationType } = await request.validateUsing(unlinkValidator)
 
@@ -63,6 +79,14 @@ export default class UserRelationController {
     return response.ok({ message: 'Patient unlinked successfully', success: true })
   }
 
+  /**
+   * @getPatients
+   * @tag UserRelations
+   * @operationId getPatients
+   * @description Get the patients of a doctor, nurse, or relative
+   * @requestParams id - The ID of the doctor, nurse, or relative
+   * @responseBody 200 - <GetPatientsResponseInterface>
+   **/
   async getPatients({ params, response }: HttpContext) {
     const { id } = await getPatientsValidator.validate(params)
 
@@ -83,6 +107,14 @@ export default class UserRelationController {
     return response.ok({ patients, success: true })
   }
 
+  /**
+   * @getRelatedUsers
+   * @tag UserRelations
+   * @operationId getRelatedUsers
+   * @description Get the doctor, nurse, and relatives of a patient
+   * @requestParams id - The ID of the patient
+   * @responseBody 200 - <UserRelation>
+   **/
   async getRelatedUsers({ params, response }: HttpContext) {
     const { id } = await getRelationsValidator.validate(params)
 

@@ -3,6 +3,14 @@ const rootRoute = {
     path: '/',
   },
 }
+const authRoutes = {
+  login: {
+    path: '/login',
+  },
+  register: {
+    path: '/register',
+  },
+}
 
 const appRoutes = {
   dashboard: {
@@ -18,6 +26,7 @@ const errorRoutes = {
 
 export const routes = {
   ...rootRoute,
+  ...authRoutes,
   ...appRoutes,
   ...errorRoutes,
 } as const

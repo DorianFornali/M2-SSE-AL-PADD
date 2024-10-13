@@ -6,7 +6,8 @@ export default {
   title: 'User Service API',
   version: '1.0.0',
   tagIndex: 2,
-  snakeCase: true,
+  snakeCase: false,
+  debug: true,
   ignore: ['/swagger', '/docs'],
   preferredPutPatch: 'PUT', // if PUT/PATCH are provided for the same route, prefer PUT
   common: {

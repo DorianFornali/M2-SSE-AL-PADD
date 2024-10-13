@@ -10,8 +10,13 @@ import {
 
 export default class UsersController {
   /**
-   * Display a list of users
-   */
+   * @listUsers
+   * @tag Users
+   * @operationId listUsers
+   * @description List all users
+   * @requestBody <listingValidator>
+   * @responseBody 200 - <User[]>.paginated()
+   **/
   async index({ request, response }: HttpContext) {
     const { page = 1, limit = 10, role } = await request.validateUsing(listingValidator)
 
@@ -26,8 +31,14 @@ export default class UsersController {
   }
 
   /**
-   * Show a single user by ID
-   */
+   * @showUser
+   * @tag Users
+   * @operationId showUser
+   * @description Get a user by ID
+   * @requestBody <showValidator>
+   * @responseBody 200 - <User>
+   * @response 404 - User not found
+   **/
   async show({ params, response }: HttpContext) {
     const { id } = await showValidator.validate(params)
     try {
@@ -39,8 +50,14 @@ export default class UsersController {
   }
 
   /**
-   * Update a user's information
-   */
+   * @createUser
+   * @tag Users
+   * @operationId updateUser
+   * @description Update a user by ID
+   * @requestBody <updateValidator>
+   * @responseBody 200 - <User>
+   * @response 400 - Failed to update user
+   **/
   async update({ params, request, response }: HttpContext) {
     const { id } = await updateValidator.validate(params)
     const payload = await request.validateUsing(updateValidatorBody)
@@ -57,8 +74,14 @@ export default class UsersController {
   }
 
   /**
-   * Delete a user by ID
-   */
+   * @deleteUser
+   * @tag Users
+   * @operationId deleteUser
+   * @description Delete a user by ID
+   * @requestBody <deleteValidator>
+   * @response 204 - User deleted successfully
+   * @response 404 - User not found
+   **/
   async destroy({ params, response }: HttpContext) {
     const { id } = await deleteValidator.validate(params)
     try {

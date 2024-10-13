@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ "$NODE_ENV" = "development" ]; then
-  node ace serve --hmr
+  node ace serve --watch
 fi
 
 if [ "$NODE_ENV" = "production" ]; then

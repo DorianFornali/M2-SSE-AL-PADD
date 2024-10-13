@@ -44,6 +44,19 @@ services:
     networks:
       - net
 
+  frontend:
+    image: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: ${FRONTEND_BUILD_TARGET:-production}
+      VITE_FRONTEND_GATEWAY_URL: ${FRONTEND_GATEWAY_URL:-http://localhost}
+    ports:
+      - 3000:3000
+    depends_on:
+      - gateway
+
   gateway:
     image: nginx:latest
     ports:
