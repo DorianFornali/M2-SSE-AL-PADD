@@ -46,6 +46,14 @@ services:
     networks:
       - net
 
+  alert-service:
+    image: alert-service
+    ports:
+      - 8085:8085
+    restart: always
+    networks:
+      - net
+
   frontend:
     image: frontend
     build:

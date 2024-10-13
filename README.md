@@ -23,6 +23,10 @@
   - You can check the health of the service at `http://localhost/users/health`
 - You can find a documentation at `http://localhost/users/docs`
 
+## Alert service
+- The alert service is available at `http://localhost/alerts/`
+  - You can check the health of the service at `http://localhost/alerts/health`
+
 ## Frontend
 
 - The frontend is available at `http://localhost:3000`
