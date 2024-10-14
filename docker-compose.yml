@@ -1,4 +1,19 @@
 services:
+  
+  nats:
+    image: nats:latest
+    container_name: nats_cluster   # Custom container name
+    ports:
+      - 4222:4222
+      - 6222:6222
+      - 8222:8222
+    networks:
+      - net
+    environment:
+      - NATS_CLUSTER_NAME = nats_cluster      
+    restart: always
+
+  
   pgsql:
     image: postgres:16
     ports:
