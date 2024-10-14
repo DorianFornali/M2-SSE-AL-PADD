@@ -27,19 +27,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 18,
+				"line" : 19,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 11,
+				"line" : 12,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 19,
+				"line" : 20,
 				"parent" : 0
 			},
 			{
@@ -57,7 +57,13 @@
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 10,
+				"line" : 9,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 11,
 				"parent" : 0
 			}
 		]
@@ -83,6 +89,10 @@
 				},
 				{
 					"backtrace" : 6,
+					"path" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/external/nlohmann/single_include"
+				},
+				{
+					"backtrace" : 7,
 					"path" : "/opt/homebrew/opt/protobuf-c/include"
 				},
 				{

@@ -69,6 +69,33 @@ services:
     networks:
       - net
 
+  notification-service:
+    image: notification-service 
+    build:
+      context: ./backend/notification-service
+      dockerfile: Dockerfile
+    env_file:
+      - ./backend/notification-service/.env
+    environment:
+      - NATS_URL=nats://nats:4222  # Use the correct service name and port
+      - NODE_ENV=${USER_SERVICE_BUILD_TARGET:-production}
+      - HOST=0.0.0.0
+      - DB_HOST=pgsql
+      - DB_PORT=${DB_PORT:-5432}
+      - DB_DATABASE=${DB_DATABASE:-default}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD:-secret}
+    ports:
+      - 8086:8086
+    restart: always
+    networks:
+      - net
+    
+    depends_on:
+      pgsql:
+        condition: service_healthy
+
+
   frontend:
     image: frontend
     build:
@@ -81,7 +108,7 @@ services:
       - 3000:3000
     depends_on:
       - gateway
-
+  
   gateway:
     image: nginx:latest
     ports:

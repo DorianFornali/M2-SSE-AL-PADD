@@ -14,7 +14,11 @@ RUN apt-get update && apt-get install -y \
     git \
     curl \
     wget \
-    tzdata
+    tzdata \
+    autoconf \
+    libtool \
+    pkg-config \
+    make
 
 # Install Protobuf-C library
 RUN apt-get install -y libprotobuf-c-dev
@@ -25,14 +29,23 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . /app
 
-# Ensure NATS library is built and linked
-RUN rm -rf external/nats.c/build && mkdir -p external/nats.c/build && cd external/nats.c/build && cmake .. && make
+RUN git clone https://github.com/nlohmann/json.git external/nlohmann
+
+# Clone and build the NATS C library using Autotools
+RUN git clone https://github.com/nats-io/nats.c.git external/nats.c \
+    && cd external/nats.c \
+    && rm -rf build && mkdir build && cd build \
+    && cmake .. \
+    && make \
+    && make install
+
+
 
 # Build the notification service
 RUN rm -rf build && mkdir build && cd build && cmake .. && make
 
 # Expose the port for NATS
-EXPOSE 4222
+EXPOSE 8086
 
 # Run the notification service
 CMD ["./bin/notification_service"]

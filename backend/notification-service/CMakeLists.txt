@@ -6,6 +6,7 @@ find_package(OpenSSL REQUIRED)
 
 include_directories(${CMAKE_SOURCE_DIR}/external/nats.c/src)
 include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_SOURCE_DIR}/external/nlohmann/single_include)  # Path to the json.hpp header
 
 include_directories(/opt/homebrew/opt/protobuf-c/include)
 link_directories(/opt/homebrew/opt/protobuf-c/lib)

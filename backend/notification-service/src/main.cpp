@@ -5,7 +5,7 @@ int main() {
     subscribeNotifications();
 
     // Send a test notification event
-    sendNotification("Test Event 1");
+    // sendNotification("Test Event 1");
 
     return 0;
 }
