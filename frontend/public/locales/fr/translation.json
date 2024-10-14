@@ -4,11 +4,26 @@
   },
   "header": {
     "account": "Dashboard",
-    "login": "Login",
-    "logout": "Logout"
+    "login": "Connexion",
+    "logout": "Déconnexion"
   },
   "home": {
     "title": "Hello, World!"
+  },
+  "patientPanel": {
+    "title": "Mes patients",
+    "see": "Voir"
+  },
+  "addPatientPanel": {
+    "title": "Ajouter un patient",
+    "noPatients": "Aucun nouveau patient",
+    "add": "Ajouter",
+    "success": "Patient ajouté avec succès"
+  },
+  "addPatientModal": {
+    "submit": "Ajouter",
+    "nurse": "Infirmier",
+    "relative": "Parent"
   },
   "404": {
     "title": "404 - Page not found",

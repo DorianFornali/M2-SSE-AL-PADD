@@ -16,7 +16,7 @@ export default class UserRelationController {
    * @operationId linkPatient
    * @description Link a patient to a doctor, nurse, or relative
    * @requestBody <linkValidator>
-   * @responseBody 200 - <UserRelation>
+   * @responseBody 200 - <LinkPatientResponseInterface>
    **/
   async linkPatient({ request, response }: HttpContext) {
     const { patientId, relatedUserId, relationType } = await request.validateUsing(linkValidator)
@@ -59,7 +59,7 @@ export default class UserRelationController {
    * @operationId unlinkPatient
    * @description Unlink a patient from a doctor, nurse, or relative
    * @requestBody <unlinkValidator>
-   * @responseBody 200 - <UserRelation>
+   * @responseBody 200 - <UnlinkPatientResponseInterface>
    **/
   async unlinkPatient({ request, response }: HttpContext) {
     const { patientId, relatedUserId, relationType } = await request.validateUsing(unlinkValidator)

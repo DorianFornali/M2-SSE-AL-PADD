@@ -3,7 +3,8 @@ import { Box, Tab, Tabs } from '@mui/material'
 import { useAuthStore } from '../store/store'
 import HealthCard from '../components/HealthCard'
 import TabPanel from '../components/TabPanel'
-import PatientPanel from '../components/Panels/PatientPanel'
+import PatientListPanel from '../components/Panels/PatientListPanel'
+import AddPatientPanel from '../components/Panels/AddPatientPanel'
 
 const DashboardPage = () => {
   const [value, setValue] = useState(0)
@@ -17,7 +18,8 @@ const DashboardPage = () => {
         padding: 2,
       }}
     >
-      {user?.role === "'RELATIVE'" || user?.role === "'PATIENT'" ? (
+      {/* @ts-expect-error - error in typing */}
+      {user?.role === 'RELATIVE' || user?.role === 'PATIENT' ? (
         <>
           <h1>Recap</h1>
           <HealthCard name="John Doe" healthStatus="bad" />
@@ -30,14 +32,15 @@ const DashboardPage = () => {
           >
             <Tabs value={value} onChange={(_, newValue) => setValue(newValue)}>
               <Tab label="Mes patients" />
-              <Tab label="Ajouter un patient" />
+              {/* @ts-expect-error - error in typing */}
+              {user?.role === 'DOCTOR' && <Tab label="Ajouter un patient" />}
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>
-            <PatientPanel />
+            <PatientListPanel />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            <p>Ajouter un patient</p>
+            <AddPatientPanel />
           </TabPanel>
         </>
       )}

@@ -1,5 +1,5 @@
+import { Button } from '@mui/material'
 import { useNavigate } from '@tanstack/react-router'
-import Button from '../components/Button'
 import { useTranslation } from 'react-i18next'
 
 const NotFoundPage = () => {
@@ -14,8 +14,9 @@ const NotFoundPage = () => {
             to: '/',
           })
         }
-        label={t('404.back')}
-      />
+      >
+        {t('404.back')}
+      </Button>
     </div>
   )
 }

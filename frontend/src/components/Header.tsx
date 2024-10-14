@@ -31,9 +31,11 @@ const Header: React.FC = () => {
   }
 
   const handleLogout = () => {
-    navigate({
-      to: routes.login.path,
-    })
+    setTimeout(() => {
+      navigate({
+        to: routes.login.path,
+      })
+    }, 100)
     logout()
   }
 

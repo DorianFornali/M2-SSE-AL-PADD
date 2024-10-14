@@ -1,17 +1,20 @@
 import { useQuery } from '@tanstack/react-query'
-import { getPatients } from '../../api/relations'
-import { useAuthStore } from '../../store/store'
 import { Box, CircularProgress, Typography } from '@mui/material'
+import { useTranslation } from 'react-i18next'
+import { getMyPatients } from '../../api/relations'
+import { useAuthStore } from '../../store/store'
 import PatientCard from '../PatientCard'
+import { useNavigate } from '@tanstack/react-router'
+import { routes } from '../../router/definitions'
 
-const PatientPanel: React.FC = () => {
+const PatientListPanel: React.FC = () => {
+  const { t } = useTranslation()
+  const navigate = useNavigate()
   const user = useAuthStore((state) => state.user)
   const { data, isLoading } = useQuery({
     queryKey: ['patients', user?.id],
-    queryFn: () => getPatients({ id: user?.id }),
+    queryFn: () => getMyPatients({ id: user?.id }),
   })
-
-  console.log(data)
 
   return (
     <>
@@ -21,7 +24,7 @@ const PatientPanel: React.FC = () => {
           marginBottom: 2,
         }}
       >
-        Patient Panel
+        {t('patientPanel.title')}
       </Typography>
       {isLoading ? (
         <CircularProgress />
@@ -37,6 +40,15 @@ const PatientPanel: React.FC = () => {
             <PatientCard
               key={patient?.id}
               name={`${patient?.user?.firstName} ${patient?.user?.lastName}`}
+              actionButtonProps={{
+                onClick: () => {
+                  navigate({
+                    to: routes.patientView.path,
+                    params: { id: patient?.user?.id?.toString() },
+                  })
+                },
+                children: t('patientPanel.see'),
+              }}
             />
           ))}
         </Box>
@@ -45,4 +57,4 @@ const PatientPanel: React.FC = () => {
   )
 }
 
-export default PatientPanel
+export default PatientListPanel

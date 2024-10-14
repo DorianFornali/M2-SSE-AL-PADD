@@ -4,7 +4,9 @@ WORKDIR /app
 ADD package.json package-lock.json ./
 RUN npm ci
 ADD . .
+RUN node ace docs:generate
 RUN node ace build
+RUN cp ./swagger.yml ./build/swagger.yml
 COPY ./.env ./build/.env
 COPY --chown=node:node ./docker/entrypoint.sh /app/docker/entrypoint.sh
 RUN chmod 777 /app/docker/entrypoint.sh

@@ -7,7 +7,7 @@ export default {
   version: '1.0.0',
   tagIndex: 2,
   snakeCase: false,
-  debug: true,
+  debug: false,
   ignore: ['/swagger', '/docs'],
   preferredPutPatch: 'PUT', // if PUT/PATCH are provided for the same route, prefer PUT
   common: {

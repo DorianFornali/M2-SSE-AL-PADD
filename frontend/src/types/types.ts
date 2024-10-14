@@ -9,3 +9,16 @@ export type RegisterRequest = components['schemas']['registerValidator']
 export type GetPatientsRequest = components['schemas']['getPatientsValidator']
 export type GetPatientsResponseInterface =
   components['schemas']['GetPatientsResponseInterface']
+
+export type LinkPatientRequest = components['schemas']['linkValidator']
+export type LinkPatientResponse =
+  components['schemas']['LinkPatientResponseInterface']
+
+export type UnlinkPatientRequest = components['schemas']['unlinkValidator']
+export type UnlinkPatientResponse =
+  components['schemas']['UnlinkPatientResponseInterface']
+
+export type UsersList = {
+  meta: components['schemas']['PaginationMeta']
+  data: User[]
+}

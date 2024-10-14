@@ -1,4 +1,5 @@
 import User from '../models/user.js'
+import UserRelation from '../models/user_relation.js'
 
 export interface Patient {
   id: number
@@ -14,4 +15,15 @@ export interface Patient {
 export interface GetPatientsResponseInterface {
   patients: Patient[]
   success: string
+}
+
+export interface LinkPatientResponseInterface {
+  message: string
+  success: boolean
+  userRelation: UserRelation
+}
+
+export interface UnlinkPatientResponseInterface {
+  message: string
+  success: boolean
 }
