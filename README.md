@@ -24,8 +24,14 @@
 - You can find a documentation at `http://localhost/users/docs`
 
 ## Alert service
-- The alert service is available at `http://localhost/alerts/`
-  - You can check the health of the service at `http://localhost/alerts/health`
+- The alert service is available at `http://localhost/alert/` <br>
+  - You can check the health of the service at `http://localhost/alert/health`
+
+- This service proposes one endpoint: POST `http://localhost/alert/alert` <br>
+  This service is responsible for checking if the alert is justified, if yes it publishes on NATS
+  for the notification service to behave accordingly.
+
+  You can find the documentation at `http://localhost/alert/docs` TODO! NOT YET IMPLEMENTED
 
 ## Frontend
 
