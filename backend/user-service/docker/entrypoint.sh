@@ -22,5 +22,3 @@ if [ "$NODE_ENV" = "production" ]; then
   echo "Starting the app..."
   node ./bin/server.js
 fi
-
-
