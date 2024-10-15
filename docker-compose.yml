@@ -1,8 +1,7 @@
 services:
-  
   nats:
     image: nats:latest
-    container_name: nats_cluster   # Custom container name
+    container_name: nats_cluster
     ports:
       - 4222:4222
       - 6222:6222
@@ -13,7 +12,6 @@ services:
       - NATS_CLUSTER_NAME = nats_cluster      
     restart: always
 
-  
   pgsql:
     image: postgres:16
     ports:
@@ -63,8 +61,12 @@ services:
 
   alert-service:
     image: alert-service
-    ports:
-      - 8085:8085
+    build:
+      context: ./backend/alert-service
+      dockerfile: Dockerfile
+    depends_on:
+      pgsql:
+        condition: service_healthy
     restart: always
     networks:
       - net
@@ -77,7 +79,7 @@ services:
     env_file:
       - ./backend/notification-service/.env
     environment:
-      - NATS_URL=nats://nats:4222  # Use the correct service name and port
+      - NATS_URL=nats://nats:4222
       - NODE_ENV=${USER_SERVICE_BUILD_TARGET:-production}
       - HOST=0.0.0.0
       - DB_HOST=pgsql
@@ -90,11 +92,9 @@ services:
     restart: always
     networks:
       - net
-    
     depends_on:
       pgsql:
         condition: service_healthy
-
 
   frontend:
     image: frontend
@@ -118,6 +118,7 @@ services:
     depends_on:
       - pgsql
       - user-service
+      - alert-service
     networks:
       - net
     
