@@ -13,8 +13,8 @@ import LoginPage from '../pages/auth/Login'
 import { redirectIfAuthenticated, redirectIfUnauthenticated } from './utils'
 import DashboardPage from '../pages/Dashboard'
 import RegisterPage from '../pages/auth/Register'
-import PatientViewPage from '../pages/patient/PatientView'
-import { patientViewQuery } from '../config/query'
+import UserViewPage from '../pages/user/UserView'
+import { userViewQuery } from '../config/query'
 
 export const rootRoute = createRootRoute({
   component: RootLayout,
@@ -55,13 +55,12 @@ const dashboardRoute = createRoute({
   beforeLoad: redirectIfUnauthenticated,
 })
 
-const patientViewRoute = createRoute({
+const userViewRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: routes.patientView.path,
-  component: PatientViewPage,
+  path: routes.userView.path,
+  component: UserViewPage,
   beforeLoad: redirectIfUnauthenticated,
-  loader: ({ params: { id } }: { params: { id: string } }) =>
-    patientViewQuery(id),
+  loader: ({ params: { id } }: { params: { id: string } }) => userViewQuery(id),
 })
 
 const routeTree = rootRoute.addChildren([
@@ -69,7 +68,7 @@ const routeTree = rootRoute.addChildren([
   loginRoute,
   registerRoute,
   dashboardRoute,
-  patientViewRoute,
+  userViewRoute,
 ])
 
 export const router = createRouter({ routeTree, notFoundRoute })

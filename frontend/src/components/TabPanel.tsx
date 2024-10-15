@@ -11,7 +11,7 @@ const TabPanel: React.FC<TabPanelProps> = (props) => {
 
   return (
     <div hidden={value !== index} {...other}>
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box sx={{ p: 1 }}>{children}</Box>}
     </div>
   )
 }

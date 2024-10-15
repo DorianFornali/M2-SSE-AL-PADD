@@ -1,23 +1,21 @@
 import { Box, Button, CircularProgress, Tab, Tabs } from '@mui/material'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useNavigate, useParams } from '@tanstack/react-router'
-import { patientViewQuery } from '../../config/query'
+import { userViewQuery } from '../../config/query'
 import { routes } from '../../router/definitions'
 import { useState } from 'react'
 import TabPanel from '../../components/TabPanel'
-import PatientInformationPanel from '../../components/Panels/PatientInformationPanel'
+import UserInformationPanel from '../../components/Panels/UserInformationPanel'
 import PatientHealthPanel from '../../components/Panels/PatientHealthPanel'
 
-const PatientViewPage: React.FC = () => {
+const UserViewPage: React.FC = () => {
   const navigate = useNavigate()
   const { id } = useParams({
     strict: false,
   })
-  const patientViewQueryOptions = patientViewQuery(id ?? '')
-  const { data, isLoading } = useSuspenseQuery(patientViewQueryOptions)
+  const userViewQueryOptions = userViewQuery(id ?? '')
+  const { data, isLoading } = useSuspenseQuery(userViewQueryOptions)
   const [value, setValue] = useState(0)
-
-  console.log(data)
 
   return (
     <Box
@@ -40,18 +38,22 @@ const PatientViewPage: React.FC = () => {
         <>
           <Tabs value={value} onChange={(_, newValue) => setValue(newValue)}>
             <Tab label="Informations personnelles" />
-            <Tab label="Informations de santé" />
+            {/* @ts-expect-error - error in typing */}
+            {data?.role === 'PATIENT' && <Tab label="Informations de santé" />}
           </Tabs>
           <TabPanel value={value} index={0}>
-            <PatientInformationPanel patient={data} />
+            <UserInformationPanel patient={data} />
           </TabPanel>
-          <TabPanel value={value} index={1}>
-            <PatientHealthPanel patient={data} />
-          </TabPanel>
+          {/* @ts-expect-error - error in typing */}
+          {data?.role === 'PATIENT' && (
+            <TabPanel value={value} index={1}>
+              <PatientHealthPanel patient={data} />
+            </TabPanel>
+          )}
         </>
       )}
     </Box>
   )
 }
 
-export default PatientViewPage
+export default UserViewPage

@@ -68,7 +68,6 @@ export default function LoginPage() {
   const mutation = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
-      console.log(data)
       setUser(data)
       navigate({
         to: routes.dashboard.path,

@@ -30,8 +30,6 @@ export const redirectIfAuthenticated = async (path: string) => {
     try {
       const res = await me()
 
-      console.log('res', res)
-
       if (res) {
         useAuthStore.getState().setUser(res)
         throw redirect({

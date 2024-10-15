@@ -2,6 +2,8 @@ import { userServiceClient } from '../config/client'
 import {
   GetPatientsRequest,
   GetPatientsResponseInterface,
+  GetRelationsRequest,
+  GetRelationsResponseInterface,
   LinkPatientRequest,
   LinkPatientResponse,
   UnlinkPatientRequest,
@@ -27,6 +29,29 @@ export const getMyPatients = async (
   }
 
   return response.data.patients
+}
+
+export const getMyRelations = async (
+  data: GetRelationsRequest
+): Promise<GetRelationsResponseInterface> => {
+  const response = await userServiceClient.GET(
+    `/relations/{id}/related-users`,
+    {
+      headers: {
+        Authorization: getAuthCookie(),
+      },
+      method: 'GET',
+      params: {
+        path: { id: data.id!.toString() },
+      },
+    }
+  )
+
+  if (response.error) {
+    throw new Error('Relatives not found')
+  }
+
+  return response.data
 }
 
 export const linkPatient = async (

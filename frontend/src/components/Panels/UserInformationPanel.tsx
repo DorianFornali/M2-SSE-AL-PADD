@@ -6,13 +6,11 @@ import { useAuthStore } from '../../store/store'
 import { useNavigate } from '@tanstack/react-router'
 import { routes } from '../../router/definitions'
 
-type PatientInformationPanelProps = {
+type UserInformationPanelProps = {
   patient: User
 }
 
-const PatientInformationPanel: React.FC<PatientInformationPanelProps> = (
-  props
-) => {
+const UserInformationPanel: React.FC<UserInformationPanelProps> = (props) => {
   const navigate = useNavigate()
   const queryClient = useQueryClient()
   const user = useAuthStore((state) => state.user)
@@ -62,22 +60,21 @@ const PatientInformationPanel: React.FC<PatientInformationPanelProps> = (
         <strong>Address : </strong>
         {patient?.address}
       </Typography>
-      <Typography variant="h6">
-        <strong>Birth date : </strong>
-        {patient?.birthDate}
-      </Typography>
-      <Button
-        variant="contained"
-        color="error"
-        sx={{
-          width: 'fit-content',
-        }}
-        onClick={onUnlinkPatient}
-      >
-        Délier le patient
-      </Button>
+      {/* @ts-expect-error - error in typing */}
+      {user?.role === 'DOCTOR' && (
+        <Button
+          variant="contained"
+          color="error"
+          sx={{
+            width: 'fit-content',
+          }}
+          onClick={onUnlinkPatient}
+        >
+          Délier le patient
+        </Button>
+      )}
     </Box>
   )
 }
 
-export default PatientInformationPanel
+export default UserInformationPanel

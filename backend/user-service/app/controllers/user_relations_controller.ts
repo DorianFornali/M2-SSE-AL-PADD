@@ -111,39 +111,64 @@ export default class UserRelationController {
    * @getRelatedUsers
    * @tag UserRelations
    * @operationId getRelatedUsers
-   * @description Get the doctor, nurse, and relatives of a patient
-   * @requestParams id - The ID of the patient
-   * @responseBody 200 - <UserRelation>
+   * @description Get the doctor, nurse, (and relatives if user is patient) of a patient or relative
+   * @requestParams id - The ID of the patient or relative
+   * @responseBody 200 - <GetRelationsResponseInterface>
    **/
   async getRelatedUsers({ params, response }: HttpContext) {
     const { id } = await getRelationsValidator.validate(params)
 
     const user = await User.find(id)
     if (!user) {
-      return response.notFound({ message: 'Patient not found', success: false })
+      return response.notFound({ message: 'User not found', success: false })
     }
 
-    if (user.role !== ROLES.PATIENT) {
-      return response.badRequest({ message: 'User is not a patient', success: false })
+    if (user.role !== ROLES.PATIENT && user.role !== ROLES.RELATIVE) {
+      return response.badRequest({ message: 'User is not a patient or a relative', success: false })
     }
 
-    const doctor = await UserRelation.query()
-      .where('userId', id)
-      .andWhere('relationType', RESPONSIBLE.DOCTOR)
-      .preload('relatedUser')
-      .first()
+    let doctor = null
+    let nurse = null
+    let relatives: UserRelation[] = []
 
-    const nurse = await UserRelation.query()
-      .where('userId', id)
-      .andWhere('relationType', RESPONSIBLE.NURSE)
-      .preload('relatedUser')
-      .first()
+    if (user.role === ROLES.PATIENT) {
+      doctor = await UserRelation.query()
+        .where('userId', id)
+        .andWhere('relationType', RESPONSIBLE.DOCTOR)
+        .preload('relatedUser')
+        .first()
 
-    const relatives = await UserRelation.query()
-      .where('userId', id)
-      .andWhere('relationType', RESPONSIBLE.RELATIVE)
-      .preload('relatedUser')
-      .exec()
+      nurse = await UserRelation.query()
+        .where('userId', id)
+        .andWhere('relationType', RESPONSIBLE.NURSE)
+        .preload('relatedUser')
+        .first()
+
+      relatives = await UserRelation.query()
+        .where('userId', id)
+        .andWhere('relationType', RESPONSIBLE.RELATIVE)
+        .preload('relatedUser')
+        .exec()
+    } else {
+      const patientRelations = await UserRelation.query()
+        .where('relatedUserId', id)
+        .andWhere('relationType', RESPONSIBLE.RELATIVE)
+        .exec()
+
+      const patientIds = patientRelations.map((relation) => relation.userId)
+
+      doctor = await UserRelation.query()
+        .whereIn('userId', patientIds)
+        .andWhere('relationType', RESPONSIBLE.DOCTOR)
+        .preload('relatedUser')
+        .first()
+
+      nurse = await UserRelation.query()
+        .whereIn('userId', patientIds)
+        .andWhere('relationType', RESPONSIBLE.NURSE)
+        .preload('relatedUser')
+        .first()
+    }
 
     return response.ok({ doctor, nurse, relatives, success: true })
   }

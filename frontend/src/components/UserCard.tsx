@@ -9,15 +9,12 @@ import {
   Box,
 } from '@mui/material'
 
-type PatientCardProps = {
+type UserCardProps = {
   name: string
   actionButtonProps?: ButtonProps
 }
 
-const PatientCard: React.FC<PatientCardProps> = ({
-  name,
-  actionButtonProps,
-}) => {
+const UserCard: React.FC<UserCardProps> = ({ name, actionButtonProps }) => {
   return (
     <Card
       sx={{
@@ -38,4 +35,4 @@ const PatientCard: React.FC<PatientCardProps> = ({
   )
 }
 
-export default PatientCard
+export default UserCard

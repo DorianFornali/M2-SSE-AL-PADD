@@ -16,8 +16,8 @@ const appRoutes = {
   dashboard: {
     path: '/dashboard',
   },
-  patientView: {
-    path: '/patient/$id',
+  userView: {
+    path: '/user/$id',
   },
 }
 

@@ -10,7 +10,7 @@ import {
 import { useTranslation } from 'react-i18next'
 import { users } from '../../api/users'
 import { useAuthStore } from '../../store/store'
-import PatientCard from '../PatientCard'
+import UserCard from '../UserCard'
 import { getMyPatients, linkPatient } from '../../api/relations'
 import AddPatientModal from '../Modals/AddPatientModal'
 import { User } from '../../types/types'
@@ -108,12 +108,11 @@ const AddPatientPanel: React.FC = () => {
           }}
         >
           {newPatients?.map((patient) => (
-            <PatientCard
+            <UserCard
               key={patient?.id}
               name={`${patient?.firstName} ${patient?.lastName}`}
               actionButtonProps={{
                 onClick: () => {
-                  console.log('click')
                   setIsOpen(true)
                   setSelectedPatient(patient)
                 },

@@ -3,10 +3,10 @@ import { userById } from '../api/users'
 
 const queryClient = new QueryClient()
 
-export const patientViewQuery = (patientId: string) => {
+export const userViewQuery = (userId: string) => {
   return queryOptions({
-    queryKey: ['patientView', patientId],
-    queryFn: () => userById(patientId),
+    queryKey: ['userView', userId],
+    queryFn: () => userById(userId),
   })
 }
 

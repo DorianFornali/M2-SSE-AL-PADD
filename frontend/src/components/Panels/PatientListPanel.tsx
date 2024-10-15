@@ -3,7 +3,7 @@ import { Box, CircularProgress, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { getMyPatients } from '../../api/relations'
 import { useAuthStore } from '../../store/store'
-import PatientCard from '../PatientCard'
+import UserCard from '../UserCard'
 import { useNavigate } from '@tanstack/react-router'
 import { routes } from '../../router/definitions'
 
@@ -37,13 +37,13 @@ const PatientListPanel: React.FC = () => {
           }}
         >
           {data?.map((patient) => (
-            <PatientCard
+            <UserCard
               key={patient?.id}
               name={`${patient?.user?.firstName} ${patient?.user?.lastName}`}
               actionButtonProps={{
                 onClick: () => {
                   navigate({
-                    to: routes.patientView.path,
+                    to: routes.userView.path,
                     params: { id: patient?.user?.id?.toString() },
                   })
                 },

@@ -27,3 +27,10 @@ export interface UnlinkPatientResponseInterface {
   message: string
   success: boolean
 }
+
+export interface GetRelationsResponseInterface {
+  doctor: UserRelation
+  nurse: UserRelation
+  relatives: UserRelation[]
+  success: boolean
+}

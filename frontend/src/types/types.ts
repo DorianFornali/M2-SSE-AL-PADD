@@ -10,6 +10,10 @@ export type GetPatientsRequest = components['schemas']['getPatientsValidator']
 export type GetPatientsResponseInterface =
   components['schemas']['GetPatientsResponseInterface']
 
+export type GetRelationsRequest = components['schemas']['getRelationsValidator']
+export type GetRelationsResponseInterface =
+  components['schemas']['GetRelationsResponseInterface']
+
 export type LinkPatientRequest = components['schemas']['linkValidator']
 export type LinkPatientResponse =
   components['schemas']['LinkPatientResponseInterface']
