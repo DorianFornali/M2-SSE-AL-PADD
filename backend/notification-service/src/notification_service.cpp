@@ -1,6 +1,5 @@
 #include "notification_service.h"
-#include <../external/nlohmann/single_include/nlohmann/json.hpp>
-
+#include <../external/json/single_include/nlohmann/json.hpp>
 
 using json = nlohmann::json;
 

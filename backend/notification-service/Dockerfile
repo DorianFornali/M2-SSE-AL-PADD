@@ -27,8 +27,9 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . /app
 
+
 # Copy the external libraries into the container
-COPY external/nlohmann /app/external/json
+COPY external/json /app/external/json
 COPY external/nats.c /app/external/nats.c
 
 # Build the NATS C library
