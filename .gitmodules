@@ -1,0 +1,7 @@
+[submodule "backend/notification-service/external/json"]
+	path = backend/notification-service/external/json
+	url = https://github.com/nlohmann/json.git
+[submodule "backend/notification-service/external/nats.c"]
+	path = backend/notification-service/external/nats.c
+	url = https://github.com/nats-io/nats.c.git
+
