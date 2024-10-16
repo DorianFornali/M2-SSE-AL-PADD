@@ -20,13 +20,12 @@ RUN apt-get update && apt-get install -y \
     pkg-config \
     make \
     libprotobuf-c-dev
-
+RUN apt-get update && apt-get install -y git
 # Set the working directory
 WORKDIR /app
 
 # Copy the current directory contents into the container at /app
 COPY . /app
-
 
 # Copy the external libraries into the container
 COPY external/json /app/external/json
