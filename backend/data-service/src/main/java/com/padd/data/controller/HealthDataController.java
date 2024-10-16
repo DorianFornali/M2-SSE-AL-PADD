@@ -30,7 +30,7 @@ public class HealthDataController {
         @PathVariable String userId, 
         @RequestBody HealthDataDTO healthData
     ) {
-        healthDataService.saveHealthData(healthData);
+        healthDataService.saveHealthData(healthData, userId);
         return new ResponseEntity<>("Health data saved for user: " + userId, HttpStatus.OK);
     }
 

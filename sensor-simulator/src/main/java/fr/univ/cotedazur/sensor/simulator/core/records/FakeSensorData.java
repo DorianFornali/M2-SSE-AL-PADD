@@ -1,10 +1,12 @@
 package fr.univ.cotedazur.sensor.simulator.core.records;
 
-public record FakeSensorData(int heartRate,
-                             BloodPressure bloodPressure,
-                             int stressLevel,
-                             double bloodOxygenation,
-                             SleepPace sleepPace,
-                             int bodyTemperature,
-                             int acceleration) {
+import lombok.Builder;
+
+@Builder
+public record FakeSensorData(
+        int heartRate,
+        int stressLevel,
+        double bloodOxygenation,
+        int bodyTemperature
+) {
 }
