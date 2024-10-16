@@ -19,6 +19,7 @@ public class HealthRecord {
     @JoinColumn(name = "blood_pressure_id", referencedColumnName = "id")
     private BloodPressure bloodPressure;
 
+    private String userId;
     private int heartRate;
     private int stressLevel;
     private double bloodOxygenation;
@@ -47,6 +48,14 @@ public class HealthRecord {
 
     public void setBloodPressure(BloodPressure bloodPressure) {
         this.bloodPressure = bloodPressure;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public int getHeartRate() {

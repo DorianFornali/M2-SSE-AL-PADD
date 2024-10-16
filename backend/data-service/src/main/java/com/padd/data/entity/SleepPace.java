@@ -15,6 +15,7 @@ public class SleepPace {
     @Column(name = "timestamp", columnDefinition = "TIMESTAMP")
     private LocalDateTime timestamp;
 
+    private String userId;
     private int sleepDuration;
     private int lightSlowSleep;
     private int deepSlowSleep;
@@ -35,6 +36,14 @@ public class SleepPace {
 
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public int getSleepDuration() {

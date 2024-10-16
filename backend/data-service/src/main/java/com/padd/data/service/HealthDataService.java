@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.padd.data.dto.HealthDataDTO;
 import com.padd.data.entity.HealthRecord;
+import com.padd.data.entity.SleepPace;
 import com.padd.data.repository.SleepPaceRepository;
 import com.padd.data.repository.HealthRecordRepository;
 
@@ -23,10 +24,13 @@ public class HealthDataService {
         this.healthRecordRepository = healthRecordRepository;
     }
 
-    public void saveHealthData(HealthDataDTO healthDataDTO) {
+    public void saveHealthData(HealthDataDTO healthDataDTO, String userId) {
+        SleepPace sleepPace = healthDataDTO.getSleepPace();
+        sleepPace.setUserId(userId);
         sleepPaceRepository.save(healthDataDTO.getSleepPace());
 
         for (HealthRecord healthRecord : healthDataDTO.getHealthRecords()) {
+            healthRecord.setUserId(userId);
             healthRecordRepository.save(healthRecord);
         }
     }
