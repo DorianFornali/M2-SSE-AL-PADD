@@ -3,10 +3,21 @@ const rootRoute = {
     path: '/',
   },
 }
+const authRoutes = {
+  login: {
+    path: '/login',
+  },
+  register: {
+    path: '/register',
+  },
+}
 
 const appRoutes = {
   dashboard: {
     path: '/dashboard',
+  },
+  userView: {
+    path: '/user/$id',
   },
 }
 
@@ -18,6 +29,7 @@ const errorRoutes = {
 
 export const routes = {
   ...rootRoute,
+  ...authRoutes,
   ...appRoutes,
   ...errorRoutes,
 } as const

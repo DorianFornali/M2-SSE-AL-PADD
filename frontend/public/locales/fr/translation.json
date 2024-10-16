@@ -1,6 +1,70 @@
 {
+  "app": {
+    "name": "Health"
+  },
+  "header": {
+    "account": "Dashboard",
+    "login": "Connexion",
+    "logout": "Déconnexion"
+  },
   "home": {
     "title": "Hello, World!"
+  },
+  "dashboard": {
+    "panel.recap": "Mon suivi",
+    "panel.patient.relations": "Mes soignants",
+    "panel.relative.relations": "Les soignants",
+    "panel.patients": "Mes patients",
+    "panel.addPatient": "Ajouter un patient"
+  },
+  "patientPanel": {
+    "title": "Mes patients",
+    "see": "Voir"
+  },
+  "addPatientPanel": {
+    "title": "Ajouter un patient",
+    "noPatients": "Aucun nouveau patient",
+    "add": "Ajouter",
+    "success": "Patient ajouté avec succès"
+  },
+  "addPatientModal": {
+    "submit": "Ajouter",
+    "nurse": "Infirmier",
+    "relative": "Parent"
+  },
+  "userListPanel": {
+    "doctor": "Médecin",
+    "noDoctor": "Aucun médecin",
+    "nurse": "Infirmier",
+    "noNurse": "Aucun infirmier",
+    "relative": "Parent",
+    "noRelative": "Aucun parent"
+  },
+  "patientHealthPanel": {
+    "heartRatePanel": {
+      "title": "Fréquence cardiaque",
+      "unit": "bpm"
+    },
+    "bloodPressurePanel": {
+      "title": "Pression artérielle",
+      "unit": "mmHg"
+    },
+    "stressLevelPanel": {
+      "title": "Niveau de stress",
+      "unit": ""
+    },
+    "bloodOxygenationPanel": {
+      "title": "Oxygénation du sang",
+      "unit": "%"
+    },
+    "sleepPacePanel": {
+      "title": "Rythme de sommeil",
+      "unit": "h"
+    },
+    "bodyTemperaturePanel": {
+      "title": "Température corporelle",
+      "unit": "°C"
+    }
   },
   "404": {
     "title": "404 - Page not found",

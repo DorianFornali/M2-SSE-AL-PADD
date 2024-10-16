@@ -3,6 +3,7 @@ import Button from '@mui/material/Button'
 
 const HomePage = () => {
   const { t } = useTranslation()
+
   return (
     <div>
       <h1>{t('home.title')}</h1>
