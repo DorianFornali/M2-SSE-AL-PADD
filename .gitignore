@@ -52,4 +52,3 @@ build/
 ### Venv ###
 .env
 
-/backend/notification-service/external/

@@ -8,7 +8,7 @@ using json = nlohmann::json;
 /* 
 If connected with the database for the POC 
     -: Retrieve the id from database with patient details 
-    -: Format the email to be sent to his nurse/family etc.
+    -: Format the email to be sent to his nurse/doctor/family etc.
 */
 
 void handleAlertMessage(const std::string& id, const json& alertJson) {
