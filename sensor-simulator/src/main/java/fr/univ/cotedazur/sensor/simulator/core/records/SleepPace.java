@@ -1,5 +1,7 @@
 package fr.univ.cotedazur.sensor.simulator.core.records;
 
+import lombok.Builder;
+
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -7,6 +9,8 @@ import java.util.concurrent.TimeUnit;
  * separate all together into 5 field that is represented
  * by an {@link Integer} which is the time in {@link TimeUnit#MINUTES}
  */
+
+@Builder
 public record SleepPace(int sleepingDuration,
                         int lightSlowSleep,
                         int deepSlowSleep,

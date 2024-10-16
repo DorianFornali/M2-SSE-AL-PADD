@@ -3,5 +3,3 @@ spring:
     name: SensorSimulator
   banner:
     location: classpath:other/banner.txt
-server:
-  port: 9090
