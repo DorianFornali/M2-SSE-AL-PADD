@@ -95,6 +95,20 @@ services:
     depends_on:
       pgsql:
         condition: service_healthy
+      mailpit:
+        condition: service_healthy
+
+
+  mailpit:
+    image: "axllent/mailpit:latest"
+    ports:
+      - "${MAIL_EXT_PORT:-1025}:1025"
+      - "${MAILSPIT_DASHBOARD_PORT:-8025}:8025"
+    environment:
+      TZ: "Europe/Paris"
+    restart: unless-stopped
+    networks:
+      - net
 
   frontend:
     image: frontend
