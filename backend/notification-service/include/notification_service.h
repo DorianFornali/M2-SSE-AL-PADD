@@ -8,8 +8,11 @@
 #include <nats.h>  // Use the correct path for nats.h
 
 
-void sendNotification(const std::string& event);
-void subscribeNotifications();
+namespace notification_service
+{
+    void notificationServiceTopicsSubscription();
+}
+
 
 
 #endif

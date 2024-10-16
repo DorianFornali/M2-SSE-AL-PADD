@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/CMakeFiles/dotenv-populate"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/CMakeFiles/dotenv-populate.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/CMakeFiles/dotenv-populate-complete.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/dotenv-populate-prefix/src/dotenv-populate-stamp/dotenv-populate-build.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/dotenv-populate-prefix/src/dotenv-populate-stamp/dotenv-populate-configure.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/dotenv-populate-prefix/src/dotenv-populate-stamp/dotenv-populate-download.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/dotenv-populate-prefix/src/dotenv-populate-stamp/dotenv-populate-install.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/dotenv-populate-prefix/src/dotenv-populate-stamp/dotenv-populate-mkdir.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/dotenv-populate-prefix/src/dotenv-populate-stamp/dotenv-populate-patch.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/dotenv-populate-prefix/src/dotenv-populate-stamp/dotenv-populate-test.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/dotenv-populate-prefix/src/dotenv-populate-stamp/dotenv-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"dotenv-populate"
+		],
+		"name" : "dotenv-populate"
+	}
+}

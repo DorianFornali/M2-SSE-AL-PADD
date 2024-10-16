@@ -1,0 +1,14 @@
+# Target labels
+ dotenv-populate
+# Source files and their labels
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/CMakeFiles/dotenv-populate
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/CMakeFiles/dotenv-populate.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/CMakeFiles/dotenv-populate-complete.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/dotenv-populate-prefix/src/dotenv-populate-stamp/dotenv-populate-build.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/dotenv-populate-prefix/src/dotenv-populate-stamp/dotenv-populate-configure.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/dotenv-populate-prefix/src/dotenv-populate-stamp/dotenv-populate-download.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/dotenv-populate-prefix/src/dotenv-populate-stamp/dotenv-populate-install.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/dotenv-populate-prefix/src/dotenv-populate-stamp/dotenv-populate-mkdir.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/dotenv-populate-prefix/src/dotenv-populate-stamp/dotenv-populate-patch.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/dotenv-populate-prefix/src/dotenv-populate-stamp/dotenv-populate-test.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/dotenv-subbuild/dotenv-populate-prefix/src/dotenv-populate-stamp/dotenv-populate-update.rule

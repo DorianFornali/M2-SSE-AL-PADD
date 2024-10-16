@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     g++ \
     cmake \
     libssl-dev \
+    libcurl4-openssl-dev \
     protobuf-c-compiler \
     protobuf-compiler \
     git \
@@ -19,7 +20,11 @@ RUN apt-get update && apt-get install -y \
     libtool \
     pkg-config \
     make \
-    libprotobuf-c-dev
+    libprotobuf-c-dev \
+    libpq-dev \
+    postgresql-server-dev-all \
+    postgresql-client
+
 RUN apt-get update && apt-get install -y git
 # Set the working directory
 WORKDIR /app

@@ -1,0 +1,14 @@
+# Target labels
+ cppdotenv-populate
+# Source files and their labels
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/CMakeFiles/cppdotenv-populate
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/CMakeFiles/cppdotenv-populate.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/CMakeFiles/cppdotenv-populate-complete.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/cppdotenv-populate-prefix/src/cppdotenv-populate-stamp/cppdotenv-populate-build.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/cppdotenv-populate-prefix/src/cppdotenv-populate-stamp/cppdotenv-populate-configure.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/cppdotenv-populate-prefix/src/cppdotenv-populate-stamp/cppdotenv-populate-download.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/cppdotenv-populate-prefix/src/cppdotenv-populate-stamp/cppdotenv-populate-install.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/cppdotenv-populate-prefix/src/cppdotenv-populate-stamp/cppdotenv-populate-mkdir.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/cppdotenv-populate-prefix/src/cppdotenv-populate-stamp/cppdotenv-populate-patch.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/cppdotenv-populate-prefix/src/cppdotenv-populate-stamp/cppdotenv-populate-test.rule
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/cppdotenv-populate-prefix/src/cppdotenv-populate-stamp/cppdotenv-populate-update.rule

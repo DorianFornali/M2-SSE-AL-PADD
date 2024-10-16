@@ -1,6 +1,10 @@
 #include "notification_service.h"
 
+namespace notification_service
+{
+}
+
 int main() {
-    subscribeNotifications();
+    notification_service::notificationServiceTopicsSubscription();
     return 0;
 }

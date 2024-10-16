@@ -76,6 +76,8 @@ services:
     build:
       context: ./backend/notification-service
       dockerfile: Dockerfile
+    env_file:
+      - ./backend/notification-service/.env
     environment:
       - NATS_URL=nats://nats:4222
       - NODE_ENV=${USER_SERVICE_BUILD_TARGET:-production}

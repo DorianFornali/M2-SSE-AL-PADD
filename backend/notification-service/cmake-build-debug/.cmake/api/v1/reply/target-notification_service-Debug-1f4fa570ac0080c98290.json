@@ -27,17 +27,41 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 19,
+				"line" : 33,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 12,
+				"line" : 24,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
+				"file" : 0,
+				"line" : 34,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 17,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 18,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 19,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
 				"file" : 0,
 				"line" : 20,
 				"parent" : 0
@@ -45,25 +69,7 @@
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 7,
-				"parent" : 0
-			},
-			{
-				"command" : 3,
-				"file" : 0,
-				"line" : 8,
-				"parent" : 0
-			},
-			{
-				"command" : 3,
-				"file" : 0,
-				"line" : 9,
-				"parent" : 0
-			},
-			{
-				"command" : 3,
-				"file" : 0,
-				"line" : 11,
+				"line" : 21,
 				"parent" : 0
 			}
 		]
@@ -89,11 +95,19 @@
 				},
 				{
 					"backtrace" : 6,
-					"path" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/external/nlohmann/single_include"
+					"path" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/external/json/single_include/nlohmann"
 				},
 				{
 					"backtrace" : 7,
 					"path" : "/opt/homebrew/opt/protobuf-c/include"
+				},
+				{
+					"backtrace" : 8,
+					"path" : "/opt/homebrew/include/postgresql@14"
+				},
+				{
+					"backtrace" : 8,
+					"path" : "/opt/homebrew/include/postgresql@14/server"
 				},
 				{
 					"backtrace" : 3,
@@ -142,6 +156,16 @@
 			{
 				"backtrace" : 3,
 				"fragment" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/external/nats.c/build/lib/libnats_static.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "/Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/lib/libcurl.tbd",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "/opt/homebrew/lib/postgresql@14/libpq.dylib",
 				"role" : "libraries"
 			},
 			{

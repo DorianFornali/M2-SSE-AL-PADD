@@ -109,6 +109,8 @@ notification_service_EXTERNAL_OBJECTS =
 /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service: CMakeFiles/notification_service.dir/src/notification_service.cpp.o
 /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service: CMakeFiles/notification_service.dir/build.make
 /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service: /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/external/nats.c/build/lib/libnats_static.a
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service: /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/lib/libcurl.tbd
+/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service: /opt/homebrew/lib/postgresql@14/libpq.dylib
 /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service: /opt/homebrew/Cellar/openssl@3/3.3.2/lib/libssl.dylib
 /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service: /opt/homebrew/Cellar/openssl@3/3.3.2/lib/libcrypto.dylib
 /Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/bin/notification_service: CMakeFiles/notification_service.dir/link.txt

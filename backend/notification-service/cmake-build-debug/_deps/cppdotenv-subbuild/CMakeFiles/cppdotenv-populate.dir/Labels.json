@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/CMakeFiles/cppdotenv-populate"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/CMakeFiles/cppdotenv-populate.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/CMakeFiles/cppdotenv-populate-complete.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/cppdotenv-populate-prefix/src/cppdotenv-populate-stamp/cppdotenv-populate-build.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/cppdotenv-populate-prefix/src/cppdotenv-populate-stamp/cppdotenv-populate-configure.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/cppdotenv-populate-prefix/src/cppdotenv-populate-stamp/cppdotenv-populate-download.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/cppdotenv-populate-prefix/src/cppdotenv-populate-stamp/cppdotenv-populate-install.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/cppdotenv-populate-prefix/src/cppdotenv-populate-stamp/cppdotenv-populate-mkdir.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/cppdotenv-populate-prefix/src/cppdotenv-populate-stamp/cppdotenv-populate-patch.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/cppdotenv-populate-prefix/src/cppdotenv-populate-stamp/cppdotenv-populate-test.rule"
+		},
+		{
+			"file" : "/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps/cppdotenv-subbuild/cppdotenv-populate-prefix/src/cppdotenv-populate-stamp/cppdotenv-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"cppdotenv-populate"
+		],
+		"name" : "cppdotenv-populate"
+	}
+}
