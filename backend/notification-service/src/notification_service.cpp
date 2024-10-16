@@ -1,5 +1,7 @@
 #include "notification_service.h"
-#include <nlohmann/json.hpp>
+#include <../external/json/single_include/nlohmann/json.hpp>
+
+
 using json = nlohmann::json;
 
 
@@ -13,7 +15,7 @@ void handleAlertMessage(const std::string& id, const json& alertJson) {
     std::cout << "Handling alert message:" << std::endl;
     std::cout << "  Emergency Person ID: " << id << std::endl;  // Display the extracted ID
     std::cout << "  Emergency Type: " << alertJson["datatype"] << std::endl;
-    std::cout << "  Severity: " << alertJson["value"] << std::endl;
+    std::cout << "  Value: " << alertJson["value"] << std::endl;
 }
 
 void handleMessage(const std::string& subject, const json& messageJson) {
