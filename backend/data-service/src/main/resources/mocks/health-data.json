@@ -1,0 +1,48 @@
+{
+    "healthRecords": [
+        {
+            "timestamp": "2021-01-01T00:00:00",
+            "heartRate": 80,
+            "bloodPressure": {
+                "systolic": 120,
+                "diastolic": 80
+            },
+            "stressLevel": 2,
+            "bloodOxygenation": 98,
+            "bodyTemperature": 36.5,
+            "acceleration": 10
+        },
+        {
+            "timestamp": "2021-01-01T00:01:00",
+            "heartRate": 82,
+            "bloodPressure": {
+                "systolic": 122,
+                "diastolic": 82
+            },
+            "stressLevel": 3,
+            "bloodOxygenation": 97,
+            "bodyTemperature": 36.6,
+            "acceleration": 11
+        },
+        {
+            "timestamp": "2021-01-01T00:02:00",
+            "heartRate": 85,
+            "bloodPressure": {
+                "systolic": 125,
+                "diastolic": 85
+            },
+            "stressLevel": 4,
+            "bloodOxygenation": 96,
+            "bodyTemperature": 36.7,
+            "acceleration": 12
+        }
+    ],
+    "sleepPace": {
+        "timestamp": "2021-01-01T00:02:00",
+        "sleepDuration": 7,
+        "lightSlowSleep": 4,
+        "deepSlowSleep": 1,
+        "deepSlowParadoxSleep": 1,
+        "paradoxSleep": 1
+    }
+}

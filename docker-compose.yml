@@ -110,6 +110,29 @@ services:
     networks:
       - net
 
+  data-service:
+    image: data-service
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - 8086:8086
+    build:
+      context: ./backend/data-service
+      dockerfile: Dockerfile
+    environment:
+      - HOST=0.0.0.0
+      - DB_HOST=pgsql
+      - DB_PORT=${DB_PORT:-5432}
+      - DB_DATABASE=${DB_DATABASE:-default}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD:-secret}
+    restart: always
+    depends_on:
+      pgsql:
+        condition: service_healthy
+    networks:
+      - net
+
   frontend:
     image: frontend
     build:
@@ -132,6 +155,7 @@ services:
     depends_on:
       - pgsql
       - user-service
+      - data-service
       - alert-service
     networks:
       - net
