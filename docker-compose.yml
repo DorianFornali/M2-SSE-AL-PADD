@@ -128,7 +128,8 @@ services:
       - DB_PASSWORD=${DB_PASSWORD:-secret}
     restart: always
     depends_on:
-      user-service:
+#      user-service:
+#        condition: service_healthy
       pgsql:
         condition: service_healthy
     networks:
