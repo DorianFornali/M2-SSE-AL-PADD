@@ -30,15 +30,15 @@
   "addPatientModal": {
     "submit": "Ajouter",
     "nurse": "Infirmier",
-    "relative": "Parent"
+    "relative": "Proche"
   },
   "userListPanel": {
     "doctor": "Médecin",
     "noDoctor": "Aucun médecin",
     "nurse": "Infirmier",
     "noNurse": "Aucun infirmier",
-    "relative": "Parent",
-    "noRelative": "Aucun parent"
+    "relative": "Proche",
+    "noRelative": "Aucun Proche"
   },
   "patientHealthPanel": {
     "heartRatePanel": {

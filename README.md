@@ -1,40 +1,32 @@
 # M2-SSE-AL-PADDY
 
-## Running the project
+## Description
 
-- Copy the `.env.example` file to `.env` and fill in the environment variables
-- For each service that needs it, copy the `.env.example` file to `.env` and fill in the environment variables
-- Run `docker compose build` to build the project
-- Run `docker compose up` to start the project
+This repository is a POC for an Health system that uses sensors to monitor the health of elderly people.
 
-## Micro services
+This POC implements the following end to end feature : 
+- Generate health data from a sensor simulator
+- Store the data in a database using a data service
+- Apply treatments on the data using a health service
+- Send alerts to the users if needed using an alert service
+- Send notifications to the users using a notification service
+- Manage users using a user service
+- Display different views to the different users using a frontend
 
-### How to add a new micro service
+## Documentation
 
-- Add the service to the `docker-compose.yml` file
-  - Make it depend on a database service if it needs one
-- Define the environment variables in the `.env.example` and `.env` files
-- Add the service to the gateway in the `backend/gateway/nginx.conf` file (to proxy the requests)
+- [How to run the project](./docs/HowToRun.md)
+- [Code structure](./docs/CodeStructure.md)
+- [How to contribute](./docs/HowToContribute.md)
+- [How to use](./docs/HowToUse.md)
+- [Architecture](./docs/Architecture.pdf)
+- [Architecture diagram](./docs/Architecture.png)
+- [Risk analysis](./docs/RiskAnalysis.pdf)
 
+## Team
 
-## User service
-
-- The user service is available at `http://localhost/users/*`
-  - You can check the health of the service at `http://localhost/users/health`
-- You can find a documentation at `http://localhost/users/docs`
-
-## Alert service
-- The alert service is available at `http://localhost/alert/` <br>
-  - You can check the health of the service at `http://localhost/alert/health`
-
-- This service proposes one endpoint: POST `http://localhost/alert/alert` <br>
-  This service is responsible for checking if the alert is justified, if yes it publishes on NATS
-  for the notification service to behave accordingly.
-
-  You can find the documentation at `http://localhost/alert/docs` TODO! NOT YET IMPLEMENTED
-
-## Frontend
-
-- The frontend is available at `http://localhost:3000`
-- You can find some example users in the `backend/user-service/database/seeders/user_seeder.ts` file.
-
+- Adrian NEGRUTA
+- Dorian FORNALI
+- Dorian GIRARD
+- Pierre-Adrien VASSEUR
+- Yannick ASCARI
