@@ -15,7 +15,10 @@ public class SleepPace {
     @Column(name = "timestamp", columnDefinition = "TIMESTAMP")
     private LocalDateTime timestamp;
 
-    private String userId;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
     private int sleepDuration;
     private int lightSlowSleep;
     private int deepSlowSleep;
@@ -38,12 +41,12 @@ public class SleepPace {
         this.timestamp = timestamp;
     }
 
-    public String getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public int getSleepDuration() {

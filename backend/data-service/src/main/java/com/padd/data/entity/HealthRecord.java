@@ -19,12 +19,15 @@ public class HealthRecord {
     @JoinColumn(name = "blood_pressure_id", referencedColumnName = "id")
     private BloodPressure bloodPressure;
 
-    private String userId;
-    private int heartRate;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
+    private double heartRate;
     private int stressLevel;
     private double bloodOxygenation;
-    private int bodyTemperature;
-    private int acceleration;
+    private double bodyTemperature;
+    private double acceleration;
 
     public Long getId() {
         return id;
@@ -50,19 +53,19 @@ public class HealthRecord {
         this.bloodPressure = bloodPressure;
     }
 
-    public String getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public int getHeartRate() {
+    public double getHeartRate() {
         return heartRate;
     }
 
-    public void setHeartRate(int heartRate) {
+    public void setHeartRate(double heartRate) {
         this.heartRate = heartRate;
     }
 
@@ -82,19 +85,19 @@ public class HealthRecord {
         this.bloodOxygenation = bloodOxygenation;
     }
 
-    public int getBodyTemperature() {
+    public double getBodyTemperature() {
         return bodyTemperature;
     }
 
-    public void setBodyTemperature(int bodyTemperature) {
+    public void setBodyTemperature(double bodyTemperature) {
         this.bodyTemperature = bodyTemperature;
     }
 
-    public int getAcceleration() {
+    public double getAcceleration() {
         return acceleration;
     }
 
-    public void setAcceleration(int acceleration) {
+    public void setAcceleration(double acceleration) {
         this.acceleration = acceleration;
     }
     
