@@ -48,15 +48,10 @@ public class HealthDataService {
     }
 
     public void createOrUpdateHealthRecord(HealthRecord healthRecord) {
-        System.out.println("[LOG] Creating or updating health record");
         Optional<HealthRecord> existingHealthRecord = healthRecordRepository.findByUserAndTimestamp(healthRecord.getUser(), healthRecord.getTimestamp());
 
         if (!existingHealthRecord.isPresent()) {
-            System.out.println("[LOG] found existing health record");
             healthRecordRepository.save(healthRecord);
-        }
-        else {
-            System.out.println("[LOG] not found existing health record");
         }
     }
 
