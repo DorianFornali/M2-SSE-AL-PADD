@@ -32,10 +32,9 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // User 7
-        Long user1Id = 7L;
-        User user1 = userRepository.findById(user1Id)
-            .orElseThrow(() -> new RuntimeException(String.format("User %d not found", user1Id)));
+        String user1email = "alice.davis@patients.com";
+        User user1 = userRepository.findByEmail(user1email)
+            .orElseThrow(() -> new RuntimeException(String.format("User %d not found", user1email)));
 
         for (int i = 0; i < 10; i++) {
             HealthRecord healthRecord = new HealthRecord();
@@ -72,10 +71,9 @@ public class DatabaseSeeder implements CommandLineRunner {
 
         healthDataService.createOrUpdateSleepPace(sleepPace1);
 
-        // User 8
-        Long user2Id = 8L;
-        User user2 = userRepository.findById(user2Id)
-            .orElseThrow(() -> new RuntimeException(String.format("User %d not found", user2Id)));
+        Long user2Email = "robert.wilson@patients.com";
+        User user2 = userRepository.findByEmail(user2Email)
+            .orElseThrow(() -> new RuntimeException(String.format("User %d not found", user2Email)));
 
         for (int i = 0; i < 10; i++) {
             HealthRecord healthRecord = new HealthRecord();
