@@ -10,8 +10,13 @@ import jakarta.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @SequenceGenerator(name="users_id_seq",
+            sequenceName="users_id_seq",
+            allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator="users_id_seq")
+    @Column(name = "id", updatable=false)
+    private Integer id;
     
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "patient_relation_id", referencedColumnName = "id")
@@ -42,11 +47,11 @@ public class User {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
     
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
