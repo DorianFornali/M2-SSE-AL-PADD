@@ -137,26 +137,26 @@ services:
     networks:
       - net
 
-  # health-service:
-  #   image: health-service 
-  #   ports:
-  #     -8088:8088
-  #   build:
-  #     context: ./backend/health-service
-  #     dockerfile: Dockerfile
-  #   environment:
-  #     - HOST=0.0.0.0
-  #     - DB_HOST=pgsql
-  #     - DB_PORT=${DB_PORT:-5432}
-  #     - DB_DATABASE=${DB_DATABASE:-default}
-  #     - DB_USER=${DB_USER}
-  #     - DB_PASSWORD=${DB_PASSWORD:-secret}
-  #   restart: always
-  #   depends_on:
-  #     pgsql:
-  #       condition: service_healthy
-  #   networks:
-  #     - net
+  health-service:
+    image: health-service 
+    ports:
+      - 8088:8088
+    build:
+      context: ./backend/health-service
+      dockerfile: Dockerfile
+    environment:
+      - HOST=0.0.0.0
+      - DB_HOST=pgsql
+      - DB_PORT=${DB_PORT:-5432}
+      - DB_DATABASE=${DB_DATABASE:-default}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD:-secret}
+    restart: always
+    depends_on:
+      pgsql:
+        condition: service_healthy
+    networks:
+      - net
 
   frontend:
     image: frontend
