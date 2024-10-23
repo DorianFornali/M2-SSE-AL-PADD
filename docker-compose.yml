@@ -59,9 +59,10 @@ services:
     networks:
       - net
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/users/health"]
-      retries: 3
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:3333/health"]
+      interval: 10s
       timeout: 5s
+      retries: 3
 
   alert-service:
     image: alert-service

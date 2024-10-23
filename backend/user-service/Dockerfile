@@ -1,5 +1,6 @@
 FROM node:20.12.2-alpine3.18 AS base
 
+RUN apk add --no-cache curl
 WORKDIR /app
 ADD package.json package-lock.json ./
 RUN npm ci
