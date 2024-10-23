@@ -1,4 +1,4 @@
-package com.padd.smartphone;
+package com.padd.house.sensor.simulator.smartphone;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

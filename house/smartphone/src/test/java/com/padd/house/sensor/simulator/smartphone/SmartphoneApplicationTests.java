@@ -1,4 +1,4 @@
-package com.padd.smartphone;
+package com.padd.house.sensor.simulator.smartphone;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
