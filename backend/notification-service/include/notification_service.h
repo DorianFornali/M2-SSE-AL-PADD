@@ -2,15 +2,11 @@
 #ifndef NOTIFICATIONS_H
 #define NOTIFICATIONS_H
 
-
-#include <string>
-#include <iostream>
-#include <nats.h>  // Use the correct path for nats.h
-
-
+#include <../external/json/single_include/nlohmann/json.hpp>
 namespace notification_service
 {
     void notificationServiceTopicsSubscription();
+    void handleMessage(const std::string& subject, const nlohmann::json& messageJson);
 }
 
 

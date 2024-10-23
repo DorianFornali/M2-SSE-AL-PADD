@@ -27,6 +27,8 @@ include_directories(${CURL_INCLUDE_DIRS})
 set(SOURCE_FILES
         src/main.cpp
         src/notification_service.cpp
+        src/email_service.cpp
+        src/database_service.cpp
 )
 add_executable(notification_service ${SOURCE_FILES})
 target_link_libraries(notification_service PRIVATE
