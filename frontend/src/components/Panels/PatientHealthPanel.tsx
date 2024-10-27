@@ -1,5 +1,4 @@
 import { Box, Tab, Tabs } from '@mui/material'
-import { User } from '../../types/types'
 import { useState } from 'react'
 import TabPanel from '../TabPanel'
 import { useTranslation } from 'react-i18next'
@@ -9,9 +8,10 @@ import StressLevelPanel from './HealthInfo/StressLevelPanel'
 import BloodOxygenationPanel from './HealthInfo/BloodOxygenationPanel'
 import SleepPacePanel from './HealthInfo/SleepPacePanel'
 import BodyTemperaturePanel from './HealthInfo/BodyTemperaturePanel'
+import { LocalUser } from '../../types/user'
 
 type PatientHealthPanelProps = {
-  patient: User
+  patient: LocalUser
 }
 
 const PatientHealthPanel: React.FC<PatientHealthPanelProps> = (props) => {

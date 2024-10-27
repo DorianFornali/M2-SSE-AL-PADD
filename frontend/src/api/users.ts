@@ -1,5 +1,7 @@
+import { transformUser } from '../adapters/user'
 import { userServiceClient } from '../config/client'
-import { User, UsersList } from '../types/types'
+import { UsersList } from '../types/types'
+import { LocalUser } from '../types/user'
 import { getAuthCookie } from '../utils/cookies'
 
 export const users = async (data: {
@@ -27,7 +29,7 @@ export const users = async (data: {
   return (response.data as UsersList).data
 }
 
-export const userById = async (id: string): Promise<User> => {
+export const userById = async (id: string): Promise<LocalUser> => {
   const response = await userServiceClient.GET(`/users/{id}`, {
     headers: {
       Authorization: getAuthCookie(),
@@ -42,5 +44,5 @@ export const userById = async (id: string): Promise<User> => {
     throw new Error('User not found')
   }
 
-  return response.data
+  return transformUser(response.data)
 }

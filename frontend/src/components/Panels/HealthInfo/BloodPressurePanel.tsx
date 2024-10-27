@@ -1,20 +1,23 @@
 import { Box } from '@mui/material'
-import { User } from '../../../types/types'
-import { bloodPressureMock } from '../../../api/mocks/health'
 import LineChart from '../../Charts/LineChart'
 import { useTranslation } from 'react-i18next'
+import { LocalUser } from '../../../types/user'
 
 type BloodPressurePanelProps = {
-  patient: User
+  patient: LocalUser
 }
 
 const BloodPressurePanel: React.FC<BloodPressurePanelProps> = (props) => {
   const { patient } = props
   const { t } = useTranslation()
 
-  console.log(patient)
+  // const bloodPressureData = bloodPressureMock('2023-01-01', 365)
 
-  const bloodPressureData = bloodPressureMock('2023-01-01', 365)
+  const bloodPressureData = patient.healthData.map((data) => ({
+    label: data.timestamp,
+    systolic: data.bloodPressure.systolic,
+    diastolic: data.bloodPressure.diastolic,
+  }))
 
   return (
     <Box>

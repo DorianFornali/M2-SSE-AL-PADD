@@ -1,20 +1,22 @@
 import { Box } from '@mui/material'
-import { User } from '../../../types/types'
 import LineChart from '../../Charts/LineChart'
-import { heartRateMock } from '../../../api/mocks/health'
 import { useTranslation } from 'react-i18next'
+import { LocalUser } from '../../../types/user'
 
 type HeartRatePanelProps = {
-  patient: User
+  patient: LocalUser
 }
 
 const HeartRatePanel: React.FC<HeartRatePanelProps> = (props) => {
   const { patient } = props
   const { t } = useTranslation()
 
-  console.log(patient)
+  // const heartRatesData = heartRateMock('2023-01-01', 365)
 
-  const heartRatesData = heartRateMock('2023-01-01', 365)
+  const heartRatesData = patient.healthData.map((data) => ({
+    label: data.timestamp,
+    heartRate: data.heartRate,
+  }))
 
   return (
     <Box>

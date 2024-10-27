@@ -45,40 +45,44 @@ public class SeedingController {
             return false;
         }
 
-        for (int i = 0; i < 10; i++) {
-            HealthRecord healthRecord = new HealthRecord();
-            healthRecord.setUser(user.get());
-            
-            LocalDateTime timestamp = LocalDateTime.of(2024, 1, 1, 0, i, 0);
-            healthRecord.setTimestamp(timestamp);
-            
-            BloodPressure bloodPressure = new BloodPressure();
-            bloodPressure.setSystolic(120 + i);
-            bloodPressure.setDiastolic(80 + i);
-            healthRecord.setBloodPressure(bloodPressure);
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 28; j++) {
+                HealthRecord healthRecord = new HealthRecord();
+                healthRecord.setUser(user.get());
 
-            healthRecord.setHeartRate(80 + i);
-            healthRecord.setStressLevel(2 + i);
-            healthRecord.setBloodOxygenation(98 + i);
-            healthRecord.setBodyTemperature(36.5 + i);
-            healthRecord.setAcceleration(10 + i);
+                int day = j + 1;
+                int month = i + 1;
+                
+                LocalDateTime timestamp = LocalDateTime.of(2024, month, day, 0, 0, 0);
+                healthRecord.setTimestamp(timestamp);
+                
+                BloodPressure bloodPressure = new BloodPressure();
+                bloodPressure.setSystolic(120 + i);
+                bloodPressure.setDiastolic(80 + i);
+                healthRecord.setBloodPressure(bloodPressure);
 
-            healthDataService.createOrUpdateHealthRecord(healthRecord);
+                healthRecord.setHeartRate(80 + i);
+                healthRecord.setStressLevel(2 + i);
+                healthRecord.setBloodOxygenation(98 + i);
+                healthRecord.setBodyTemperature(36.5 + i);
+                healthRecord.setAcceleration(10 + i);
+
+                healthDataService.createOrUpdateHealthRecord(healthRecord);
+
+                SleepPace sleepPace = new SleepPace();
+                sleepPace.setUser(user.get());
+
+                sleepPace.setTimestamp(timestamp);
+
+                sleepPace.setSleepDuration(7);
+                sleepPace.setLightSlowSleep(4);
+                sleepPace.setDeepSlowSleep(1);
+                sleepPace.setDeepSlowParadoxSleep(1);
+                sleepPace.setParadoxSleep(1);
+
+                healthDataService.createOrUpdateSleepPace(sleepPace);
+            }
         }
-
-        SleepPace sleepPace = new SleepPace();
-        sleepPace.setUser(user.get());
-
-        LocalDateTime timestamp = LocalDateTime.of(2024, 1, 1, 0, 1, 0);
-        sleepPace.setTimestamp(timestamp);
-
-        sleepPace.setSleepDuration(7);
-        sleepPace.setLightSlowSleep(4);
-        sleepPace.setDeepSlowSleep(1);
-        sleepPace.setDeepSlowParadoxSleep(1);
-        sleepPace.setParadoxSleep(1);
-
-        healthDataService.createOrUpdateSleepPace(sleepPace);
 
         return true;
     }

@@ -42,9 +42,16 @@ export default class UsersController {
   async show({ params, response }: HttpContext) {
     const { id } = await showValidator.validate(params)
     try {
-      const user = await User.findOrFail(id)
+      const user = await User.query()
+        .where('id', id)
+        .preload('healthRecords', (healthRecordsQuery) => {
+          healthRecordsQuery.preload('bloodPressure')
+        })
+        .preload('sleepPaces')
+        .firstOrFail()
       return response.ok(user)
     } catch (error) {
+      console.log('Error', error)
       return response.notFound({ message: 'User not found', success: false })
     }
   }

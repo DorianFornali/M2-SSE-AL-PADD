@@ -1,20 +1,25 @@
 import { Box } from '@mui/material'
-import { User } from '../../../types/types'
-import { sleepPaceMock } from '../../../api/mocks/health'
 import { useTranslation } from 'react-i18next'
 import BarChart from '../../Charts/BarChart'
+import { LocalUser } from '../../../types/user'
 
 type SleepPacePanelProps = {
-  patient: User
+  patient: LocalUser
 }
 
 const SleepPacePanel: React.FC<SleepPacePanelProps> = (props) => {
   const { patient } = props
   const { t } = useTranslation()
 
-  console.log(patient)
+  // const sleepPaceData = sleepPaceMock('2023-01-01', 365)
 
-  const sleepPaceData = sleepPaceMock('2023-01-01', 365)
+  const sleepPaceData = patient.healthData.map((data) => ({
+    label: data.timestamp,
+    lightSlowSleep: data.sleepPace.lightSlowSleep,
+    deepSlowSleep: data.sleepPace.deepSlowSleep,
+    deepSlowParadoxSleep: data.sleepPace.deepSlowParadoxSleep,
+    paradoxSleep: data.sleepPace.paradoxSleep,
+  }))
 
   return (
     <Box>
