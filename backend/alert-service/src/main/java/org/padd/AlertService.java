@@ -39,5 +39,4 @@ public class AlertService {
             log.error("Error while connecting to NATS", e);
         }
     }
-
 }

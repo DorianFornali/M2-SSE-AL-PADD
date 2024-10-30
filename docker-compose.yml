@@ -9,7 +9,7 @@ services:
     networks:
       - net
     environment:
-      - NATS_CLUSTER_NAME = nats_cluster      
+      - NATS_CLUSTER_NAME=nats_cluster      
     restart: always
 
   pgsql:

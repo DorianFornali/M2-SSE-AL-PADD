@@ -37,6 +37,7 @@ namespace notification_service
             id = subject.substr(kReportHealthStatusCriticalPrefix.length());
             email_service::sendEmail(database_service::getToContactEmailsFromDatabase(id), "Health Status Critical", messageJson);
         } else if (subject.rfind(kReportHealthStatusWarningPrefix, 0) == 0) {
+            // Form with some warning messages from the patient 
             id = subject.substr(kReportHealthStatusWarningPrefix.length());
             email_service::sendEmail(database_service::getToContactEmailsFromDatabase(id), "Health Status Warning", messageJson);
         } else {
