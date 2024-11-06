@@ -30,10 +30,10 @@ public class HealthDataService {
         this.userRepository = userRepository;
     }
 
-    public void saveHealthData(HealthDataDTO healthDataDTO, String userId) {
+    public void saveHealthData(HealthDataDTO healthDataDTO, String userEmail) {
         SleepPace sleepPace = healthDataDTO.getSleepPace();
 
-        Optional<User> user = userRepository.findById(Long.parseLong(userId));
+        Optional<User> user = userRepository.findByEmail(userEmail);
         if (!user.isPresent()) {
             throw new RuntimeException("User not found");
         }
