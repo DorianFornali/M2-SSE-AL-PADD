@@ -3,7 +3,6 @@ package com.padd.house.sensor.simulator.core.records;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
-import java.util.concurrent.TimeUnit;
 
 @Builder
 public record SleepPace(
