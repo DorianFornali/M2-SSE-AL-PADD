@@ -1,6 +1,0 @@
-logging:
-  level:
-    root: INFO
-  logback:
-    rollingpolicy:
-      file-name-pattern: /app/crash-log.txt
