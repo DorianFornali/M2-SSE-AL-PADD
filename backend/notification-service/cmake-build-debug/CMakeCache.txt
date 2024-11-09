@@ -96,8 +96,8 @@ CMAKE_INSTALL_PREFIX:PATH=/usr/local
 //Path to a program.
 CMAKE_LINKER:FILEPATH=/Library/Developer/CommandLineTools/usr/bin/ld
 
-//Path to a program.
-CMAKE_MAKE_PROGRAM:FILEPATH=/usr/bin/make
+//No help, variable specified on the command line.
+CMAKE_MAKE_PROGRAM:UNINITIALIZED=/Applications/CLion.app/Contents/bin/ninja/mac/aarch64/ninja
 
 //Flags used by the linker during the creation of modules during
 // all build types.
@@ -225,36 +225,6 @@ CURL_LIBRARY_DEBUG:FILEPATH=CURL_LIBRARY_DEBUG-NOTFOUND
 //Path to a library.
 CURL_LIBRARY_RELEASE:FILEPATH=/Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/lib/libcurl.tbd
 
-//Directory under which to collect all populated content
-FETCHCONTENT_BASE_DIR:PATH=/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug/_deps
-
-//Disables all attempts to download or update content and assumes
-// source dirs already exist
-FETCHCONTENT_FULLY_DISCONNECTED:BOOL=OFF
-
-//Enables QUIET option for all content population
-FETCHCONTENT_QUIET:BOOL=ON
-
-//When not empty, overrides where to find pre-populated content
-// for cppdotenv
-FETCHCONTENT_SOURCE_DIR_CPPDOTENV:PATH=
-
-//When not empty, overrides where to find pre-populated content
-// for dotenv
-FETCHCONTENT_SOURCE_DIR_DOTENV:PATH=
-
-//Enables UPDATE_DISCONNECTED behavior for all content population
-FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
-
-//Enables UPDATE_DISCONNECTED behavior just for population of cppdotenv
-FETCHCONTENT_UPDATES_DISCONNECTED_CPPDOTENV:BOOL=OFF
-
-//Enables UPDATE_DISCONNECTED behavior just for population of dotenv
-FETCHCONTENT_UPDATES_DISCONNECTED_DOTENV:BOOL=OFF
-
-//Git command line client
-GIT_EXECUTABLE:FILEPATH=/usr/bin/git
-
 //Value Computed by CMake
 NotificationService_BINARY_DIR:STATIC=/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backend/notification-service/cmake-build-debug
 
@@ -372,7 +342,7 @@ CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
-CMAKE_GENERATOR:INTERNAL=Unix Makefiles
+CMAKE_GENERATOR:INTERNAL=Ninja
 //Generator instance identifier.
 CMAKE_GENERATOR_INSTANCE:INTERNAL=
 //Name of generator platform.
@@ -386,8 +356,6 @@ CMAKE_HOME_DIRECTORY:INTERNAL=/Users/negrutaadrian/Desktop/M2-SSE-AL-PADD/backen
 CMAKE_INSTALL_NAME_TOOL-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_MAKE_PROGRAM
-CMAKE_MAKE_PROGRAM-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS
 CMAKE_MODULE_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_DEBUG
@@ -460,8 +428,6 @@ FIND_PACKAGE_MESSAGE_DETAILS_CURL:INTERNAL=[/Library/Developer/CommandLineTools/
 FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[/opt/homebrew/Cellar/openssl@3/3.3.2/lib/libcrypto.dylib][/opt/homebrew/Cellar/openssl@3/3.3.2/include][c ][v3.3.2()]
 //Details about finding PostgreSQL
 FIND_PACKAGE_MESSAGE_DETAILS_PostgreSQL:INTERNAL=[/opt/homebrew/lib/postgresql@14/libpq.dylib][/opt/homebrew/include/postgresql@14][c ][v14.13()]
-//ADVANCED property for variable: GIT_EXECUTABLE
-GIT_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OPENSSL_CRYPTO_LIBRARY
 OPENSSL_CRYPTO_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OPENSSL_INCLUDE_DIR

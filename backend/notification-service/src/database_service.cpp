@@ -8,6 +8,9 @@
 
 
 namespace database_service {
+
+
+
 std::vector<std::string> getToContactEmailsFromDatabase(const std::string& id) {
         const char* dbHost = std::getenv("DB_HOST");
         const char* dbPort = std::getenv("DB_PORT");

@@ -9,13 +9,11 @@
 
 using json = nlohmann::json;
 
-
 /*
 If connected with the database for the POC
     -: Retrieve the id from database with patient details
     -: Format the email to be sent to his nurse/doctor/family etc.
 */
-
 
 namespace notification_service
 {
@@ -43,13 +41,13 @@ namespace notification_service
         } else {
             std::cerr << "Unknown message subject: " << subject << std::endl;
         }
+
     }
 
     void onMessage(natsConnection *conn, natsSubscription *sub, natsMsg *msg, void *closure) {
         /* Communication through json */
         std::string subject = natsMsg_GetSubject(msg);
         std::string serializedMessage(natsMsg_GetData(msg), natsMsg_GetDataLength(msg));
-
         std::cout << "Received message on subject: " << subject << std::endl;
         std::cout << "Message content: " << serializedMessage << std::endl;
 

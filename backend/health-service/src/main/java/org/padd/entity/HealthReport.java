@@ -15,6 +15,8 @@ public class HealthReport {
 
     private LocalDateTime startTimestamp;
     private LocalDateTime endTimestamp;
+
+    // Analysis of the health data to form the repoort; 
     private double averageHeartRate;
     private int totalSleepDuration;
     private int averageStressLevel;

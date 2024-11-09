@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @ApplicationScoped
 public class HealthRecordRepository implements PanacheRepository<HealthRecord> {
-    public List<HealthRecord> findByUserAndTimestampBetween(User user, LocalDateTime startTimestamp, LocalDateTime endTimestamp) {
-        return find("user = ?1 and timestamp between ?2 and ?3", user, startTimestamp, endTimestamp).list();
+    public List<HealthRecord> findByUserAndTimestampBetween(int userId, LocalDateTime startTimestamp, LocalDateTime endTimestamp) {
+        return find("user_id = ?1 and timestamp between ?2 and ?3", userId, startTimestamp, endTimestamp).list();
     }
 }

@@ -19,10 +19,19 @@ public class SleepPace {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
+    @Column(name = "sleep_duration")
     private int sleepDuration;
+
+    @Column(name = "light_slow_sleep")
     private int lightSlowSleep;
+
+    @Column(name = "deep_slow_sleep")
     private int deepSlowSleep;
+
+    @Column(name = "deep_slow_paradox_sleep")
     private int deepSlowParadoxSleep;
+
+    @Column(name = "paradox_sleep")
     private int paradoxSleep;
 
     public Long getId() {

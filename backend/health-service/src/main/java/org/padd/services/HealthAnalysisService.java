@@ -32,15 +32,18 @@ public class HealthAnalysisService {
 
     public void analyzeHealthAndSleep(User user, LocalDateTime startTimestamp, LocalDateTime endTimestamp) {
         System.out.println("Analyzing health and sleep data for user: " + user.getEmail());
-        List<HealthRecord> healthRecords = healthRecordRepository.findByUserAndTimestampBetween(user, startTimestamp, endTimestamp);
-        List<SleepPace> sleepPaces = sleepPaceRepository.findByUserAndTimestampBetween(user, startTimestamp, endTimestamp);
+        List<HealthRecord> healthRecords = healthRecordRepository.findByUserAndTimestampBetween(user.getId(), startTimestamp, endTimestamp);
+        List<SleepPace> sleepPaces = sleepPaceRepository.findByUserAndTimestampBetween(user.getId(), startTimestamp, endTimestamp);
 
         if (!healthRecords.isEmpty() && !sleepPaces.isEmpty()) {
 
             /* Some basic computations (need to add more analysis) */
             double averageHeartRate = healthRecords.stream().mapToDouble(HealthRecord::getHeartRate).average().orElse(0.0);
-            int totalSleepDuration = sleepPaces.stream().mapToInt(SleepPace::getSleepDuration).sum();
             int averageStressLevel = (int) healthRecords.stream().mapToInt(HealthRecord::getStressLevel).average().orElse(0.0);
+
+
+            /* Sleep pace treatement */
+            int totalSleepDuration = sleepPaces.stream().mapToInt(SleepPace::getSleepDuration).sum();
 
             log.info("Average Heart Rate: " + averageHeartRate);
             log.info("Total Sleep Duration: " + totalSleepDuration);
@@ -49,6 +52,7 @@ public class HealthAnalysisService {
             /* Construct the health report and store in the database */
             HealthReport report = new HealthReport();
             report.setUser(user);
+            // The period of the report 
             report.setStartTimestamp(startTimestamp);
             report.setEndTimestamp(endTimestamp);
             report.setAverageHeartRate(averageHeartRate);

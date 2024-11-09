@@ -23,10 +23,19 @@ public class HealthRecord {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
+    @Column(name = "heart_rate")
     private double heartRate;
+
+    @Column(name = "stress_level")
     private int stressLevel;
+
+    @Column(name = "blood_oxygenation")
     private double bloodOxygenation;
+
+    @Column(name = "body_temperature")
     private double bodyTemperature;
+
+    @Column(name = "acceleration")
     private double acceleration;
 
     public Long getId() {

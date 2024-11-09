@@ -18,34 +18,32 @@ public class User {
     @Column(name = "id", updatable=false)
     private Integer id;
 
-    // @OneToMany(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "patient_relation_id", referencedColumnName = "id")
-    // private List<UserRelations> patientRelation;
 
-    // @OneToMany(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "doctor_relation_id", referencedColumnName = "id")
-    // private List<UserRelations> doctorRelation;
-
-    // @OneToMany(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "nurse_relation_id", referencedColumnName = "id")
-    // private List<UserRelations> nurseRelation;
-
-    // @OneToMany(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "relative_relation_id", referencedColumnName = "id")
-    // private List<UserRelations> relativeRelation;
-
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
     private String email;
     private String password;
+    
+    @Column(name = "phone_number")
     private String phoneNumber;
+    
     private String address;
+
+    @Column(name = "birth_date")
     private String birthDate;
     private String role;
 
-
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+
 
     public Integer getId() {
         return id;

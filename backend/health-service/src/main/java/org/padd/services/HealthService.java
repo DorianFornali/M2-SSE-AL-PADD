@@ -67,7 +67,7 @@ public class HealthService {
 
     }
 
-    /* After injection, the init function is executed, to start listening on the nats server*/
+    /* After injection, the init function is executed, to start listening on the nats server for the 2 topics it is subscribed */
     @PostConstruct
     public void init() {
         log.info("HealthService initialized");
