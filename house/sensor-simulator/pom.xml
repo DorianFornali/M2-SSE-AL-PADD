@@ -4,11 +4,13 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.padd</groupId>
-		<artifactId>house</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.3.4</version>
+		<relativePath/>
 	</parent>
 
+	<groupId>com.padd</groupId>
 	<artifactId>sensor-simulator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 

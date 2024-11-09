@@ -199,6 +199,20 @@ services:
       - gateway
     networks:
       - net
+
+  sensor:
+    image: sensor
+    ports:
+      - 8091:8090
+    build:
+      context: ./house/sensor-simulator
+      dockerfile: Dockerfile
+    environment:
+      - BACKEND_URL=http://data-service:8087
+    depends_on:
+      - gateway
+    networks:
+      - net
     
 networks:
   net:
