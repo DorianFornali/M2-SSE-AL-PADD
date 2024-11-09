@@ -7,8 +7,10 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 @Entity
 @Table(name = "blood_pressure")
 public class BloodPressure extends PanacheEntity {
-
+    @Column(name = "systolic")
     public int systolic;
+
+    @Column(name = "diastolic")
     public int diastolic;
 
 
