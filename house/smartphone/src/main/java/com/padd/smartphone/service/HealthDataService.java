@@ -29,8 +29,8 @@ public class HealthDataService {
     @Value("${alertService.url}")
     private String alertServiceUrl;
 
-    @Value("${user.email}")
-    private String userEmail;
+    @Value("${user.id}")
+    private String userId;
     
     public void saveHealthRecord(HealthRecordDTO healthRecordDTO) {
         checkHealthRecord(healthRecordDTO);
@@ -45,7 +45,7 @@ public class HealthDataService {
     private void sendHealthData() {
         healthData.setHealthRecords(healthRecords);
 
-        String url = dataServiceUrl + "/healthData/" + userEmail;
+        String url = dataServiceUrl + "/healthData/" + userId;
         sendPostRequest(url, healthData);
 
         healthRecords.clear();
@@ -72,7 +72,7 @@ public class HealthDataService {
         // Heart rate
         if (healthRecordDTO.getHeartRate() > 100) {
             AlertDTO alert = new AlertDTO();
-            alert.setId(userEmail);
+            alert.setId(userId);
             alert.setDatatype("heart rate");
             alert.setValue(Double.toString(healthRecordDTO.getHeartRate()));
             

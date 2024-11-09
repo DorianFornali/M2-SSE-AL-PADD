@@ -25,13 +25,13 @@ public class HealthDataController {
         this.healthDataService = healthDataService;
     }
 
-    @PostMapping("/{userEmail}")
+    @PostMapping("/{userId}")
     public ResponseEntity<String> saveHealthData(
-        @PathVariable String userEmail, 
+        @PathVariable String userId, 
         @RequestBody HealthDataDTO healthData
     ) {
-        healthDataService.saveHealthData(healthData, userEmail);
-        return new ResponseEntity<>("Health data saved for user: " + userEmail, HttpStatus.OK);
+        healthDataService.saveHealthData(healthData, userId);
+        return new ResponseEntity<>("Health data saved for user: " + userId, HttpStatus.OK);
     }
 
 }
