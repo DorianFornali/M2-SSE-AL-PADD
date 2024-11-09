@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.padd.smartphone.dto.AlertDTO;
 import com.padd.smartphone.dto.HealthDataDTO;
 import com.padd.smartphone.dto.HealthRecordDTO;
 import com.padd.smartphone.dto.SleepPaceDTO;
@@ -22,8 +23,11 @@ public class HealthDataService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    @Value("${backend.url}")
-    private String backendUrl;
+    @Value("${dataService.url}")
+    private String dataServiceUrl;
+
+    @Value("${alertService.url}")
+    private String alertServiceUrl;
 
     @Value("${user.email}")
     private String userEmail;
@@ -41,25 +45,39 @@ public class HealthDataService {
     private void sendHealthData() {
         healthData.setHealthRecords(healthRecords);
 
-        String url = backendUrl + "/healthData/" + userEmail;
+        String url = dataServiceUrl + "/healthData/" + userEmail;
+        sendPostRequest(url, healthData);
 
+        healthRecords.clear();
+    }
+
+    private void sendPostRequest(String url, Object dto) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<Object> request = new HttpEntity<>(healthData, headers);
+        HttpEntity<Object> request = new HttpEntity<>(dto, headers);
 
         try {
-            System.out.println("[SMARTPHONE] Sending health data for user : " + userEmail);
+            System.out.println("[SMARTPHONE] Sending request to : " + url);
             restTemplate.postForObject(url, request, String.class);
             healthRecords.clear();
         } catch (Exception e) {
-            System.out.println("[SMARTPHONE] Error while sending data: " + e.getMessage());
+            System.out.println("[SMARTPHONE] Error while sending request to : " + url + ", " + e.getMessage());
         }
     }
 
     private void checkHealthRecord(HealthRecordDTO healthRecordDTO) {
-        if (healthRecordDTO.getHeartRate() > 120) {
-            System.out.println("[SMARTPHONE] Heart rate is above 120");
+        String url = alertServiceUrl + "/alert";
+
+        // Heart rate
+        if (healthRecordDTO.getHeartRate() > 100) {
+            AlertDTO alert = new AlertDTO();
+            alert.setId(userEmail);
+            alert.setDatatype("heart rate");
+            alert.setValue(Double.toString(healthRecordDTO.getHeartRate()));
+            
+            System.out.println("[SMARTPHONE] Alert! Heart rate is too high : " + alert.getValue());
+            sendPostRequest(url, alert);
         }
     }
 }

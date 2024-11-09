@@ -194,7 +194,8 @@ services:
       context: ./house/smartphone
       dockerfile: Dockerfile
     environment:
-      - BACKEND_URL=http://data-service:8087
+      - DATASERVICE_URL=http://data-service:8087
+      - ALERTSERVICE_URL=http://alert-service:8085
     depends_on:
       - gateway
     networks:
