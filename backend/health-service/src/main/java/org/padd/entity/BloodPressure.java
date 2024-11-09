@@ -1,12 +1,11 @@
 package org.padd.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
 @Table(name = "blood_pressure")
-public class BloodPressure extends PanacheEntity {
+public class BloodPressure {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
