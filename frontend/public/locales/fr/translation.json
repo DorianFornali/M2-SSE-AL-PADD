@@ -70,6 +70,12 @@
       "unit": "°C"
     }
   },
+  "generalState": {
+    "Very Good": "Très bon",
+    "Good": "Bon",
+    "Bad": "Mauvais",
+    "Very Bad": "Très mauvais"
+  },
   "404": {
     "title": "404 - Page not found",
     "back": "Back to home"

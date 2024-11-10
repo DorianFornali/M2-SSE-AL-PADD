@@ -102,7 +102,12 @@ export default class UserRelationController {
       })
     }
 
-    const patients = await UserRelation.query().where('relatedUserId', id).preload('user').exec()
+    const patients = await UserRelation.query()
+      .where('relatedUserId', id)
+      .preload('user', (userQuery) => {
+        userQuery.preload('healthReports')
+      })
+      .exec()
 
     return response.ok({ patients, success: true })
   }

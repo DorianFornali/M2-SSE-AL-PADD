@@ -1,5 +1,6 @@
 import React from 'react'
-import { Card, Typography } from '@mui/material'
+import { Box, Card, Typography } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 import Accordion from '@mui/material/Accordion'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import AccordionSummary from '@mui/material/AccordionSummary'
@@ -11,6 +12,8 @@ type ReportCardProps = {
 
 const ReportCard: React.FC<ReportCardProps> = (props) => {
   const { report } = props
+
+  const { t } = useTranslation()
 
   return (
     <Accordion>
@@ -30,18 +33,92 @@ const ReportCard: React.FC<ReportCardProps> = (props) => {
             padding: 2,
           }}
         >
-          <Typography variant="h6">
-            <strong>Moyenne de la fréquence cardiaque: </strong>
-            {report.averageHeartRate} bpm
+          <Typography variant="h5">
+            <strong>État de santé général : </strong>
+            {t(`generalState.${report.generalState}`)}
           </Typography>
-          <Typography variant="h6">
-            <strong>Stress moyen: </strong>
-            {report.averageStressLevel}
+
+          <Typography variant="h5">
+            <strong>Fréquence cardiaque</strong>
           </Typography>
-          <Typography variant="h6">
-            <strong>Heures de sommeil: </strong>
-            {report.totalSleepDuration} heures de sommeil
+          <Box>
+            <Typography variant="h6">
+              <strong>Minimum: </strong>
+              {report.minHeartRate}
+            </Typography>
+            <Typography variant="h6">
+              <strong>Moyenne: </strong>
+              {report.averageHeartRate?.toFixed(0)}
+            </Typography>
+            <Typography variant="h6">
+              <strong>Maximum: </strong>
+              {report.maxHeartRate}
+            </Typography>
+          </Box>
+
+          <Typography variant="h5">
+            <strong>Oxygénation du sang</strong>
           </Typography>
+          <Box>
+            <Typography variant="h6">
+              <strong>Minimum: </strong>
+              {report.minBloodOxygenation}
+            </Typography>
+            <Typography variant="h6">
+              <strong>Moyenne: </strong>
+              {report.averageBloodOxygenation?.toFixed(0)}
+            </Typography>
+            <Typography variant="h6">
+              <strong>Maximum: </strong>
+              {report.maxBloodOxygenation}
+            </Typography>
+          </Box>
+
+          <Typography variant="h5">
+            <strong>Température corporelle</strong>
+          </Typography>
+          <Box>
+            <Typography variant="h6">
+              <strong>Minimum: </strong>
+              {report.minBodyTemperature}
+            </Typography>
+            <Typography variant="h6">
+              <strong>Moyenne: </strong>
+              {report.averageBodyTemperature?.toFixed(1)}
+            </Typography>
+            <Typography variant="h6">
+              <strong>Maximum: </strong>
+              {report.maxBodyTemperature}
+            </Typography>
+          </Box>
+
+          <Typography variant="h5">
+            <strong>Niveau de stress</strong>
+          </Typography>
+          <Box>
+            <Typography variant="h6">
+              <strong>Minimum: </strong>
+              {report.minStressLevel}
+            </Typography>
+            <Typography variant="h6">
+              <strong>Moyenne: </strong>
+              {report.averageStressLevel?.toFixed(0)}
+            </Typography>
+            <Typography variant="h6">
+              <strong>Maximum: </strong>
+              {report.maxStressLevel}
+            </Typography>
+          </Box>
+
+          <Typography variant="h5">
+            <strong>Qualité du sommeil</strong>
+          </Typography>
+          <Box>
+            <Typography variant="h6">
+              <strong>Durée du sommeil: </strong>
+              {report.totalSleepDuration}
+            </Typography>
+          </Box>
         </Card>
       </AccordionDetails>
     </Accordion>

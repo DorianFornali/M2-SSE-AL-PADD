@@ -417,11 +417,11 @@ export interface components {
     }
     /** @description Patient (Interface) */
     Patient: {
-      /** @example 349 */
+      /** @example 339 */
       id?: number
-      /** @example 68 */
+      /** @example 491 */
       userId?: number
-      /** @example 300 */
+      /** @example 681 */
       relatedUserId?: number
       /** @example Lorem Ipsum */
       relationType?: string
@@ -466,46 +466,46 @@ export interface components {
     }
     /** @description BloodPressure (Model) */
     BloodPressure: {
-      /** @example 185 */
+      /** @example 155 */
       id?: number
-      /** @example 175 */
+      /** @example 232 */
       systolic?: number
-      /** @example 83 */
+      /** @example 853 */
       diastolic?: number
     }
     /** @description HealthRecord (Model) */
     HealthRecord: {
-      /** @example 732 */
+      /** @example 375 */
       id?: number
       /**
        * Format: date-time
        * @example 2021-03-23T16:13:08.489+01:00
        */
       timestamp?: string
-      /** @example 862 */
+      /** @example 2 */
       bloodPressureId?: number
       /** @example null */
       bloodPressure?: components['schemas']['BloodPressure']
-      /** @example 680 */
+      /** @example 890 */
       userId?: number
       /** @example null */
       user?: components['schemas']['User']
-      /** @example 852 */
+      /** @example 430 */
       heartRate?: number
-      /** @example 648 */
+      /** @example 721 */
       stressLevel?: number
-      /** @example 656 */
+      /** @example 671 */
       bloodOxygenation?: number
-      /** @example 738 */
+      /** @example 644 */
       bodyTemperature?: number
-      /** @example 12 */
+      /** @example 741 */
       acceleration?: number
     }
     /** @description HealthReport (Model) */
     HealthReport: {
-      /** @example 515 */
+      /** @example 641 */
       id?: number
-      /** @example 95 */
+      /** @example 728 */
       userId?: number
       /** @example null */
       user?: components['schemas']['User']
@@ -519,12 +519,38 @@ export interface components {
        * @example 2021-03-23T16:13:08.489+01:00
        */
       endTimestamp?: string
-      /** @example 592 */
+      /** @example 269 */
       averageHeartRate?: number
-      /** @example 261 */
+      /** @example 769 */
       totalSleepDuration?: number
-      /** @example 76 */
+      /** @example 312 */
       averageStressLevel?: number
+      /** @example 403 */
+      averageBodyTemperature?: number
+      /** @example 806 */
+      maxBodyTemperature?: number
+      /** @example 340 */
+      minBodyTemperature?: number
+      /** @example 711 */
+      averageBloodOxygenation?: number
+      /** @example 851 */
+      maxBloodOxygenation?: number
+      /** @example 845 */
+      minBloodOxygenation?: number
+      /** @example 572 */
+      maxHeartRate?: number
+      /** @example 977 */
+      minHeartRate?: number
+      /** @example 944 */
+      maxStressLevel?: number
+      /** @example 835 */
+      minStressLevel?: number
+      /** @example 676 */
+      maxSleepDuration?: number
+      /** @example 311 */
+      minSleepDuration?: number
+      /** @example Lorem Ipsum */
+      generalState?: string
       /**
        * Format: date-time
        * @example 2021-03-23T16:13:08.489+01:00
@@ -538,31 +564,31 @@ export interface components {
     }
     /** @description SleepPace (Model) */
     SleepPace: {
-      /** @example 249 */
+      /** @example 724 */
       id?: number
       /**
        * Format: date-time
        * @example 2021-03-23T16:13:08.489+01:00
        */
       timestamp?: string
-      /** @example 542 */
+      /** @example 789 */
       userId?: number
       /** @example null */
       user?: components['schemas']['User']
-      /** @example 568 */
+      /** @example 324 */
       sleepDuration?: number
-      /** @example 312 */
+      /** @example 69 */
       lightSlowSleep?: number
-      /** @example 389 */
+      /** @example 306 */
       deepSlowSleep?: number
-      /** @example 891 */
+      /** @example 558 */
       deepSlowParadoxSleep?: number
-      /** @example 260 */
+      /** @example 595 */
       paradoxSleep?: number
     }
     /** @description User (Model) */
     User: {
-      /** @example 233 */
+      /** @example 572 */
       id?: number
       /** @example John */
       firstName?: string
@@ -604,11 +630,11 @@ export interface components {
     }
     /** @description UserRelation (Model) */
     UserRelation: {
-      /** @example 147 */
+      /** @example 708 */
       id?: number
-      /** @example 131 */
+      /** @example 887 */
       userId?: number
-      /** @example 811 */
+      /** @example 845 */
       relatedUserId?: number
       /**
        * @example 'DOCTOR'
@@ -653,7 +679,7 @@ export interface components {
      *       "phone_number": "Lorem Ipsum",
      *       "address": "Lorem Ipsum",
      *       "birth_date": "Lorem Ipsum",
-     *       "role": 688
+     *       "role": 460
      *     }
      */
     registerValidator: {
@@ -671,105 +697,105 @@ export interface components {
       address?: string
       /** @example Lorem Ipsum */
       birth_date?: string
-      /** @example 688 */
+      /** @example 460 */
       role?: number
     }
     /**
      * @description getPatientsValidator (Validator)
      * @example {
-     *       "id": 427
+     *       "id": 594
      *     }
      */
     getPatientsValidator: {
-      /** @example 427 */
+      /** @example 594 */
       id?: number
     }
     /**
      * @description getRelationsValidator (Validator)
      * @example {
-     *       "id": 788
+     *       "id": 442
      *     }
      */
     getRelationsValidator: {
-      /** @example 788 */
+      /** @example 442 */
       id?: number
     }
     /**
      * @description linkValidator (Validator)
      * @example {
-     *       "patientId": 5,
-     *       "relatedUserId": 852,
-     *       "relationType": 67
+     *       "patientId": 535,
+     *       "relatedUserId": 243,
+     *       "relationType": 900
      *     }
      */
     linkValidator: {
-      /** @example 5 */
+      /** @example 535 */
       patientId?: number
-      /** @example 852 */
+      /** @example 243 */
       relatedUserId?: number
-      /** @example 67 */
+      /** @example 900 */
       relationType?: number
     }
     /**
      * @description unlinkValidator (Validator)
      * @example {
-     *       "patientId": 993,
-     *       "relatedUserId": 987,
-     *       "relationType": 263
+     *       "patientId": 678,
+     *       "relatedUserId": 168,
+     *       "relationType": 641
      *     }
      */
     unlinkValidator: {
-      /** @example 993 */
+      /** @example 678 */
       patientId?: number
-      /** @example 987 */
+      /** @example 168 */
       relatedUserId?: number
-      /** @example 263 */
+      /** @example 641 */
       relationType?: number
     }
     /**
      * @description deleteValidator (Validator)
      * @example {
-     *       "id": 752
+     *       "id": 146
      *     }
      */
     deleteValidator: {
-      /** @example 752 */
+      /** @example 146 */
       id?: number
     }
     /**
      * @description listingValidator (Validator)
      * @example {
-     *       "page": 715,
-     *       "limit": 494,
-     *       "role": 754
+     *       "page": 70,
+     *       "limit": 241,
+     *       "role": 147
      *     }
      */
     listingValidator: {
-      /** @example 715 */
+      /** @example 70 */
       page?: number
-      /** @example 494 */
+      /** @example 241 */
       limit?: number
-      /** @example 754 */
+      /** @example 147 */
       role?: number
     }
     /**
      * @description showValidator (Validator)
      * @example {
-     *       "id": 179
+     *       "id": 961
      *     }
      */
     showValidator: {
-      /** @example 179 */
+      /** @example 961 */
       id?: number
     }
     /**
      * @description updateValidator (Validator)
      * @example {
-     *       "id": 822
+     *       "id": 659
      *     }
      */
     updateValidator: {
-      /** @example 822 */
+      /** @example 659 */
       id?: number
     }
     /**
@@ -781,7 +807,7 @@ export interface components {
      *       "phoneNumber": "Lorem Ipsum",
      *       "address": "Lorem Ipsum",
      *       "birthDate": "Lorem Ipsum",
-     *       "role": 584
+     *       "role": 143
      *     }
      */
     updateValidatorBody: {
@@ -797,7 +823,7 @@ export interface components {
       address?: string
       /** @example Lorem Ipsum */
       birthDate?: string
-      /** @example 584 */
+      /** @example 143 */
       role?: number
     }
   }
@@ -882,7 +908,7 @@ export interface operations {
          *       "phone_number": "Lorem Ipsum",
          *       "address": "Lorem Ipsum",
          *       "birth_date": "Lorem Ipsum",
-         *       "role": 688
+         *       "role": 460
          *     } */
         'application/json': components['schemas']['registerValidator']
       }
@@ -1068,9 +1094,9 @@ export interface operations {
     requestBody?: {
       content: {
         /** @example {
-         *       "patientId": 5,
-         *       "relatedUserId": 852,
-         *       "relationType": 67
+         *       "patientId": 535,
+         *       "relatedUserId": 243,
+         *       "relationType": 900
          *     } */
         'application/json': components['schemas']['linkValidator']
       }
@@ -1111,9 +1137,9 @@ export interface operations {
     requestBody?: {
       content: {
         /** @example {
-         *       "patientId": 993,
-         *       "relatedUserId": 987,
-         *       "relationType": 263
+         *       "patientId": 678,
+         *       "relatedUserId": 168,
+         *       "relationType": 641
          *     } */
         'application/json': components['schemas']['unlinkValidator']
       }

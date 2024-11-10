@@ -26,7 +26,9 @@ const PatientRecapPanel: React.FC = () => {
           <HealthCard
             key={patient?.id}
             name={`${patient?.user?.firstName} ${patient?.user?.lastName}`}
-            healthStatus="good"
+            healthStatus={
+              patient?.user?.healthReports?.[0]?.generalState || 'Very Good'
+            }
           />
         ))
       )}

@@ -20,8 +20,6 @@ const PatientHealthPanel: React.FC<PatientHealthPanelProps> = (props) => {
   const { t } = useTranslation()
   const [value, setValue] = useState(0)
 
-  console.log(patient)
-
   return (
     <Box
       sx={{
@@ -40,25 +38,25 @@ const PatientHealthPanel: React.FC<PatientHealthPanelProps> = (props) => {
         <Tab label={t('patientHealthPanel.bodyTemperaturePanel.title')} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <ReportPanel patient={patient} />
+        {value === 0 && <ReportPanel patient={patient} />}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <HeartRatePanel patient={patient} />
+        {value === 1 && <HeartRatePanel patient={patient} />}
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <BloodPressurePanel patient={patient} />
+        {value === 2 && <BloodPressurePanel patient={patient} />}
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <StressLevelPanel patient={patient} />
+        {value === 3 && <StressLevelPanel patient={patient} />}
       </TabPanel>
       <TabPanel value={value} index={4}>
-        <BloodOxygenationPanel patient={patient} />
+        {value === 4 && <BloodOxygenationPanel patient={patient} />}
       </TabPanel>
       <TabPanel value={value} index={5}>
-        <SleepPacePanel patient={patient} />
+        {value === 5 && <SleepPacePanel patient={patient} />}
       </TabPanel>
       <TabPanel value={value} index={6}>
-        <BodyTemperaturePanel patient={patient} />
+        {value === 6 && <BodyTemperaturePanel patient={patient} />}
       </TabPanel>
     </Box>
   )

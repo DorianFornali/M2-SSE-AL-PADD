@@ -1,14 +1,16 @@
 import React from 'react'
 import { Card, CardContent, Typography, Avatar } from '@mui/material'
 import { green, red } from '@mui/material/colors'
+import { useTranslation } from 'react-i18next'
 
 type HealthCardProps = {
   name: string
-  healthStatus: 'good' | 'bad'
+  healthStatus: string
 }
 
 const HealthCard: React.FC<HealthCardProps> = ({ name, healthStatus }) => {
-  const isHealthy = healthStatus === 'good'
+  const { t } = useTranslation()
+  const isHealthy = healthStatus === 'Very Good' || healthStatus === 'Good'
 
   return (
     <Card
@@ -28,7 +30,7 @@ const HealthCard: React.FC<HealthCardProps> = ({ name, healthStatus }) => {
       <CardContent>
         <Typography variant="h6">{name}</Typography>
         <Typography color="textSecondary">
-          Health Status: {isHealthy ? 'Good Health' : 'Bad Health'}
+          État de santé général: {t(`generalState.${healthStatus}`)}
         </Typography>
       </CardContent>
     </Card>

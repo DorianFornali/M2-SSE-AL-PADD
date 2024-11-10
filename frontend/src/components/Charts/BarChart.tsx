@@ -1,5 +1,4 @@
-import { Box, ToggleButton, ToggleButtonGroup } from '@mui/material'
-import { MultiValue } from './types'
+import { Box } from '@mui/material'
 import {
   BarChart as RechartsBarChart,
   Bar,
@@ -9,17 +8,16 @@ import {
   ResponsiveContainer,
   Legend,
 } from 'recharts'
+import { MultiValue } from './types'
 
 type BarChartProps = {
   data: MultiValue[]
   bars: { name: string; color: string; stackId: string }[]
   unit: string
-  period: string
-  handlePeriod: (_: unknown, newTime: string) => void
 }
 
 const BarChart: React.FC<BarChartProps> = (props) => {
-  const { data, bars, unit, period, handlePeriod } = props
+  const { data, bars, unit } = props
 
   return (
     <Box
@@ -42,21 +40,9 @@ const BarChart: React.FC<BarChartProps> = (props) => {
             bottom: 5,
           }}
         >
-          <XAxis
-            dataKey="label"
-            tickFormatter={(date) => {
-              const d = new Date(date)
-              return `${d.getDate()} / ${d.getMonth() + 1}`
-            }}
-          />
+          <XAxis dataKey="label" />
           <YAxis />
-          <Tooltip
-            labelFormatter={(date) => {
-              const d = new Date(date)
-              return `${d.getDate()} / ${d.getMonth() + 1}`
-            }}
-            formatter={(value) => `${value} ${unit}`}
-          />
+          <Tooltip formatter={(value) => `${value} ${unit}`} />
           {bars.map((bar, key) => (
             <Bar
               key={key}
@@ -69,13 +55,6 @@ const BarChart: React.FC<BarChartProps> = (props) => {
           <Legend />
         </RechartsBarChart>
       </ResponsiveContainer>
-      <ToggleButtonGroup value={period} exclusive onChange={handlePeriod}>
-        <ToggleButton value="1w">7j</ToggleButton>
-        <ToggleButton value="1m">1m</ToggleButton>
-        <ToggleButton value="3m">3m</ToggleButton>
-        <ToggleButton value="6m">6m</ToggleButton>
-        <ToggleButton value="1y">1a</ToggleButton>
-      </ToggleButtonGroup>
     </Box>
   )
 }
