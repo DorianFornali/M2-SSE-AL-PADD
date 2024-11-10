@@ -2,15 +2,13 @@ package com.padd.data.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import io.nats.client.Connection;
 import io.nats.client.Nats;
 
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.padd.data.dto.HealthDataAnalysisDTO;
 import com.padd.data.dto.HealthDataDTO;
 import com.padd.data.entity.HealthRecord;
 import com.padd.data.entity.SleepPace;
@@ -26,7 +24,6 @@ public class HealthDataService {
     private final HealthRecordRepository healthRecordRepository;
     private final UserRepository userRepository;
     private Connection connect;
-    private final ObjectMapper objectMapper;
 
     @Autowired
     public HealthDataService(
@@ -37,9 +34,6 @@ public class HealthDataService {
         this.sleepPaceRepository = sleepPaceRepository;
         this.healthRecordRepository = healthRecordRepository;
         this.userRepository = userRepository;
-
-        objectMapper = new ObjectMapper();
-        objectMapper.registerModule(new JavaTimeModule());
 
         connectToNats();
     }
@@ -70,23 +64,23 @@ public class HealthDataService {
             createOrUpdateHealthRecord(healthRecord);
         }
 
-        HealthDataAnalysisDTO timestamps = new HealthDataAnalysisDTO();
         HealthRecord[] healthRecords = healthDataDTO.getHealthRecords();
 
         // no analysis for less than 2 records
         if (healthRecords.length <= 1)
             return;
-        
-        timestamps.setStart(healthRecords[0].getTimestamp());
-        timestamps.setEnd(healthRecords[healthRecords.length - 1].getTimestamp());
 
-        triggerHealthDataAnalysis(user.get().getId(), timestamps);
+        triggerHealthDataAnalysis(
+            user.get().getId(), 
+            healthRecords[0].getTimestamp(),
+            healthRecords[healthRecords.length - 1].getTimestamp()
+        );
     }
 
-    private void triggerHealthDataAnalysis(Integer userId, HealthDataAnalysisDTO timestamps) {
+    private void triggerHealthDataAnalysis(Integer userId, LocalDateTime startTimestamp, LocalDateTime endTimestamp) {
         try {
             String topic = "triggerDataAnalysis." + Integer.toString(userId);
-            String jsonMessage = objectMapper.writeValueAsString(timestamps);
+            String jsonMessage = "{\"start\":\"" + startTimestamp.toString() + "\",\"end\":\"" + endTimestamp.toString() + "\"}";
             connect.publish(topic, jsonMessage.getBytes());
             System.out.println("[DATA-SERVICE] Published to NATS on topic : " + topic);
         }
