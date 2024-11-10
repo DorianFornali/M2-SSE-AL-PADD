@@ -12,6 +12,6 @@ import java.util.List;
 public class SleepPaceRepository implements PanacheRepository<SleepPace> {
     // change to Long user id
     public List<SleepPace> findByUserAndTimestampBetween(int userId, LocalDateTime startTimestamp, LocalDateTime endTimestamp) {
-        return find("user_id = ?1 and timestamp between ?2 and ?3", userId, startTimestamp, endTimestamp).list();
+        return find("user.id = ?1 and timestamp between ?2 and ?3", userId, startTimestamp, endTimestamp).list();
     }
 }
