@@ -45,18 +45,35 @@ public class HealthAnalysisService {
         return "Very Bad";
     }
 
-    public String determineGeneralState(double avgHeartRate, int avgStressLevel) {
+    private String getBodyTemperatureLevelState(double avgBodyTemperature) {
+        if (avgBodyTemperature < 36.5) return "Very Good";
+        if (avgBodyTemperature < 37.5) return "Good";
+        if (avgBodyTemperature < 38.5) return "Bad";
+        return "Very Bad";
+    }
+
+    private String getBloodOxygenationLevelState(double avgBloodOxygenation) {
+        if (avgBloodOxygenation > 95) return "Very Good";
+        if (avgBloodOxygenation > 90) return "Good";
+        if (avgBloodOxygenation > 85) return "Bad";
+        return "Very Bad";
+    }
+
+    public String determineGeneralState(double avgHeartRate, int avgStressLevel, double avgBodyTemperature, double avgBloodOxygenation) {
         String heartRateState = getHeartRateState(avgHeartRate);
         String stressLevelState = getStressLevelState(avgStressLevel);
+        String bodyTemperatureState = getBodyTemperatureLevelState(avgBodyTemperature);
+        String bloodOxygenationState = getBloodOxygenationLevelState(avgBloodOxygenation);
 
-        if (heartRateState.equals("Very Bad") || stressLevelState.equals("Very Bad")) {
+
+        if (heartRateState.equals("Very Bad") || stressLevelState.equals("Very Bad") || bodyTemperatureState.equals("Very Bad") || bloodOxygenationState.equals("Very Bad")) {
             return "Very Bad";
         }
-        if (heartRateState.equals("Bad") || stressLevelState.equals("Bad")) {
+        if (heartRateState.equals("Bad") || stressLevelState.equals("Bad") || bodyTemperatureState.equals("Bad") || bloodOxygenationState.equals("Bad")) {
             return "Bad";
         }
 
-        if (heartRateState.equals("Good") && stressLevelState.equals("Good")) {
+        if (heartRateState.equals("Good") && stressLevelState.equals("Good") && bodyTemperatureState.equals("Good") && bloodOxygenationState.equals("Good")) {
             return "Good";
         }
         return "Very Good";
@@ -79,10 +96,20 @@ public class HealthAnalysisService {
             int maxStressLevel = healthRecords.stream().mapToInt(HealthRecord::getStressLevel).max().orElse(0);
             int minStressLevel = healthRecords.stream().mapToInt(HealthRecord::getStressLevel).min().orElse(0);
 
+            double averageBodyTemperature = healthRecords.stream().mapToDouble(HealthRecord::getBodyTemperature).average().orElse(0.0);
+            double maxBodyTemperature = healthRecords.stream().mapToDouble(HealthRecord::getBodyTemperature).max().orElse(0.0);
+            double minBodyTemperature = healthRecords.stream().mapToDouble(HealthRecord::getBodyTemperature).min().orElse(0.0);
+
+            double averageBloodOxygenation = healthRecords.stream().mapToDouble(HealthRecord::getBloodOxygenation).average().orElse(0.0);
+            double maxBloodOxygenation = healthRecords.stream().mapToDouble(HealthRecord::getBloodOxygenation).max().orElse(0.0);
+            double minBloodOxygenation = healthRecords.stream().mapToDouble(HealthRecord::getBloodOxygenation).min().orElse(0.0);
+
             /* Sleep pace treatement */
             int totalSleepDuration = sleepPaces.stream().mapToInt(SleepPace::getSleepDuration).sum();
             int maxSleepDuration = sleepPaces.stream().mapToInt(SleepPace::getSleepDuration).max().orElse(0);
             int minSleepDuration = sleepPaces.stream().mapToInt(SleepPace::getSleepDuration).min().orElse(0);
+
+
 
             /* Construct the health report and store in the database */
             HealthReport report = new HealthReport();
@@ -97,9 +124,17 @@ public class HealthAnalysisService {
             report.setMinHeartRate(minHeartRate);
             report.setMaxStressLevel(maxStressLevel);
             report.setMinStressLevel(minStressLevel);
+            report.setAverageBodyTemperature(averageBodyTemperature);
+            report.setMaxBodyTemperature(maxBodyTemperature);
+            report.setMinBodyTemperature(minBodyTemperature);
+            report.setAverageBloodOxygenation(averageBloodOxygenation);
+            report.setMaxBloodOxygenation(maxBloodOxygenation);
+            report.setMinBloodOxygenation(minBloodOxygenation);
+
+
             report.setMaxSleepDuration(maxSleepDuration);
             report.setMinSleepDuration(minSleepDuration);
-            report.setGeneralState(determineGeneralState(averageHeartRate, averageStressLevel));
+            report.setGeneralState(determineGeneralState(averageHeartRate, averageStressLevel, averageBodyTemperature, averageBloodOxygenation));
             healthReportRepository.persist(report);
 
             log.info("Health report saved for user: " + user.getEmail());

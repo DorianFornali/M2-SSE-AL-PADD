@@ -29,6 +29,25 @@ public class HealthReport {
     @Column(name = "average_stress_level")
     private int averageStressLevel;
 
+    @Column(name = "average_body_temperature")
+    private double averageBodyTemperature;
+
+    @Column(name = "max_body_temperature")
+    private double maxBodyTemperature;
+
+    @Column(name = "min_body_temperature")
+    private double minBodyTemperature;
+
+    @Column(name = "average_blood_oxygenation")
+    private double averageBloodOxygenation;
+
+    @Column(name = "max_blood_oxygenation")
+    private double maxBloodOxygenation;
+
+    @Column(name = "min_blood_oxygenation")
+    private double minBloodOxygenation;
+
+
     @Column(name = "max_heart_rate")
     private double maxHeartRate;
 
@@ -155,6 +174,57 @@ public class HealthReport {
     public void setMinSleepDuration(int minSleepDuration) {
         this.minSleepDuration = minSleepDuration;
     }
+
+    public double getAverageBodyTemperature() {
+        return averageBodyTemperature;
+    }
+
+    public void setAverageBodyTemperature(double averageBodyTemperature) {
+        this.averageBodyTemperature = averageBodyTemperature;
+    }
+
+    public double getMaxBodyTemperature() {
+        return maxBodyTemperature;
+    }
+
+    public void setMaxBodyTemperature(double maxBodyTemperature) {
+        this.maxBodyTemperature = maxBodyTemperature;
+    }
+
+    public double getMinBodyTemperature() {
+        return minBodyTemperature;
+    }
+
+    public void setMinBodyTemperature(double minBodyTemperature) {
+        this.minBodyTemperature = minBodyTemperature;
+    }
+
+    public double getAverageBloodOxygenation() {
+        return averageBloodOxygenation;
+    }
+
+    public void setAverageBloodOxygenation(double averageBloodOxygenation) {
+        this.averageBloodOxygenation = averageBloodOxygenation;
+    }
+
+    public double getMaxBloodOxygenation() {
+        return maxBloodOxygenation;
+    }
+
+    public void setMaxBloodOxygenation(double maxBloodOxygenation) {
+        this.maxBloodOxygenation = maxBloodOxygenation;
+    }
+
+    public double getMinBloodOxygenation() {
+        return minBloodOxygenation;
+    }
+
+    public void setMinBloodOxygenation(double minBloodOxygenation) {
+        this.minBloodOxygenation = minBloodOxygenation;
+    }
+
+
+
 
     public String getGeneralState() {
         return generalState;
