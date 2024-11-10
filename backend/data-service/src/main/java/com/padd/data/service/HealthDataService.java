@@ -72,8 +72,8 @@ public class HealthDataService {
 
         triggerHealthDataAnalysis(
             user.get().getId(), 
-            healthRecords[0].getTimestamp(),
-            healthRecords[healthRecords.length - 1].getTimestamp()
+            healthRecords[healthRecords.length - 1].getTimestamp(),
+            healthRecords[0].getTimestamp()
         );
     }
 
@@ -82,7 +82,7 @@ public class HealthDataService {
             String topic = "triggerDataAnalysis." + Integer.toString(userId);
             String jsonMessage = "{\"start\":\"" + startTimestamp.toString() + "\",\"end\":\"" + endTimestamp.toString() + "\"}";
             connect.publish(topic, jsonMessage.getBytes());
-            System.out.println("[DATA-SERVICE] Published to NATS on topic : " + topic);
+            System.out.println("[DATA-SERVICE] Published to NATS on topic : " + topic + " with message : " + jsonMessage);
         }
         catch (Exception e) {
             System.out.println("[DATA-SERVICE] Error while publishing message : " + e.getMessage());
