@@ -8,6 +8,7 @@ import type { HasMany } from '@adonisjs/lucid/types/relations'
 import UserRelation from './user_relation.js'
 import HealthRecord from './health_record.js'
 import SleepPace from './sleep_pace.js'
+import HealthReport from './health_report.js'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
@@ -80,6 +81,11 @@ export default class User extends compose(BaseModel, AuthFinder) {
     foreignKey: 'userId',
   })
   declare sleepPaces: HasMany<typeof SleepPace>
+
+  @hasMany(() => HealthReport, {
+    foreignKey: 'userId',
+  })
+  declare healthReports: HasMany<typeof HealthReport>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

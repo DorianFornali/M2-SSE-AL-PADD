@@ -21,19 +21,20 @@ import java.util.concurrent.TimeUnit;
 @Service
 @Slf4j
 public class DataSenderService {
-
     @Value("${smartphone.url}")
     private String smartphoneUrl;
 
     private final RestTemplate restTemplate = new RestTemplate();
     private final FakeSensorDataRetriever sensorDataRetriever = new FakeSensorDataRetriever();
+    private int index = 0;
+    private final LocalDateTime initialDateTime = LocalDateTime.parse("2024-11-10T00:00:00");
 
-    @Scheduled(fixedRate = 2L, initialDelay = 5L, timeUnit = TimeUnit.SECONDS)
+    @Scheduled(fixedRate = 1L, initialDelay = 5L, timeUnit = TimeUnit.SECONDS)
     public void sendFakeSensorData() {
         String uri = "/sensor-data";
 
         try {
-            FakeSensorData fakeSensorData = this.sensorDataRetriever.retrieveFakeSensorData().orElseThrow();
+            FakeSensorData fakeSensorData = this.sensorDataRetriever.retrieveFakeSensorData(index, initialDateTime).orElseThrow();
             logger.info("Sending sensor data -> {}", fakeSensorData);
             sendDataToSmartphone(fakeSensorData, uri);
         } catch (Exception e) {
@@ -48,14 +49,16 @@ public class DataSenderService {
                     .build();
             sendDataToSmartphone(fakeSensorData, uri);
         }
+
+        index++;
     }
 
-    @Scheduled(fixedRate = 30L, initialDelay = 35L, timeUnit = TimeUnit.SECONDS)
+    @Scheduled(fixedRate = 24L, initialDelay = 29L, timeUnit = TimeUnit.SECONDS)
     public void sendFakeSleepPace() {
         String uri = "/sleep-pace";
 
         try {
-            SleepPace sleepPace = this.sensorDataRetriever.retrieveSleepPace().orElseThrow();
+            SleepPace sleepPace = this.sensorDataRetriever.retrieveSleepPace(index, initialDateTime).orElseThrow();
             logger.info("Sending sleep pace -> {}", sleepPace);
             sendDataToSmartphone(sleepPace, uri);
         } catch (Exception e) {

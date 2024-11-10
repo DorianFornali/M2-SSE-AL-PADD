@@ -26,3 +26,7 @@ export type UsersList = {
   meta: components['schemas']['PaginationMeta']
   data: User[]
 }
+
+export type HealthRecord = components['schemas']['HealthRecord']
+export type HealthReport = components['schemas']['HealthReport']
+export type SleepPace = components['schemas']['SleepPace']

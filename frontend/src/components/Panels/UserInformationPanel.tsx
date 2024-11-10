@@ -1,13 +1,13 @@
 import { Box, Button, Typography } from '@mui/material'
-import { User } from '../../types/types'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { unlinkPatient } from '../../api/relations'
 import { useAuthStore } from '../../store/store'
 import { useNavigate } from '@tanstack/react-router'
 import { routes } from '../../router/definitions'
+import { LocalUser } from '../../types/user'
 
 type UserInformationPanelProps = {
-  patient: User
+  patient: LocalUser
 }
 
 const UserInformationPanel: React.FC<UserInformationPanelProps> = (props) => {
@@ -43,6 +43,7 @@ const UserInformationPanel: React.FC<UserInformationPanelProps> = (props) => {
         display: 'flex',
         flexDirection: 'column',
         gap: 2,
+        marginTop: 2,
       }}
     >
       <Typography variant="h3">

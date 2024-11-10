@@ -48,6 +48,7 @@ export default class UsersController {
           healthRecordsQuery.preload('bloodPressure')
         })
         .preload('sleepPaces')
+        .preload('healthReports')
         .firstOrFail()
       return response.ok(user)
     } catch (error) {

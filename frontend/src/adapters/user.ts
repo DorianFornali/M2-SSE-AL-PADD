@@ -1,45 +1,39 @@
-import { User } from '../types/types'
+import { SleepPace, User } from '../types/types'
 import { LocalUser } from '../types/user'
 
 export const transformUser = (user: User): LocalUser => {
+  const healthRecords: { [key: string]: User['healthRecords'] } = {}
+
+  user?.healthRecords?.forEach((record) => {
+    const date = new Date(record?.timestamp || '')
+    const day = new Date(date.getFullYear(), date.getMonth(), date.getDate())
+    const isoDate = day.toISOString().split('T')[0] || ''
+    healthRecords[isoDate] = healthRecords[isoDate] || []
+    healthRecords[isoDate].push(record!)
+  })
+
+  const sortedHealthRecords = Object.entries(healthRecords)
+    .sort(([dateA], [dateB]) => dateB.localeCompare(dateA))
+    .reduce(
+      (acc, [key, value]) => {
+        acc[key] = value
+        return acc
+      },
+      {} as { [key: string]: User['healthRecords'] }
+    )
+
+  const sleepPaces: { [key: string]: SleepPace } = {}
+  user?.sleepPaces?.forEach((record) => {
+    const date = new Date(record?.timestamp || '')
+    const day = new Date(date.getFullYear(), date.getMonth(), date.getDate())
+    const isoDate = day.toISOString().split('T')[0] || ''
+    sleepPaces[isoDate] = record!
+  })
+
   return {
     ...user,
-    healthData:
-      user?.healthRecords?.map((record) => {
-        const sleepPace = user?.sleepPaces?.find(
-          (sleepPace) => sleepPace.timestamp === record.timestamp
-        )
-        return {
-          id: record.id || 0,
-          timestamp: record.timestamp || '',
-          heartRate: record.heartRate || 0,
-          stressLevel: record.stressLevel || 0,
-          bloodOxygenation: record.bloodOxygenation || 0,
-          bodyTemperature: record.bodyTemperature || 0,
-          acceleration: record.acceleration || 0,
-          bloodPressure: {
-            id: record?.bloodPressure?.id || 0,
-            systolic: record?.bloodPressure?.systolic || 0,
-            diastolic: record?.bloodPressure?.diastolic || 0,
-          },
-          sleepPace: sleepPace
-            ? {
-                id: sleepPace.id || 0,
-                sleepDuration: sleepPace.sleepDuration || 0,
-                lightSlowSleep: sleepPace.lightSlowSleep || 0,
-                deepSlowSleep: sleepPace.deepSlowSleep || 0,
-                deepSlowParadoxSleep: sleepPace.deepSlowParadoxSleep || 0,
-                paradoxSleep: sleepPace.paradoxSleep || 0,
-              }
-            : {
-                id: 0,
-                sleepDuration: 0,
-                lightSlowSleep: 0,
-                deepSlowSleep: 0,
-                deepSlowParadoxSleep: 0,
-                paradoxSleep: 0,
-              },
-        }
-      }) || [],
+    // @ts-expect-error - healthRecords is not defined in the OpenAPI schema
+    healthRecords: sortedHealthRecords,
+    sleepPaces,
   }
 }

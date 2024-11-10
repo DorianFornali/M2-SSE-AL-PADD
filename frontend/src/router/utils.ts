@@ -32,6 +32,7 @@ export const redirectIfAuthenticated = async (path: string) => {
 
       if (res) {
         useAuthStore.getState().setUser(res)
+        console.log('redirectIfAuthenticated', path)
         throw redirect({
           to: path,
         })
