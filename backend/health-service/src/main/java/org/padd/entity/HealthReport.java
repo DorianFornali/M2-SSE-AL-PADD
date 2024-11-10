@@ -29,6 +29,28 @@ public class HealthReport {
     @Column(name = "average_stress_level")
     private int averageStressLevel;
 
+    @Column(name = "max_heart_rate")
+    private double maxHeartRate;
+
+    @Column(name = "min_heart_rate")
+    private double minHeartRate;
+
+    @Column(name = "max_stress_level")
+    private int maxStressLevel;
+
+    @Column(name = "min_stress_level")
+    private int minStressLevel;
+
+    @Column(name = "max_sleep_duration")
+    private int maxSleepDuration;
+
+    @Column(name = "min_sleep_duration")
+    private int minSleepDuration;
+
+    @Column(name = "general_state")
+    private String generalState;
+
+
     /* Getters and Setters */
     public Long getId() {
         return id;
@@ -84,6 +106,62 @@ public class HealthReport {
 
     public void setAverageStressLevel(int averageStressLevel) {
         this.averageStressLevel = averageStressLevel;
+    }
+
+    public double getMaxHeartRate() {
+        return maxHeartRate;
+    }
+
+    public void setMaxHeartRate(double maxHeartRate) {
+        this.maxHeartRate = maxHeartRate;
+    }
+
+    public double getMinHeartRate() {
+        return minHeartRate;
+    }
+
+    public void setMinHeartRate(double minHeartRate) {
+        this.minHeartRate = minHeartRate;
+    }
+
+    public int getMaxStressLevel() {
+        return maxStressLevel;
+    }
+
+    public void setMaxStressLevel(int maxStressLevel) {
+        this.maxStressLevel = maxStressLevel;
+    }
+
+    public int getMinStressLevel() {
+        return minStressLevel;
+    }
+
+    public void setMinStressLevel(int minStressLevel) {
+        this.minStressLevel = minStressLevel;
+    }
+
+    public int getMaxSleepDuration() {
+        return maxSleepDuration;
+    }
+
+    public void setMaxSleepDuration(int maxSleepDuration) {
+        this.maxSleepDuration = maxSleepDuration;
+    }
+
+    public int getMinSleepDuration() {
+        return minSleepDuration;
+    }
+
+    public void setMinSleepDuration(int minSleepDuration) {
+        this.minSleepDuration = minSleepDuration;
+    }
+
+    public String getGeneralState() {
+        return generalState;
+    }
+
+    public void setGeneralState(String generalState) {
+        this.generalState = generalState;
     }
 
 }
