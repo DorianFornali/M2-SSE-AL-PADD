@@ -76,14 +76,6 @@ jobs:
           push: true
           tags: pierraad/sse-al-paddy:health-service-latest
 
-      - name: Build and push gateway
-        uses: docker/build-push-action@v2
-        with:
-          context: ./backend/gateway
-          file: ./backend/gateway/Dockerfile
-          push: true
-          tags: pierraad/sse-al-paddy:gateway-latest
-
       - name: Build and push smartphone
         uses: docker/build-push-action@v2
         with:
