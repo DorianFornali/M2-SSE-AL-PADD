@@ -17,6 +17,7 @@ const HealthCard: React.FC<HealthCardProps> = ({ name, healthStatus }) => {
         alignItems: 'center',
         padding: 2,
         backgroundColor: isHealthy ? green[50] : red[50],
+        marginTop: 2,
       }}
     >
       <Avatar

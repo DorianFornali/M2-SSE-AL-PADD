@@ -18,7 +18,7 @@ public class FakeSensorDataRetriever implements SensorDataRetriever {
     private final IntegerWeightedRandomGenerator integerWeightedRandomGenerator = new IntegerWeightedRandomGenerator();
 
     @Override
-    public Optional<FakeSensorData> retrieveFakeSensorData() {
+    public Optional<FakeSensorData> retrieveFakeSensorData(int index, LocalDateTime initialDateTime) {
         int heartRate = integerWeightedRandomGenerator.add(55, 85, 0.8).add(85, 150, .1).add(40, 55, .1).getWeightedRandom();
         integerWeightedRandomGenerator.clearWeights();
         int stressLevel = integerWeightedRandomGenerator.add(0, 20, 0.2).add(20, 40, 0.2).add(40, 60, 0.2).add(60, 80, 0.2).add(80, 100, 0.2).getWeightedRandom();
@@ -31,7 +31,7 @@ public class FakeSensorDataRetriever implements SensorDataRetriever {
         integerWeightedRandomGenerator.clearWeights();
         return Optional.ofNullable(FakeSensorData.builder()
                         .acceleration(acceleration)
-                        .timestamp(LocalDateTime.now())
+                        .timestamp(initialDateTime.minusHours(index))
                         .bloodPressure(retrieveBloodPressure().orElseThrow())
                         .heartRate(heartRate)
                         .stressLevel(stressLevel)
@@ -52,21 +52,35 @@ public class FakeSensorDataRetriever implements SensorDataRetriever {
     }
 
     @Override
-    public Optional<SleepPace> retrieveSleepPace() {
+    public Optional<SleepPace> retrieveSleepPace(int index, LocalDateTime initialDateTime) {
+        int totalSleepDuration = getRandomSleepDuration();
+        int paradoxSleep = generateSleepComponent(totalSleepDuration, 0.1, 0.2);
+        int deepSlowParadoxSleep = generateSleepComponent(totalSleepDuration, 0.1, 0.15);
+        int deepSlowSleep = generateSleepComponent(totalSleepDuration, 0.2, 0.4);
+        int lightSlowSleep = totalSleepDuration - (paradoxSleep + deepSlowParadoxSleep + deepSlowSleep);
+
+        if (lightSlowSleep < 0) {
+            lightSlowSleep = 0;
+        }
+
         return Optional.ofNullable(SleepPace.builder()
-                        .paradoxSleep(getRandomSleep())
-                        .deepSlowParadoxSleep(getRandomSleep())
-                        .deepSlowSleep(getRandomSleep())
-                        .lightSlowSleep(getRandomSleep())
-                        .sleepingDuration(getRandomSleep())
-                        .timestamp(LocalDateTime.now())
+                .paradoxSleep(paradoxSleep)
+                .deepSlowParadoxSleep(deepSlowParadoxSleep)
+                .deepSlowSleep(deepSlowSleep)
+                .lightSlowSleep(lightSlowSleep)
+                .sleepingDuration(totalSleepDuration)
+                .timestamp(initialDateTime.minusHours(index))
                 .build());
     }
 
-    private int getRandomSleep() {
-        int r = integerWeightedRandomGenerator.add(20, 40, .8).add(40,60, .2).getWeightedRandom();
-        integerWeightedRandomGenerator.clearWeights();
-        return r;
+    private int getRandomSleepDuration() {
+        int minMinutes = 300;
+        int maxMinutes = 720;
+        return minMinutes + (int) (Math.random() * (maxMinutes - minMinutes));
     }
 
+    private int generateSleepComponent(int totalDuration, double minFraction, double maxFraction) {
+        double fraction = minFraction + (Math.random() * (maxFraction - minFraction));
+        return (int) (totalDuration * fraction);
+    }
 }

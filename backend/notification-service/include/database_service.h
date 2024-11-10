@@ -7,6 +7,6 @@
 namespace database_service
 {
     /* Retrieve the contacts for whom the message needs to be forwarded */
-    std::vector<std::string> getToContactEmailsFromDatabase(const std::string& id);
+    std::tuple<std::string, std::string, std::vector<std::string>> getToContactEmailsFromDatabase(const std::string& id);
 }
 #endif // DATABASE_SERVICE_HPP

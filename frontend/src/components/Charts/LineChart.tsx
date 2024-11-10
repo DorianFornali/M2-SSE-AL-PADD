@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React from 'react'
 import {
   Line,
   LineChart as RechartsLineChart,
@@ -17,35 +17,12 @@ type LineChartProps = {
     color: string
   }[]
   unit: string
+  period: string
+  handlePeriod: (_: unknown, newTime: string) => void
 }
 
 const LineChart: React.FC<LineChartProps> = (props) => {
-  const { data, lines, unit } = props
-
-  const [period, setPeriod] = useState('1m')
-
-  const handlePeriod = (_: unknown, newTime: string) => {
-    setPeriod(newTime)
-  }
-
-  const dataToShow = useMemo(() => {
-    if (period === '1w') {
-      return data.slice(-7)
-    }
-    if (period === '1m') {
-      return data.slice(-30)
-    }
-    if (period === '3m') {
-      return data.slice(-90)
-    }
-    if (period === '6m') {
-      return data.slice(-180)
-    }
-    if (period === '1y') {
-      return data
-    }
-    return data
-  }, [data, period])
+  const { data, lines, unit, period, handlePeriod } = props
 
   return (
     <Box
@@ -60,7 +37,7 @@ const LineChart: React.FC<LineChartProps> = (props) => {
     >
       <ResponsiveContainer width="100%" height={300}>
         <RechartsLineChart
-          data={dataToShow}
+          data={data}
           margin={{
             top: 5,
             right: 30,

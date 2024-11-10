@@ -3,6 +3,27 @@ import { useAuthStore } from '../store/store'
 import { routes } from './definitions'
 import { me } from '../api/auth'
 
+export const redirectToAuthOrDashboard = async () => {
+  try {
+    const res = await me()
+
+    if (res) {
+      useAuthStore.getState().setUser(res)
+      throw redirect({
+        to: routes.dashboard.path,
+      })
+    }
+
+    throw redirect({
+      to: routes.login.path,
+    })
+  } catch {
+    throw redirect({
+      to: routes.login.path,
+    })
+  }
+}
+
 export const redirectIfUnauthenticated = async () => {
   const user = useAuthStore.getState().user
 
@@ -32,6 +53,7 @@ export const redirectIfAuthenticated = async (path: string) => {
 
       if (res) {
         useAuthStore.getState().setUser(res)
+        console.log('redirectIfAuthenticated', path)
         throw redirect({
           to: path,
         })

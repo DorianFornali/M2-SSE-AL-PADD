@@ -25,23 +25,27 @@ namespace notification_service
 
     void handleMessage(const std::string& subject, const json& messageJson) {
         std::string id;
+        std::string emailSubject;
+
         if (subject.rfind(kEmergencyPrefix, 0) == 0) {
             id = subject.substr(kEmergencyPrefix.length());
-            email_service::sendEmail(database_service::getToContactEmailsFromDatabase(id), "Emergency", messageJson);
+            emailSubject = "Emergency";
         } else if (subject.rfind(kReportHealthStatusNormalPrefix, 0) == 0) {
             id = subject.substr(kReportHealthStatusNormalPrefix.length());
-            email_service::sendEmail(database_service::getToContactEmailsFromDatabase(id), "Health Status Normal", messageJson);
+            emailSubject = "Health Status Normal";
         } else if (subject.rfind(kReportHealthStatusCriticalPrefix, 0) == 0) {
             id = subject.substr(kReportHealthStatusCriticalPrefix.length());
-            email_service::sendEmail(database_service::getToContactEmailsFromDatabase(id), "Health Status Critical", messageJson);
+            emailSubject = "Health Status Critical";
         } else if (subject.rfind(kReportHealthStatusWarningPrefix, 0) == 0) {
-            // Form with some warning messages from the patient 
             id = subject.substr(kReportHealthStatusWarningPrefix.length());
-            email_service::sendEmail(database_service::getToContactEmailsFromDatabase(id), "Health Status Warning", messageJson);
+            emailSubject = "Health Status Warning";
         } else {
             std::cerr << "Unknown message subject: " << subject << std::endl;
+            return;
         }
 
+        auto [firstName, lastName, emailList] = database_service::getToContactEmailsFromDatabase(id);
+        email_service::sendEmail(firstName, lastName, emailList, emailSubject, messageJson);
     }
 
     void onMessage(natsConnection *conn, natsSubscription *sub, natsMsg *msg, void *closure) {

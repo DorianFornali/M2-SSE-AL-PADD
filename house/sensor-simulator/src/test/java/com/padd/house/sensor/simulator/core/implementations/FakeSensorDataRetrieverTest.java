@@ -7,16 +7,20 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
+
 @Slf4j
 @SpringBootTest
 class FakeSensorDataRetrieverTest {
 
+    private int index = 0;
+    private final LocalDateTime initialDateTime = LocalDateTime.now();
     @Autowired
     SensorDataRetriever sensorDataRetriever;
 
     @Test
     void testFakeSensorData() {
-        FakeSensorData fakeSensorData = sensorDataRetriever.retrieveFakeSensorData().orElseThrow();
+        FakeSensorData fakeSensorData = sensorDataRetriever.retrieveFakeSensorData(index, initialDateTime).orElseThrow();
         logger.info("{}", fakeSensorData);
     }
 

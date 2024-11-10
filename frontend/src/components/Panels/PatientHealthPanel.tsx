@@ -9,6 +9,7 @@ import BloodOxygenationPanel from './HealthInfo/BloodOxygenationPanel'
 import SleepPacePanel from './HealthInfo/SleepPacePanel'
 import BodyTemperaturePanel from './HealthInfo/BodyTemperaturePanel'
 import { LocalUser } from '../../types/user'
+import ReportPanel from './HealthInfo/ReportPanel'
 
 type PatientHealthPanelProps = {
   patient: LocalUser
@@ -30,6 +31,7 @@ const PatientHealthPanel: React.FC<PatientHealthPanelProps> = (props) => {
       }}
     >
       <Tabs value={value} onChange={(_, newValue) => setValue(newValue)}>
+        <Tab label={t('patientHealthPanel.reportPanel.title')} />
         <Tab label={t('patientHealthPanel.heartRatePanel.title')} />
         <Tab label={t('patientHealthPanel.bloodPressurePanel.title')} />
         <Tab label={t('patientHealthPanel.stressLevelPanel.title')} />
@@ -38,21 +40,24 @@ const PatientHealthPanel: React.FC<PatientHealthPanelProps> = (props) => {
         <Tab label={t('patientHealthPanel.bodyTemperaturePanel.title')} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <HeartRatePanel patient={patient} />
+        <ReportPanel patient={patient} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <BloodPressurePanel patient={patient} />
+        <HeartRatePanel patient={patient} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <StressLevelPanel patient={patient} />
+        <BloodPressurePanel patient={patient} />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <BloodOxygenationPanel patient={patient} />
+        <StressLevelPanel patient={patient} />
       </TabPanel>
       <TabPanel value={value} index={4}>
-        <SleepPacePanel patient={patient} />
+        <BloodOxygenationPanel patient={patient} />
       </TabPanel>
       <TabPanel value={value} index={5}>
+        <SleepPacePanel patient={patient} />
+      </TabPanel>
+      <TabPanel value={value} index={6}>
         <BodyTemperaturePanel patient={patient} />
       </TabPanel>
     </Box>

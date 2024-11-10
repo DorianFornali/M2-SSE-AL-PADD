@@ -29,7 +29,7 @@ export const login = async (data: LoginRequest) => {
   }
 
   if (response.data.token) {
-    document.cookie = `${APP.AUTH_TOKEN}=${response.data.token.token}`
+    document.cookie = `${APP.AUTH_TOKEN}=${response.data.token.token}; path=/;`
   }
 
   return response.data.user!

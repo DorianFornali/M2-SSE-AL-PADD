@@ -10,7 +10,11 @@ import HomePage from '../pages/Home'
 
 import { routes } from './definitions'
 import LoginPage from '../pages/auth/Login'
-import { redirectIfAuthenticated, redirectIfUnauthenticated } from './utils'
+import {
+  redirectIfAuthenticated,
+  redirectIfUnauthenticated,
+  redirectToAuthOrDashboard,
+} from './utils'
 import DashboardPage from '../pages/Dashboard'
 import RegisterPage from '../pages/auth/Register'
 import UserViewPage from '../pages/user/UserView'
@@ -45,7 +49,7 @@ const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: routes.root.path,
   component: HomePage,
-  // beforeLoad: redirectIfUnauthenticated,
+  beforeLoad: redirectToAuthOrDashboard,
 })
 
 const dashboardRoute = createRoute({

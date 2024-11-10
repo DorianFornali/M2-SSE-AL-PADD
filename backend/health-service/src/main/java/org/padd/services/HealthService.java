@@ -21,6 +21,7 @@ import org.padd.repository.UserRepository;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 
@@ -50,8 +51,8 @@ public class HealthService {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode jsonNode = objectMapper.readTree(message);
-            LocalDateTime startTimestamp = LocalDateTime.parse(jsonNode.get("start").asText());
-            LocalDateTime endTimestamp = LocalDateTime.parse(jsonNode.get("end").asText());
+            LocalDateTime startTimestamp = LocalDateTime.parse(jsonNode.get("start").asText(), DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+            LocalDateTime endTimestamp = LocalDateTime.parse(jsonNode.get("end").asText(), DateTimeFormatter.ISO_LOCAL_DATE_TIME);
             log.info("Handling the information concerning the patient with id: " + id);
             /* We start to fetch data from database and interpret the data */
             Optional<User> userOpt = Optional.ofNullable(userRepository.findById(Long.parseLong(id)));

@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Health"
+    "name": "PADDY"
   },
   "header": {
     "account": "Dashboard",
@@ -41,6 +41,10 @@
     "noRelative": "Aucun Proche"
   },
   "patientHealthPanel": {
+    "reportPanel": {
+      "title": "Rapport de santé",
+      "noData": "Aucune donnée"
+    },
     "heartRatePanel": {
       "title": "Fréquence cardiaque",
       "unit": "bpm"
