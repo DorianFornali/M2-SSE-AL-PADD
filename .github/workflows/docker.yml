@@ -1,14 +1,3 @@
-name: Build and Publish Docker Images
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  build-and-push:
-    runs-on: ubuntu-latest
-    steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
@@ -33,6 +22,8 @@ jobs:
           tags: pierraad/sse-al-paddy:frontend-latest
 
       - name: Build and push user-service
+        run: |
+          cp ./backend/user-service/.env.example ./backend/user-service/.env
         uses: docker/build-push-action@v2
         with:
           context: ./backend/user-service
