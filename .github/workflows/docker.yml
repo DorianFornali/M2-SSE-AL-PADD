@@ -32,9 +32,11 @@ jobs:
           push: true
           tags: pierraad/sse-al-paddy:frontend-latest
 
-      - name: Build and push user-service
+      - name: Copy .env.example to .env for user-service
         run: |
           cp ./backend/user-service/.env.example ./backend/user-service/.env
+
+      - name: Build and push user-service
         uses: docker/build-push-action@v2
         with:
           context: ./backend/user-service
