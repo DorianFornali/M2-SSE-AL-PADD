@@ -3,11 +3,12 @@
 - Produce: reportHealthStatus.normal.{id}; reportHealthStatus.critical.{id} => which will be consumed by the notification service ;
 */
 
-package org.padd.services;
+package org.padd;
 
 import io.nats.client.Connection;
 import io.nats.client.Dispatcher;
 import io.nats.client.Nats;
+import io.quarkus.runtime.Startup;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Inject;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -18,6 +19,7 @@ import org.padd.config.NATSConfig;
 import org.jboss.logging.Logger;
 import org.padd.entity.User;
 import org.padd.repository.UserRepository;
+import org.padd.services.HealthAnalysisService;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -26,6 +28,7 @@ import java.util.Optional;
 
 
 @ApplicationScoped
+@Startup
 public class HealthService {
     private static final Logger log = Logger.getLogger(HealthService.class);
     private Connection natsConnection;
