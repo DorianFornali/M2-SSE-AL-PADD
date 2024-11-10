@@ -18,7 +18,9 @@ import com.padd.smartphone.dto.SleepPaceDTO;
 @Service
 public class HealthDataService {
 
-    private final List<HealthRecordDTO> healthRecords = new ArrayList<>();
+    private final Integer HEALTH_RECORDS_BATCH_SIZE = 24;
+    private List<HealthRecordDTO> healthRecords = new ArrayList<>();
+
     private final HealthDataDTO healthData = new HealthDataDTO();
 
     private final RestTemplate restTemplate = new RestTemplate();
@@ -34,21 +36,23 @@ public class HealthDataService {
     
     public void saveHealthRecord(HealthRecordDTO healthRecordDTO) {
         checkHealthRecord(healthRecordDTO);
+
         healthRecords.add(healthRecordDTO);
+        
+        if (healthRecords.size() == HEALTH_RECORDS_BATCH_SIZE) {
+            healthData.setHealthRecords(new ArrayList<>(healthRecords));
+            healthRecords.clear();
+        }
     }
 
     public void saveSleepData(SleepPaceDTO sleepPaceDTO) {
-        healthData.setSleepPace(sleepPaceDTO);
+        healthData.setSleepPace(sleepPaceDTO);    
         sendHealthData();
     }
 
     private void sendHealthData() {
-        healthData.setHealthRecords(healthRecords);
-
         String url = dataServiceUrl + "/healthData/" + userId;
         sendPostRequest(url, healthData);
-
-        healthRecords.clear();
     }
 
     private void sendPostRequest(String url, Object dto) {
@@ -60,7 +64,6 @@ public class HealthDataService {
         try {
             System.out.println("[SMARTPHONE] Sending request to : " + url);
             restTemplate.postForObject(url, request, String.class);
-            healthRecords.clear();
         } catch (Exception e) {
             System.out.println("[SMARTPHONE] Error while sending request to : " + url + ", " + e.getMessage());
         }
