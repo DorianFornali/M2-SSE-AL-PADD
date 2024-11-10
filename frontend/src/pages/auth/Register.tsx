@@ -89,7 +89,7 @@ export default function RegisterPage() {
             variant="h4"
             sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
           >
-            Sign up
+            S'inscrire
           </Typography>
           <Box
             component="form"
@@ -97,7 +97,7 @@ export default function RegisterPage() {
             sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
           >
             <FormControl>
-              <FormLabel htmlFor="last_name">Last name</FormLabel>
+              <FormLabel htmlFor="last_name">Nom de famille</FormLabel>
               <TextField
                 autoComplete="last_name"
                 name="last_name"
@@ -108,7 +108,7 @@ export default function RegisterPage() {
               />
             </FormControl>
             <FormControl>
-              <FormLabel htmlFor="first_name">First name</FormLabel>
+              <FormLabel htmlFor="first_name">Prénom</FormLabel>
               <TextField
                 autoComplete="first_name"
                 name="first_name"
@@ -131,7 +131,7 @@ export default function RegisterPage() {
               />
             </FormControl>
             <FormControl>
-              <FormLabel htmlFor="password">Password</FormLabel>
+              <FormLabel htmlFor="password">Mot de passe</FormLabel>
               <TextField
                 required
                 fullWidth
@@ -144,7 +144,7 @@ export default function RegisterPage() {
               />
             </FormControl>
             <FormControl>
-              <FormLabel htmlFor="phone_number">Phone number</FormLabel>
+              <FormLabel htmlFor="phone_number">Numéro de téléphone</FormLabel>
               <TextField
                 required
                 fullWidth
@@ -156,7 +156,7 @@ export default function RegisterPage() {
               />
             </FormControl>
             <FormControl>
-              <FormLabel htmlFor="address">Address</FormLabel>
+              <FormLabel htmlFor="address">Adresse</FormLabel>
               <TextField
                 required
                 fullWidth
@@ -168,7 +168,7 @@ export default function RegisterPage() {
               />
             </FormControl>
             <FormControl>
-              <FormLabel htmlFor="birth_date">Birth date</FormLabel>
+              <FormLabel htmlFor="birth_date">Date de naissance</FormLabel>
               <TextField
                 required
                 fullWidth
@@ -197,17 +197,21 @@ export default function RegisterPage() {
               </Select>
             </FormControl>
             <Button type="submit" fullWidth variant="contained">
-              Sign up
+              S'inscrire
             </Button>
             <Typography sx={{ textAlign: 'center' }}>
-              Already have an account?{' '}
+              Vous avez déjà un compte ?{' '}
               <span>
                 <Link
-                  href="/material-ui/getting-started/templates/sign-in/"
+                  onClick={() =>
+                    navigate({
+                      to: routes.login.path,
+                    })
+                  }
                   variant="body2"
                   sx={{ alignSelf: 'center' }}
                 >
-                  Sign in
+                  Se connecter
                 </Link>
               </span>
             </Typography>

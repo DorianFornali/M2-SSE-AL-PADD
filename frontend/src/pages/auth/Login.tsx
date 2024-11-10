@@ -126,7 +126,7 @@ export default function LoginPage() {
             variant="h4"
             sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
           >
-            Sign in
+            Connexion
           </Typography>
           <Box
             component="form"
@@ -159,7 +159,7 @@ export default function LoginPage() {
             </FormControl>
             <FormControl>
               <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <FormLabel htmlFor="password">Password</FormLabel>
+                <FormLabel htmlFor="password">Mot de passe</FormLabel>
               </Box>
               <TextField
                 error={passwordError}
@@ -182,10 +182,10 @@ export default function LoginPage() {
               variant="contained"
               onClick={validateInputs}
             >
-              Sign in
+              Se connecter
             </Button>
             <Typography sx={{ textAlign: 'center' }}>
-              Don&apos;t have an account?{' '}
+              Vous n'avez pas de compte ?{' '}
               <span>
                 <Link
                   onClick={() =>
@@ -196,7 +196,7 @@ export default function LoginPage() {
                   variant="body2"
                   sx={{ alignSelf: 'center' }}
                 >
-                  Sign up
+                  S'inscrire
                 </Link>
               </span>
             </Typography>
