@@ -7,10 +7,18 @@ import jakarta.enterprise.context.ApplicationScoped;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.sql.Timestamp;
+import org.jboss.logging.Logger;
+import org.padd.services.HealthAnalysisService;
 
 @ApplicationScoped
 public class HealthRecordRepository implements PanacheRepository<HealthRecord> {
+
+    private static final Logger log = Logger.getLogger(HealthAnalysisService.class);
     public List<HealthRecord> findByUserAndTimestampBetween(int userId, LocalDateTime startTimestamp, LocalDateTime endTimestamp) {
+        Timestamp start = Timestamp.valueOf(startTimestamp);
+        Timestamp end = Timestamp.valueOf(endTimestamp);
+        log.info("Finding health records for user: " + userId + " between " + start + " and " + end);
         return find("user_id = ?1 and timestamp between ?2 and ?3", userId, startTimestamp, endTimestamp).list();
     }
 }

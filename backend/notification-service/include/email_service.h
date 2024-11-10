@@ -7,7 +7,7 @@
 
 namespace email_service
 {
-    std::string formPayloadForEmail(const std::vector<std::string>& ToList, const std::string& From, const std::string& topic);
-    void sendEmail(const std::vector<std::string>& emailList, const std::string& subject, const nlohmann::json& received_message_data);
+    std::string formPayloadForEmail(const std::string &firstName, const std::string &lastName, const std::vector<std::string>& ToList, const std::string& From, const std::string& topic);
+    void sendEmail(const std::string &firstName, const std::string &lastName, const std::vector<std::string>& emailList, const std::string& subject, const nlohmann::json& received_message_data);
 }
 #endif // EMAIL_SERVICE_HPP

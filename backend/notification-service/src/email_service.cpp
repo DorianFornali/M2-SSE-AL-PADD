@@ -19,7 +19,7 @@ std::string concatenateEmails(const std::vector<std::string>& emailList)
     return toField;
 }
 
-std::string formPayloadForEmail(const std::vector<std::string>& ToList, const std::string& From, const std::string& topic) {
+std::string formPayloadForEmail(const std::string &firstName, const std::string &lastName, const std::vector<std::string>& ToList, const std::string& From, const std::string& topic, const nlohmann::json& received_message_data) {
     std::string payload;
     std::string toField = concatenateEmails(ToList);
 
@@ -29,6 +29,11 @@ std::string formPayloadForEmail(const std::vector<std::string>& ToList, const st
 
     if (topic == "Emergency") {
         payload += "Emergency Alert\r\n\r\nEmergency triggered!\r\n";
+        if (received_message_data.contains("datatype") && received_message_data.contains("value")) {
+            payload += "The patient fullname: " + firstName + " " + lastName + "\r\n";
+            payload += "Data type that needs to be checked: " + received_message_data["datatype"].get<std::string>() + "\r\n";
+            payload += "Value that needs to be checked: " + received_message_data["value"].get<std::string>() + "\r\n";
+        }
     } else if (topic == "Health Status Normal") {
         payload += "Health Status Normal\r\n\r\nThe patient's health status is normal.\r\n";
     } else if (topic == "Health Status Critical") {
@@ -41,7 +46,7 @@ std::string formPayloadForEmail(const std::vector<std::string>& ToList, const st
 
     // End the message with the required SMTP termination
     payload += "\r\n.\r\n";  // <--- This ends the message correctly
-
+    std::cout << payload << std::endl;
     return payload;
 }
 
@@ -63,7 +68,7 @@ static size_t payloadSource(void *ptr, size_t size, size_t nmemb, void *userp) {
 }
 
 
-void sendEmail(const std::vector<std::string>& emailList, const std::string& subject, const nlohmann::json& received_message_data)
+void sendEmail(const std::string &firstName, const std::string &lastName, const std::vector<std::string>& emailList, const std::string& subject, const nlohmann::json& received_message_data)
 {
     /*
      * inputs
@@ -91,7 +96,7 @@ void sendEmail(const std::vector<std::string>& emailList, const std::string& sub
         /*
          * Payload for the email, using the updated formPayloadForEmail
          */
-        std::string payload_text = formPayloadForEmail(emailList, "no-reply@mail.com", subject);
+        std::string payload_text = formPayloadForEmail(firstName, lastName, emailList, "no-reply@mail.com", subject, received_message_data);
         const char *payload = payload_text.c_str();
         curl_easy_setopt(curl, CURLOPT_READFUNCTION, payloadSource);
         curl_easy_setopt(curl, CURLOPT_READDATA, &payload);
