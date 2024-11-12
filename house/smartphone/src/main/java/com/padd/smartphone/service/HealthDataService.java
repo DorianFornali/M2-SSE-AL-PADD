@@ -79,8 +79,9 @@ public class HealthDataService {
             alert.setDatatype("heart rate");
             alert.setValue(Double.toString(healthRecordDTO.getHeartRate()));
             alert.setTimestamp(healthRecordDTO.getTimestamp().toString());
-            
+
             System.out.println("[SMARTPHONE] Alert! Heart rate is too high : " + alert.getValue());
+            System.out.println("[SMARTPHONE] Sending json : { id : " + alert.getId() + ", datatype : " + alert.getDatatype() + ", value : " + alert.getValue() + ", timestamp : " + alert.getTimestamp() + " }");
             sendPostRequest(url, alert);
         }
     }
