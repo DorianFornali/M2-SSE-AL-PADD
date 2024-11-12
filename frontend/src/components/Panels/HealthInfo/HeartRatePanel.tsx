@@ -4,6 +4,8 @@ import { useMemo, useState } from 'react'
 import dayjs, { Dayjs } from 'dayjs'
 import minMax from 'dayjs/plugin/minMax'
 import isBetween from 'dayjs/plugin/isBetween'
+import timezone from 'dayjs/plugin/timezone'
+import utc from 'dayjs/plugin/utc'
 
 import LineChart from '../../Charts/LineChart'
 import { LocalUser } from '../../../types/user'
@@ -11,6 +13,8 @@ import RangePicker from '../../RangePicker'
 
 dayjs.extend(minMax)
 dayjs.extend(isBetween)
+dayjs.extend(timezone)
+dayjs.extend(utc)
 
 type HeartRatePanelProps = {
   patient: LocalUser
@@ -54,7 +58,7 @@ const HeartRatePanel: React.FC<HeartRatePanelProps> = ({ patient }) => {
       .flatMap((record) => {
         if (isSingleDay) {
           return record.records.map((entry) => ({
-            label: dayjs(entry.time).format('HH:mm'),
+            label: dayjs(entry.time).tz('UTC').format('HH:mm'),
             heartRate: entry.heartRate,
           }))
         } else {
@@ -66,6 +70,8 @@ const HeartRatePanel: React.FC<HeartRatePanelProps> = ({ patient }) => {
       })
       .reverse()
   }, [heartRatesData, startDate, endDate])
+
+  console.log('dataToShow', dataToShow)
 
   return (
     <Box>
