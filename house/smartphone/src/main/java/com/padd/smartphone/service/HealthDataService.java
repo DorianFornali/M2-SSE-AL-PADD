@@ -73,13 +73,15 @@ public class HealthDataService {
         String url = alertServiceUrl + "/alert";
 
         // Heart rate
-        if (healthRecordDTO.getHeartRate() > 100) {
+        if (healthRecordDTO.getHeartRate() > 120) {
             AlertDTO alert = new AlertDTO();
             alert.setId(userId);
             alert.setDatatype("heart rate");
             alert.setValue(Double.toString(healthRecordDTO.getHeartRate()));
-            
+            alert.setTimestamp(healthRecordDTO.getTimestamp().toString());
+
             System.out.println("[SMARTPHONE] Alert! Heart rate is too high : " + alert.getValue());
+            System.out.println("[SMARTPHONE] Sending json : { id : " + alert.getId() + ", datatype : " + alert.getDatatype() + ", value : " + alert.getValue() + ", timestamp : " + alert.getTimestamp() + " }");
             sendPostRequest(url, alert);
         }
     }

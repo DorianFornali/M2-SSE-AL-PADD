@@ -105,11 +105,11 @@ public class HealthAnalysisService {
             double minBloodOxygenation = healthRecords.stream().mapToDouble(HealthRecord::getBloodOxygenation).min().orElse(0.0);
 
             /* Sleep pace treatement */
-            int totalSleepDuration = sleepPaces.stream().mapToInt(SleepPace::getSleepDuration).sum();
-            int maxSleepDuration = sleepPaces.stream().mapToInt(SleepPace::getSleepDuration).max().orElse(0);
-            int minSleepDuration = sleepPaces.stream().mapToInt(SleepPace::getSleepDuration).min().orElse(0);
+            double totalSleepDurationInMinutes = sleepPaces.stream().mapToDouble(SleepPace::getSleepDuration).sum();
+            double maxSleepDuration = sleepPaces.stream().mapToDouble(SleepPace::getSleepDuration).max().orElse(0);
+            double minSleepDuration = sleepPaces.stream().mapToDouble(SleepPace::getSleepDuration).min().orElse(0);
 
-
+            double totalSleepDurationInHours = totalSleepDurationInMinutes / 60.0;
 
             /* Construct the health report and store in the database */
             HealthReport report = new HealthReport();
@@ -118,7 +118,7 @@ public class HealthAnalysisService {
             report.setStartTimestamp(startTimestamp);
             report.setEndTimestamp(endTimestamp);
             report.setAverageHeartRate(averageHeartRate);
-            report.setTotalSleepDuration(totalSleepDuration);
+            report.setTotalSleepDuration(totalSleepDurationInHours);
             report.setAverageStressLevel(averageStressLevel);
             report.setMaxHeartRate(maxHeartRate);
             report.setMinHeartRate(minHeartRate);

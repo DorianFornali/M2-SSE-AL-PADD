@@ -116,7 +116,7 @@ const ReportCard: React.FC<ReportCardProps> = (props) => {
           <Box>
             <Typography variant="h6">
               <strong>Durée du sommeil: </strong>
-              {report.totalSleepDuration}
+              {report.totalSleepDuration?.toFixed(1)}h
             </Typography>
           </Box>
         </Card>

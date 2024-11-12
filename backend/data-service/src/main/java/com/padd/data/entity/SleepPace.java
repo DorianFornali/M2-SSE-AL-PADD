@@ -19,11 +19,11 @@ public class SleepPace {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    private int sleepDuration;
-    private int lightSlowSleep;
-    private int deepSlowSleep;
-    private int deepSlowParadoxSleep;
-    private int paradoxSleep;
+    private Double sleepDuration;
+    private Double lightSlowSleep;
+    private Double deepSlowSleep;
+    private Double deepSlowParadoxSleep;
+    private Double paradoxSleep;
 
     public Long getId() {
         return id;
@@ -49,43 +49,43 @@ public class SleepPace {
         this.user = user;
     }
 
-    public int getSleepDuration() {
+    public Double getSleepDuration() {
         return sleepDuration;
     }
 
-    public void setSleepDuration(int sleepDuration) {
+    public void setSleepDuration(Double sleepDuration) {
         this.sleepDuration = sleepDuration;
     }
 
-    public int getLightSlowSleep() {
+    public Double getLightSlowSleep() {
         return lightSlowSleep;
     }
 
-    public void setLightSlowSleep(int lightSlowSleep) {
+    public void setLightSlowSleep(Double lightSlowSleep) {
         this.lightSlowSleep = lightSlowSleep;
     }
 
-    public int getDeepSlowSleep() {
+    public Double getDeepSlowSleep() {
         return deepSlowSleep;
     }
 
-    public void setDeepSlowSleep(int deepSlowSleep) {
+    public void setDeepSlowSleep(Double deepSlowSleep) {
         this.deepSlowSleep = deepSlowSleep;
     }
 
-    public int getDeepSlowParadoxSleep() {
+    public Double getDeepSlowParadoxSleep() {
         return deepSlowParadoxSleep;
     }
 
-    public void setDeepSlowParadoxSleep(int deepSlowParadoxSleep) {
+    public void setDeepSlowParadoxSleep(Double deepSlowParadoxSleep) {
         this.deepSlowParadoxSleep = deepSlowParadoxSleep;
     }
 
-    public int getParadoxSleep() {
+    public Double getParadoxSleep() {
         return paradoxSleep;
     }
 
-    public void setParadoxSleep(int paradoxSleep) {
+    public void setParadoxSleep(Double paradoxSleep) {
         this.paradoxSleep = paradoxSleep;
     }
     

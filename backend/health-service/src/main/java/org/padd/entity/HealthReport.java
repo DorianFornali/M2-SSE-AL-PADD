@@ -24,7 +24,7 @@ public class HealthReport {
     private double averageHeartRate;
 
     @Column(name = "total_sleep_duration")
-    private int totalSleepDuration;
+    private double totalSleepDuration;
 
     @Column(name = "average_stress_level")
     private int averageStressLevel;
@@ -61,10 +61,10 @@ public class HealthReport {
     private int minStressLevel;
 
     @Column(name = "max_sleep_duration")
-    private int maxSleepDuration;
+    private double maxSleepDuration;
 
     @Column(name = "min_sleep_duration")
-    private int minSleepDuration;
+    private double minSleepDuration;
 
     @Column(name = "general_state")
     private String generalState;
@@ -111,11 +111,11 @@ public class HealthReport {
         this.averageHeartRate = averageHeartRate;
     }
 
-    public int getTotalSleepDuration() {
+    public double getTotalSleepDuration() {
         return totalSleepDuration;
     }
 
-    public void setTotalSleepDuration(int totalSleepDuration) {
+    public void setTotalSleepDuration(double totalSleepDuration) {
         this.totalSleepDuration = totalSleepDuration;
     }
 
@@ -159,19 +159,19 @@ public class HealthReport {
         this.minStressLevel = minStressLevel;
     }
 
-    public int getMaxSleepDuration() {
+    public double getMaxSleepDuration() {
         return maxSleepDuration;
     }
 
-    public void setMaxSleepDuration(int maxSleepDuration) {
+    public void setMaxSleepDuration(double maxSleepDuration) {
         this.maxSleepDuration = maxSleepDuration;
     }
 
-    public int getMinSleepDuration() {
+    public double getMinSleepDuration() {
         return minSleepDuration;
     }
 
-    public void setMinSleepDuration(int minSleepDuration) {
+    public void setMinSleepDuration(double minSleepDuration) {
         this.minSleepDuration = minSleepDuration;
     }
 

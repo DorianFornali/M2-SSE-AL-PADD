@@ -5,6 +5,7 @@ public class AlertDTO {
     private String id;
     private String datatype;
     private String value;
+    private String timestamp;
     
     public String getId() {
         return id;
@@ -28,6 +29,14 @@ public class AlertDTO {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 
 }

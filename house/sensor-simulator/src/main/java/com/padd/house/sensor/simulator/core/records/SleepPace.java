@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Builder
 public record SleepPace(
                         LocalDateTime timestamp,
-                        double sleepingDuration,
+                        double sleepDuration,
                         double lightSlowSleep,
                         double deepSlowSleep,
                         double deepSlowParadoxSleep,
