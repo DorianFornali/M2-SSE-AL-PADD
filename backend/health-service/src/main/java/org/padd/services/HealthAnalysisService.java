@@ -105,9 +105,9 @@ public class HealthAnalysisService {
             double minBloodOxygenation = healthRecords.stream().mapToDouble(HealthRecord::getBloodOxygenation).min().orElse(0.0);
 
             /* Sleep pace treatement */
-            int totalSleepDurationInMinutes = sleepPaces.stream().mapToInt(SleepPace::getSleepDuration).sum();
-            int maxSleepDuration = sleepPaces.stream().mapToInt(SleepPace::getSleepDuration).max().orElse(0);
-            int minSleepDuration = sleepPaces.stream().mapToInt(SleepPace::getSleepDuration).min().orElse(0);
+            double totalSleepDurationInMinutes = sleepPaces.stream().mapToDouble(SleepPace::getSleepDuration).sum();
+            double maxSleepDuration = sleepPaces.stream().mapToDouble(SleepPace::getSleepDuration).max().orElse(0);
+            double minSleepDuration = sleepPaces.stream().mapToDouble(SleepPace::getSleepDuration).min().orElse(0);
 
             double totalSleepDurationInHours = totalSleepDurationInMinutes / 60.0;
 
