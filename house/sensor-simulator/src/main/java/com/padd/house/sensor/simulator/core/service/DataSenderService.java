@@ -62,7 +62,7 @@ public class DataSenderService {
             logger.info("Sending sleep pace -> {}", sleepPace);
             sendDataToSmartphone(sleepPace, uri);
         } catch (Exception e) {
-            SleepPace sleepPace = SleepPace.builder().paradoxSleep(20).deepSlowParadoxSleep(20).deepSlowSleep(20).lightSlowSleep(20).sleepingDuration(20).timestamp(LocalDateTime.now()).build();
+            SleepPace sleepPace = SleepPace.builder().paradoxSleep(20).deepSlowParadoxSleep(20).deepSlowSleep(20).lightSlowSleep(20).sleepDuration(20).timestamp(LocalDateTime.now()).build();
             sendDataToSmartphone(sleepPace, uri);
         }
     }

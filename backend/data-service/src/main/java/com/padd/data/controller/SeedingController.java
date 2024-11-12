@@ -74,11 +74,11 @@ public class SeedingController {
 
                 sleepPace.setTimestamp(timestamp);
 
-                sleepPace.setSleepDuration(7);
-                sleepPace.setLightSlowSleep(4);
-                sleepPace.setDeepSlowSleep(1);
-                sleepPace.setDeepSlowParadoxSleep(1);
-                sleepPace.setParadoxSleep(1);
+                sleepPace.setSleepDuration(7d);
+                sleepPace.setLightSlowSleep(4d);
+                sleepPace.setDeepSlowSleep(1d);
+                sleepPace.setDeepSlowParadoxSleep(1d);
+                sleepPace.setParadoxSleep(1d);
 
                 healthDataService.createOrUpdateSleepPace(sleepPace);
             }

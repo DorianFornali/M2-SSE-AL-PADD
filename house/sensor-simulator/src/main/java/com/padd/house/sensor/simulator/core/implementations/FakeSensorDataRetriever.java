@@ -68,7 +68,7 @@ public class FakeSensorDataRetriever implements SensorDataRetriever {
                 .deepSlowParadoxSleep(deepSlowParadoxSleep)
                 .deepSlowSleep(deepSlowSleep)
                 .lightSlowSleep(lightSlowSleep)
-                .sleepingDuration(totalSleepDuration)
+                .sleepDuration(totalSleepDuration)
                 .timestamp(initialDateTime.minusHours(index))
                 .build());
     }
