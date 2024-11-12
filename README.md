@@ -19,9 +19,8 @@ This POC implements the following end to end feature :
 - [Code structure](./docs/CodeStructure.md)
 - [How to contribute](./docs/HowToContribute.md)
 - [How to use](./docs/HowToUse.md)
-- [Architecture](./docs/Architecture.pdf)
+- [Architecture (technical, fonctionnal, GDPR, Risks analysis...)](./docs/Architecture.pdf)
 - [Architecture diagram](./docs/Architecture.png)
-- [Risk analysis](./docs/RiskAnalysis.pdf)
 
 ## Team
 
