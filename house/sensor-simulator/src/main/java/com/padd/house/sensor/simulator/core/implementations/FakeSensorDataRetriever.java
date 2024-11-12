@@ -31,7 +31,7 @@ public class FakeSensorDataRetriever implements SensorDataRetriever {
         integerWeightedRandomGenerator.clearWeights();
         return Optional.ofNullable(FakeSensorData.builder()
                         .acceleration(acceleration)
-                        .timestamp(initialDateTime.minusHours(index))
+                        .timestamp(initialDateTime.plusHours(index))
                         .bloodPressure(retrieveBloodPressure().orElseThrow())
                         .heartRate(heartRate)
                         .stressLevel(stressLevel)
@@ -69,7 +69,7 @@ public class FakeSensorDataRetriever implements SensorDataRetriever {
                 .deepSlowSleep(deepSlowSleep)
                 .lightSlowSleep(lightSlowSleep)
                 .sleepDuration(totalSleepDuration)
-                .timestamp(initialDateTime.minusHours(index))
+                .timestamp(initialDateTime.plusHours(index))
                 .build());
     }
 
