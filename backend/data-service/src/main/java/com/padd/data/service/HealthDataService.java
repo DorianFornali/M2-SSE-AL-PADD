@@ -71,9 +71,9 @@ public class HealthDataService {
             return;
 
         triggerHealthDataAnalysis(
-            user.get().getId(), 
-            healthRecords[healthRecords.length - 1].getTimestamp(),
-            healthRecords[0].getTimestamp()
+            user.get().getId(),
+            healthRecords[0].getTimestamp(),
+            healthRecords[healthRecords.length - 1].getTimestamp()
         );
     }
 
@@ -94,6 +94,7 @@ public class HealthDataService {
 
         if (!existingHealthRecord.isPresent()) {
             healthRecordRepository.save(healthRecord);
+            System.out.println("[DATA-SERVICE] Stored health record for user : " + healthRecord.getUser().getId());
         }
     }
 
@@ -102,6 +103,7 @@ public class HealthDataService {
 
         if (!existingSleepPace.isPresent()) {
             sleepPaceRepository.save(sleepPace);
+            System.out.println("[DATA-SERVICE] Stored sleep pace for user : " + sleepPace.getUser().getId());
         }
     }
     

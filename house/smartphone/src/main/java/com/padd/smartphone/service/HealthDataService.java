@@ -73,7 +73,7 @@ public class HealthDataService {
         String url = alertServiceUrl + "/alert";
 
         // Heart rate
-        if (healthRecordDTO.getHeartRate() > 100) {
+        if (healthRecordDTO.getHeartRate() > 120) {
             AlertDTO alert = new AlertDTO();
             alert.setId(userId);
             alert.setDatatype("heart rate");

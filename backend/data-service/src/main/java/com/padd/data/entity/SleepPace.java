@@ -54,7 +54,6 @@ public class SleepPace {
     }
 
     public void setSleepDuration(Double sleepDuration) {
-        System.out.println("setting sleep duration : " + sleepDuration);
         this.sleepDuration = sleepDuration;
     }
 
