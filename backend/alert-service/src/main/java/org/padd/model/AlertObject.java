@@ -17,4 +17,7 @@ public class AlertObject {
 
     @JsonProperty
     private String value;
+
+    @JsonProperty
+    private String timestamp;
 }
