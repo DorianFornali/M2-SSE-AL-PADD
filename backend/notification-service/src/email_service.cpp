@@ -4,6 +4,9 @@
 #include "email_service.h"
 #include <curl/curl.h>
 #include <iostream>
+#include <iomanip>
+#include <sstream>
+#include <ctime>
 
 namespace email_service {
 
@@ -19,6 +22,21 @@ std::string concatenateEmails(const std::vector<std::string>& emailList)
     return toField;
 }
 
+
+std::string formatTimestamp(const std::string& timestamp) {
+    std::istringstream ss(timestamp);
+    std::tm tm = {};
+    ss >> std::get_time(&tm, "%Y-%m-%dT%H:%M:%S");
+    if (ss.fail()) {
+        return timestamp;  // Return the original timestamp if parsing fails
+    }
+
+    std::ostringstream formattedTimestamp;
+    formattedTimestamp << std::put_time(&tm, "%B %d, %Y %H:%M:%S");
+    return formattedTimestamp.str();
+}
+
+
 std::string formPayloadForEmail(const std::string &firstName, const std::string &lastName, const std::vector<std::string>& ToList, const std::string& From, const std::string& topic, const nlohmann::json& received_message_data) {
     std::string payload;
     std::string toField = concatenateEmails(ToList);
@@ -29,10 +47,14 @@ std::string formPayloadForEmail(const std::string &firstName, const std::string 
 
     if (topic == "Emergency") {
         payload += "Emergency Alert\r\n\r\nEmergency triggered!\r\n";
-        if (received_message_data.contains("datatype") && received_message_data.contains("value")) {
+        if (received_message_data.contains("datatype") && received_message_data.contains("value") && received_message_data.contains("timestamp")) {
+            std::string formattedTimestamp = formatTimestamp(received_message_data["timestamp"].get<std::string>());
+            payload += "Emergency received at: " + formattedTimestamp + "\r\n";
             payload += "The patient fullname: " + firstName + " " + lastName + "\r\n";
             payload += "Data type that needs to be checked: " + received_message_data["datatype"].get<std::string>() + "\r\n";
             payload += "Value that needs to be checked: " + received_message_data["value"].get<std::string>() + "\r\n";
+
+
         }
     } else if (topic == "Health Status Normal") {
         payload += "Health Status Normal\r\n\r\nThe patient's health status is normal.\r\n";
