@@ -78,6 +78,7 @@ public class HealthDataService {
             alert.setId(userId);
             alert.setDatatype("heart rate");
             alert.setValue(Double.toString(healthRecordDTO.getHeartRate()));
+            alert.setTimestamp(healthRecordDTO.getTimestamp().toString());
             
             System.out.println("[SMARTPHONE] Alert! Heart rate is too high : " + alert.getValue());
             sendPostRequest(url, alert);
