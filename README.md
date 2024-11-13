@@ -26,6 +26,7 @@ This POC implements the following end to end feature :
 - [How to use](./docs/HowToUse.md)
 - [Architecture (technical, fonctionnal, GDPR, Risks analysis...)](./docs/Architecture.pdf)
 - [Architecture diagram](./docs/Architecture.png)
+- [Presentation](./docs/Presentation.pdf)
 
 ## Team
 
