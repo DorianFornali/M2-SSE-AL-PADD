@@ -5,7 +5,7 @@
 The code is structured as follows:
 - `backend`: contains all the backend micro services
 - `frontend`: contains the frontend
-- `sensor-simulator`: contains the sensor simulator
+- `house`: contains the house smartphone and the sensor simulator
 - `docs`: contains the documentation
 
 Everything is dockerized and orchestrated using `docker-compose`.
@@ -37,3 +37,12 @@ There is a single database for all the services that needs it. (PostgreSQL)
 The frontend is a React application.
 
 It communicates with the backend services through the gateway service.
+
+## House
+
+The house is composed of two projects:
+
+- `sensor-simulator`: a simulator for the smartwatch sensor
+  - Java Spring Boot is used as the backend framework
+- `smartphone`: the smartphone application
+  - Java Spring Boot is used as the backend framework

@@ -36,3 +36,8 @@ The documentation is generated using [Swagger](https://swagger.io/) and based on
 - Define the environment variables in the `.env.example` and `.env` files
 - Add the service to the gateway in the `backend/gateway/nginx.conf` file (to proxy the requests) if needed
 
+## CI / CD
+
+The project uses GitHub Actions for CI / CD.
+For the moment, there is a single workflow that builds the project and uploads the images to the Docker Image Registry.
+It is triggered on every push to the `main` branch and available at `.github/workflows/docker.yml`.
